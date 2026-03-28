@@ -1,0 +1,54 @@
+backend:
+  name: github
+  repo: YOUR_GITHUB_USERNAME/lynchburg-site # <--- CHANGE THIS to your GitHub username/repo
+  branch: main
+  site_url: https://lynchburg-app.netlify.app
+
+media_folder: "src/assets/img"
+public_folder: "/assets/img"
+
+collections:
+  - name: "pages"
+    label: "Pages"
+    files:
+      - label: "Home Page"
+        name: "home"
+        file: "src/index.html"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Body Content", name: "body", widget: "markdown" }
+
+      - label: "About Us"
+        name: "about"
+        file: "src/about.html"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Body Content", name: "body", widget: "markdown" }
+
+      - label: "Services"
+        name: "services"
+        file: "src/services.html"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Body Content", name: "body", widget: "markdown" }
+
+      - label: "FAQ"
+        name: "faq"
+        file: "src/faq.html"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Body Content", name: "body", widget: "markdown" }
+
+      - label: "Contact"
+        name: "contact"
+        file: "src/contact.html"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Body Content", name: "body", widget: "markdown" }
+
+      - label: "Component Library (Dev Only)"
+        name: "components"
+        file: "src/components.html"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Raw HTML Code", name: "body", widget: "code" }
