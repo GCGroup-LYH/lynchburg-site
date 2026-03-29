@@ -1,6 +1,9 @@
 module.exports = function(eleventyConfig) {
+  
+  // This maps the INTERNAL src/assets to the EXTERNAL /assets
+  eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
+  
   eleventyConfig.addPassthroughCopy("src/admin");
-  eleventyConfig.addPassthroughCopy("src/assets"); // This covers EVERYTHING inside assets
   eleventyConfig.addPassthroughCopy("src/_redirects");
 
   return {
