@@ -1,13 +1,7 @@
-
 module.exports = function(eleventyConfig) {
-  
-
-
   eleventyConfig.addPassthroughCopy("src/admin");
-  eleventyConfig.addPassthroughCopy("src/assets/images");
-  eleventyConfig.addPassthroughCopy("src/assets/fonts");
+  eleventyConfig.addPassthroughCopy("src/assets"); // This covers EVERYTHING inside assets
   eleventyConfig.addPassthroughCopy("src/_redirects");
-  eleventyConfig.addPassthroughCopy("src/assets");
 
   return {
     dir: {
