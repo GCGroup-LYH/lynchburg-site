@@ -1,23 +1,30 @@
+const eleventySass = require("eleventy-sass");
+
 module.exports = function(eleventyConfig) {
   
-  // 1. Copy the CMS dashboard folder as-is
+  //  ADD THE SASS PLUGIN (The new "Engine")
+  eleventyConfig.addPlugin(eleventySass, {
+    compileOptions: {
+      permalink: function(contents, inputPath) {
+        // This ensures your SCSS file becomes a CSS file in the build folder
+        return (data) => "/assets/css/main.css";
+      }
+    }
+  });
+
+  //  KEEP EXISTING PASSTHROUGHS (The "Body")
   eleventyConfig.addPassthroughCopy("src/admin");
-
-  eleventyConfig.addPassthroughCopy("src/assets");
-
-  // 2. Copy the Image and Font folders specifically
   eleventyConfig.addPassthroughCopy("src/assets/images");
   eleventyConfig.addPassthroughCopy("src/assets/fonts");
-
-  // 3. DO NOT copy src/assets/scss (Sass handles this separately)
-  
-  // 4. (Optional) If you have a favicon or a _redirects file
   eleventyConfig.addPassthroughCopy("src/_redirects");
+
+  // Note: We removed src/assets/css passthrough because 
+  // the Sass plugin is now "creating" that folder automatically.
 
   return {
     dir: {
       input: "src",
-      output: "_site" // This is where the compiled site lives
+      output: "_site"
     }
   };
 };
