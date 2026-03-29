@@ -7,7 +7,7 @@
     "start": "run-p watch:*",
     "watch:eleventy": "eleventy --serve",
     "watch:sass": "sass --watch src/assets/scss/main.scss _site/assets/css/main.css",
-    "build": "sass src/assets/scss/main.scss _site/assets/css/main.css && eleventy",
+    "build": "sass src/assets/scss/main.scss src/assets/css/main.css && eleventy",
     "deploy": "npm run build && wrangler deploy",
     "preview": "npm run build && wrangler dev"
   },
