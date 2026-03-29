@@ -2,17 +2,12 @@
 layout: base.njk
 title: Services
 section_theme: bg-secondary text-white
-service_items:
-  - featured: true
-    service_name: General
-    price: N/A
-    description: Counseling
-intro: Testing intro text
+intro: "Testing intro text"
 services_list:
-  - featured: true
-    name: Testing services
-    price: This is a test
-    description: "This is just a test "
+  - name: "Testing services"
+    price: "This is a test"
+    description: "This is just a test"
+    featured: true
 ---
 
 <section class="services-container">
@@ -21,11 +16,11 @@ services_list:
 
   <div class="services-grid">
     {% for service in services_list %}
-  <div class="service-card">
-    <h2>{{ service.name }}</h2>
-    <span class="price-tag">{{ service.price }}</span>
-    <p>{{ service.description }}</p>
-  </div>
-{% endfor %}
+      <div class="service-card">
+        <h2>{{ service.name }}</h2>
+        <span class="price-tag">{{ service.price }}</span>
+        <p>{{ service.description }}</p>
+      </div>
+    {% endfor %}
   </div>
 </section>
