@@ -1,13 +1,21 @@
 module.exports = function(eleventyConfig) {
-  // Tell Eleventy to copy your CSS and Images to the final site
-  eleventyConfig.addPassthroughCopy("src/assets");
-  // Tell Eleventy to copy the Admin folder (for the CMS)
+  
+  // 1. Copy the CMS dashboard folder as-is
   eleventyConfig.addPassthroughCopy("src/admin");
+
+  // 2. Copy the Image and Font folders specifically
+  eleventyConfig.addPassthroughCopy("src/assets/images");
+  eleventyConfig.addPassthroughCopy("src/assets/fonts");
+
+  // 3. DO NOT copy src/assets/scss (Sass handles this separately)
+  
+  // 4. (Optional) If you have a favicon or a _redirects file
+  eleventyConfig.addPassthroughCopy("src/_redirects");
 
   return {
     dir: {
-      input: "src",      // Where you work
-      output: "_site"    // Where the finished HTML goes
+      input: "src",
+      output: "_site" // This is where the compiled site lives
     }
   };
 };
