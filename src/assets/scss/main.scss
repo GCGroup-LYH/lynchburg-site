@@ -49,3 +49,37 @@ $font-family-sans-serif: 'Sofia Pro', system-ui, -apple-system, sans-serif;
 body {
     font-family: 'Sofia Pro', sans-serif;
 }
+
+/* Services Grid Logic */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 2rem 0;
+}
+
+.service-card {
+  background: #ffffff;
+  color: #333;
+  padding: 2.5rem;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+  border-top: 5px solid #007bff; // Growthpoint Blue accent
+
+  &:hover {
+    transform: translateY(-10px);
+  }
+
+  h2 { margin-top: 0; font-size: 1.5rem; }
+  .price-tag { 
+    display: block; 
+    color: #007bff; 
+    font-weight: bold; 
+    margin-bottom: 1rem; 
+  }
+}
+
+/* Theme Overrides */
+.bg-secondary { background-color: #6c757d !important; }
+.text-white { color: #ffffff !important; }
