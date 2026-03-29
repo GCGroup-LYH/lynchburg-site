@@ -1,11 +1,12 @@
 backend:
-  name: github
-  repo: GCGroup-LYH/lynchburg-site # <--- CHANGE THIS to your GitHub username/repo
+  name: git-gateway # Changed from 'github' to 'git-gateway' for Netlify Identity
+  repo: GCGroup-LYH/lynchburg-site
   branch: main
   site_url: https://lynchburg-site.netlify.app
 
-media_folder: "src/assets/img"
-public_folder: "/assets/img"
+# Ensure these match your actual folder names in src/assets
+media_folder: "src/assets/images" 
+public_folder: "/assets/images"
 
 collections:
   - name: "pages"
@@ -46,9 +47,9 @@ collections:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Body Content", name: "body", widget: "markdown" }
 
-      - label: "Component Library (Dev Only)"
+      - label: "Component Library"
         name: "components"
         file: "src/components.html"
         fields:
           - { label: "Title", name: "title", widget: "string" }
-          - { label: "Raw HTML Code", name: "body", widget: "code" }
+          - { label: "Page Content", name: "body", widget: "markdown" } # Changed from code to markdown
