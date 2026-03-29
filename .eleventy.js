@@ -3,6 +3,8 @@ module.exports = function(eleventyConfig) {
   // 1. Copy the CMS dashboard folder as-is
   eleventyConfig.addPassthroughCopy("src/admin");
 
+  eleventyConfig.addPassthroughCopy("src/assets");
+
   // 2. Copy the Image and Font folders specifically
   eleventyConfig.addPassthroughCopy("src/assets/images");
   eleventyConfig.addPassthroughCopy("src/assets/fonts");

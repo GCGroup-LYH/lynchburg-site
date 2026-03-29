@@ -30,8 +30,16 @@ collections:
         name: "services"
         file: "src/services.html"
         fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Body Content", name: "body", widget: "markdown" }
+          - { label: "Page Title", name: "title", widget: "string" }
+          - label: "Our Services"
+            name: "service_items"
+            widget: "list"
+            summary: '{{fields.service_name}}' # This shows the name in the list view
+            fields:
+              - { label: "Service Name", name: "service_name", widget: "string" }
+              - { label: "Price", name: "price", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Featured Service?", name: "featured", widget: "boolean", default: false }
 
       - label: "FAQ"
         name: "faq"
