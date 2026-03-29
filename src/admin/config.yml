@@ -1,8 +1,10 @@
 backend:
-  name: git-gateway # Changed from 'github' to 'git-gateway' for Netlify Identity
+  name: github
   repo: GCGroup-LYH/lynchburg-site
   branch: main
-  site_url: https://lynchburg-site.netlify.app
+# Updated this to new Cloudflare URL
+site_url: https://lynchburg-site.pages.dev
+
 # Define the palette once as a "hidden" helper
 # We use a dummy collection or a top-level key to store the anchor
 _brand_palette: &brand_palette
