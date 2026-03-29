@@ -52,7 +52,7 @@ collections:
           - label: "Our Services"
             name: "service_items"
             widget: "list"
-            summary: '{{fields.service_name}}' # This shows the name in the list view
+            summary: '{{fields.name}}' # This shows the name in the list view
             fields:
               - { label: "Service Name", name: "service_name", widget: "string" }
               - { label: "Price", name: "price", widget: "string" }
