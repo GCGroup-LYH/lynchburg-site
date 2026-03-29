@@ -49,12 +49,13 @@ collections:
         fields:
           - { label: "Page Title", name: "title", widget: "string" }
           - <<: *brand_palette
+          - { label: "Intro Text", name: "intro", widget: "text" } # Added this back for you!
           - label: "Our Services"
-            name: "service_items"
+            name: "services_list" # Matches {% for service in services_list %}
             widget: "list"
-            summary: '{{fields.name}}' # This shows the name in the list view
+            summary: '{{fields.name}}' 
             fields:
-              - { label: "Service Name", name: "service_name", widget: "string" }
+              - { label: "Service Name", name: "name", widget: "string" } # Matches {{ service.name }}
               - { label: "Price", name: "price", widget: "string" }
               - { label: "Description", name: "description", widget: "text" }
               - { label: "Featured Service?", name: "featured", widget: "boolean", default: false }
