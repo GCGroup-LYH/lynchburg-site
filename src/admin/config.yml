@@ -3,6 +3,21 @@ backend:
   repo: GCGroup-LYH/lynchburg-site
   branch: main
   site_url: https://lynchburg-site.netlify.app
+# Define the palette once as a "hidden" helper
+# We use a dummy collection or a top-level key to store the anchor
+_brand_palette: &brand_palette
+  label: "Page Theme"
+  name: "section_theme"
+  widget: "select"
+  options:
+    - { label: "Lynchburg Blue (Primary)", value: "bg-primary text-white" }
+    - { label: "Neutral Gray (Secondary)", value: "bg-secondary text-white" }
+    - { label: "Success Green", value: "bg-success text-white" }
+    - { label: "Sky Blue (Info)", value: "bg-info text-dark" }
+    - { label: "Teal (Warning)", value: "bg-warning text-white" }
+    - { label: "Forest Green (Danger)", value: "bg-danger text-white" }
+    - { label: "Soft Gray (Light)", value: "bg-light text-dark" }
+  default: "bg-primary text-white"
 
 # Ensure these match your actual folder names in src/assets
 media_folder: "src/assets/images" 
@@ -17,6 +32,7 @@ collections:
         file: "src/index.html"
         fields:
           - { label: "Title", name: "title", widget: "string" }
+          - <<: *brand_palette
           - { label: "Body Content", name: "body", widget: "markdown" }
 
       - label: "About Us"
@@ -24,6 +40,7 @@ collections:
         file: "src/about.html"
         fields:
           - { label: "Title", name: "title", widget: "string" }
+          - <<: *brand_palette
           - { label: "Body Content", name: "body", widget: "markdown" }
 
       - label: "Services"
@@ -31,6 +48,7 @@ collections:
         file: "src/services.html"
         fields:
           - { label: "Page Title", name: "title", widget: "string" }
+          - <<: *brand_palette
           - label: "Our Services"
             name: "service_items"
             widget: "list"
@@ -46,6 +64,7 @@ collections:
         file: "src/faq.html"
         fields:
           - { label: "Title", name: "title", widget: "string" }
+          - <<: *brand_palette
           - { label: "Body Content", name: "body", widget: "markdown" }
 
       - label: "Contact"
@@ -53,6 +72,7 @@ collections:
         file: "src/contact.html"
         fields:
           - { label: "Title", name: "title", widget: "string" }
+          - <<: *brand_palette
           - { label: "Body Content", name: "body", widget: "markdown" }
 
       - label: "Component Library"

@@ -35,6 +35,10 @@ $warning:   #269388; // Teal
 $danger:    #325c2d; // Forest green
 $light:     #b3b3b3; // Soft gray
 
+// Helper class for text contrast
+.text-white-force { color: #fff !important; }
+.text-dark-force { color: #333 !important; }
+
 //Set Sofia Pro as the Mater Font
 $font-family-sans-serif: 'Sofia Pro', system-ui, -apple-system, sans-serif;
 
