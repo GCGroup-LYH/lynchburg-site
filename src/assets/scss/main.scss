@@ -50,6 +50,18 @@ body {
     font-family: 'Sofia Pro', sans-serif;
 }
 
+// Ensure every block has consistent spacing
+section {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+// Make sure images in cards don't blow up the layout
+.card img {
+  max-width: 80px;
+  height: auto;
+}
+
 /* Services Grid Logic */
 .services-grid {
   display: grid;
