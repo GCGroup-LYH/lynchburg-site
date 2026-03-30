@@ -50,7 +50,21 @@ collections:
         fields:
           - { label: "Title", name: "title", widget: "string" }
           - <<: *brand_palette
-          - { label: "Body Content", name: "body", widget: "markdown" }
+          - label: "Page Sections"
+            name: "sections"
+            widget: "list"
+            types:
+              - label: "Text Block"
+                name: "text_block"
+                widget: "object"
+                fields:
+                  - { label: "Content", name: "content", widget: "markdown" }
+              - label: "Call to Action"
+                name: "cta"
+                widget: "object"
+                fields:
+                  - { label: "Headline", name: "headline", widget: "string" }
+                  - { label: "Button Link", name: "link", widget: "string" }
 
       - label: "About Us"
         name: "about"
@@ -66,16 +80,18 @@ collections:
         fields:
           - { label: "Page Title", name: "title", widget: "string" }
           - <<: *brand_palette
-          - { label: "Intro Text", name: "intro", widget: "text" } # Added this back for you!
+          - { label: "Intro Text", name: "intro", widget: "text", hint: "A short catchphrase above the service cards." }
           - label: "Our Services"
-            name: "services_list" # Matches {% for service in services_list %}
+            name: "services_list"
             widget: "list"
-            summary: '{{fields.name}}' 
+            summary: '{{fields.name}}'
             fields:
-              - { label: "Service Name", name: "name", widget: "string" } # Matches {{ service.name }}
-              - { label: "Price", name: "price", widget: "string" }
+              - { label: "Service Name", name: "name", widget: "string" }
+              - { label: "Service Image/Icon", name: "image", widget: "image", required: false }
+              - { label: "Price", name: "price", widget: "string", hint: "e.g. $150/hr or Starting at $500" }
               - { label: "Description", name: "description", widget: "text" }
               - { label: "Featured Service?", name: "featured", widget: "boolean", default: false }
+              - { label: "Button Text", name: "cta_text", widget: "string", default: "Learn More" }
 
       - label: "FAQ"
         name: "faq"
