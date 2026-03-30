@@ -1,9 +1,24 @@
 ---
 layout: base.njk
 title: Home
----
----
-layout: base.njk
+sections:
+  - type: hero
+    btn_text: testing button
+    btn_link: /contact
+    headline: Testing Hero Section Headline
+    subtext: Testing the Hero Section Sub-Headline
+  - type: cta
+    section_theme: bg-primary text-white
+    text: Testing CTA
+  - type: features
+    title: Just trying it out :)
+    card_list:
+      - name: card1
+        desc: card 1's description
+        icon: /assets/images/Growthpoint Counseling Group Logomark_Color.png
+      - name: card2
+        desc: testing card2's description
+        icon: /assets/images/Growthpoint Counseling Group Logomark_Color.png
 ---
 
 {% for block in sections %}
