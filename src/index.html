@@ -2,14 +2,14 @@
 layout: base.njk
 title: Home
 ---
-<div class="p-5 mb-4 rounded-3 border {{ section_theme | default('bg-light text-dark') }}">
+<div class="p-5 mb-4 rounded-3 border {{ section_theme | default: 'bg-light text-dark' }}"></div>
   <div class="container-fluid py-5">
-    {# This pulls from the 'Title' field in the CMS #}
+    
     <h1 class="display-5 fw-bold">{{ title }}</h1>
 
-    {# This pulls from the 'Body Content' field in the CMS #}
+    
     <div class="col-md-8 fs-4">
-      {{ body | safe }}
+      {{ body | raw }}
     </div>
 
     <button class="btn btn-primary btn-lg" type="button">Test Button</button>
