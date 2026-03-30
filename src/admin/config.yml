@@ -48,23 +48,40 @@ collections:
         name: "home"
         file: "src/index.html"
         fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - <<: *brand_palette
+          - { label: "Title", name: "title", widget: "hidden", default: "Home" }
           - label: "Page Sections"
             name: "sections"
             widget: "list"
             types:
-              - label: "Text Block"
-                name: "text_block"
-                widget: "object"
-                fields:
-                  - { label: "Content", name: "content", widget: "markdown" }
-              - label: "Call to Action"
-                name: "cta"
+              - label: "Hero Section"
+                name: "hero"
                 widget: "object"
                 fields:
                   - { label: "Headline", name: "headline", widget: "string" }
-                  - { label: "Button Link", name: "link", widget: "string" }
+                  - { label: "Sub-headline", name: "subtext", widget: "text" }
+                  - { label: "Button Text", name: "btn_text", widget: "string", default: "Get Started" }
+                  - { label: "Button Link", name: "btn_link", widget: "string", default: "/contact" }
+                  - { label: "Background Image", name: "bg_image", widget: "image", required: false }
+
+              - label: "Call to Action (CTA)"
+                name: "cta"
+                widget: "object"
+                fields:
+                  - { label: "Text", name: "text", widget: "string" }
+                  - <<: *brand_palette
+
+              - label: "Feature Cards"
+                name: "features"
+                widget: "object"
+                fields:
+                  - { label: "Section Title", name: "title", widget: "string" }
+                  - label: "Cards"
+                    name: "card_list"
+                    widget: "list"
+                    fields:
+                      - { label: "Icon/Image", name: "icon", widget: "image" }
+                      - { label: "Feature Name", name: "name", widget: "string" }
+                      - { label: "Description", name: "desc", widget: "text" }
 
       - label: "About Us"
         name: "about"
