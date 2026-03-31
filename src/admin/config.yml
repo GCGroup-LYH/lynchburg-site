@@ -46,6 +46,7 @@ collections:
       - label: "Home Page"
         name: "home"
         file: "src/index.html"
+        preview_path: "/"
         fields:
           - { label: "Title", name: "title", widget: "hidden", default: "Home" }
           - label: "Page Sections"
@@ -85,6 +86,7 @@ collections:
       - label: "About Us"
         name: "about"
         file: "src/about.html"
+        preview_path: "/about.html"
         fields:
           - { label: "Title", name: "title", widget: "string" }
           - <<: *brand_palette
@@ -93,6 +95,7 @@ collections:
       - label: "Services"
         name: "services"
         file: "src/services.html"
+        preview_path: "/services"
         fields:
           - { label: "Page Title", name: "title", widget: "string" }
           - <<: *brand_palette
@@ -112,6 +115,7 @@ collections:
       - label: "FAQ"
         name: "faq"
         file: "src/faq.html"
+        preview_path: "/faq.html"
         fields:
           - { label: "Title", name: "title", widget: "string" }
           - <<: *brand_palette
