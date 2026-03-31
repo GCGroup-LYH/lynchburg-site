@@ -17,8 +17,7 @@ backend:
 # Better Decap + Bridge logo (optional)
 # logo_url: https://decapbridge.com/decapcms-with-bridge.svg
 
-site_url: https://lynchburg-site.pages.dev
-display_url: https://lynchburg-site.pages.dev
+site_url: https://lynchburg-site.emcitconsultants.workers.dev
 
 # Define the palette once as a "hidden" helper
 # We use a dummy collection or a top-level key to store the anchor
