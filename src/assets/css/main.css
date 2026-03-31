@@ -11895,6 +11895,16 @@ body {
   font-family: "Sofia Pro", sans-serif;
 }
 
+section {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.card img {
+  max-width: 80px;
+  height: auto;
+}
+
 /* Services Grid Logic */
 .services-grid {
   display: grid;
