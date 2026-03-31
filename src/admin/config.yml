@@ -65,10 +65,9 @@ collections:
               - label: "Call to Action (CTA)"
                 name: "cta"
                 widget: "object"
-                options: !reference brand_palette
-
                 fields:
                   - { label: "Text", name: "text", widget: "string" }
+                  - <<: *brand_palette
 
               - label: "Feature Cards"
                 name: "features"
