@@ -1,6 +1,13 @@
 {
-    "name": "Growthpoint Counseling Group",
-    "practiceLink": "https://client-portal.simplepractice.com",
-    "contactEmail": "admin@growhpointcounseling.us",
-    "phone": "434-555-0100"
+  "name": "Growthpoint Counseling Group",
+  "practiceLink": "https://client-portal.simplepractice.com",
+  "contactEmail": "admin@growhpointcounseling.us",
+  "phone": "434-555-0100",
+  "nav_links": [
+    {
+      "text": "About",
+      "url": "about.njk"
+    }
+  ],
+  "footer_text": "About"
 }
