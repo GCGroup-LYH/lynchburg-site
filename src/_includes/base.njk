@@ -10,7 +10,6 @@
 
     <title>{{ title }} | {{ site.name }}</title>
     
-
     <link rel="stylesheet" href="/assets/css/main.css">
 </head>
 <body class="d-flex flex-column min-vh-100 {{ section_theme }}">
@@ -25,11 +24,12 @@
 
             <div class="collapse navbar-collapse" id="mainNav">
                 <ul class="navbar-nav ms-auto align-items-center">
-                    <li class="nav-item"><a class="nav-link {% if page.url == '/' %}active fw-bold{% endif %}" href="/">Home</a></li>
-                    <li class="nav-item"><a class="nav-link {% if page.url == '/services/' %}active fw-bold{% endif %}" href="/services/">Services</a></li>
-                    <li class="nav-item"><a class="nav-link {% if page.url == '/about/' %}active fw-bold{% endif %}" href="/about/">About</a></li>
-                    <li class="nav-item"><a class="nav-link {% if page.url == '/contact/' %}active fw-bold{% endif %}" href="/contact/">Contact</a></li>
-                    <li class="nav-item"><a class="nav-link {% if page.url == '/faq/' %}active fw-bold{% endif %}" href="/faq/">FAQ</a></li>
+                    
+                    {% for link in site.nav_links %}
+                        <li class="nav-item">
+                            <a class="nav-link {% if page.url == link.url %}active fw-bold{% endif %}" href="{{ link.url }}">{{ link.text }}</a>
+                        </li>
+                    {% endfor %}
 
                     <li class="nav-item ms-lg-3">
                         <a class="btn btn-primary shadow-sm" href="{{ site.practiceLink }}" target="_blank">
@@ -43,15 +43,108 @@
 
     <main class="flex-grow-1">
         {{ content | safe }}
+
+        {% if sections %}
+            {% for block in sections %}
+            
+                {% if block.type == "hero" %}
+                    <section class="hero-block py-5 text-center" style="{% if block.bg_image %}background-image: url('{{ block.bg_image }}'); background-size: cover;{% endif %}">
+                        <div class="container py-5">
+                            <h1 class="display-3 fw-bold">{{ block.headline }}</h1>
+                            <p class="lead">{{ block.subtext }}</p>
+                            <a href="{{ block.btn_link }}" class="btn btn-primary btn-lg">{{ block.btn_text }}</a>
+                        </div>
+                    </section>
+
+                {% elif block.type == "cta" %}
+                    <section class="cta-block py-4 {{ block.section_theme }}">
+                        <div class="container d-md-flex align-items-center justify-content-between text-center">
+                            <h2 class="mb-3 mb-md-0">{{ block.text }}</h2>
+                            <a href="/contact" class="btn btn-outline-light btn-lg">Contact Us</a>
+                        </div>
+                    </section>
+
+                {% elif block.type == "features" %}
+                    <section class="features-block py-5 bg-light">
+                        <div class="container">
+                            <h2 class="text-center mb-5">{{ block.title }}</h2>
+                            <div class="row g-4">
+                                {% for card in block.card_list %}
+                                    <div class="col-md-4">
+                                        <div class="card h-100 border-0 shadow-sm text-center p-4">
+                                            {% if card.icon %}<img src="{{ card.icon }}" class="mx-auto mb-3" style="width: 64px;">{% endif %}
+                                            <h3>{{ card.name }}</h3>
+                                            <p>{{ card.desc }}</p>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </section>
+
+                {% elif block.type == "split_block" %}
+                    <section class="split-block py-5 {{ block.section_theme }}">
+                        <div class="container">
+                            <div class="row align-items-center">
+                                {% if block.align == "Right" %}
+                                    <div class="col-md-6 mb-4 mb-md-0">
+                                        <h2>{{ block.heading }}</h2>
+                                        <div>{{ block.body | safe }}</div> 
+                                    </div>
+                                    <div class="col-md-6">
+                                        <img src="{{ block.image }}" class="img-fluid rounded shadow" alt="{{ block.heading }}">
+                                    </div>
+                                {% else %}
+                                    <div class="col-md-6 order-md-2 mb-4 mb-md-0">
+                                        <h2>{{ block.heading }}</h2>
+                                        <div>{{ block.body | safe }}</div>
+                                    </div>
+                                    <div class="col-md-6 order-md-1">
+                                        <img src="{{ block.image }}" class="img-fluid rounded shadow" alt="{{ block.heading }}">
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </section>
+
+                {% elif block.type == "testimonials" %}
+                    <section class="testimonials-block py-5 {{ block.section_theme }}">
+                        <div class="container">
+                            <h2 class="text-center mb-5">{{ block.title }}</h2>
+                            <div class="row g-4 justify-content-center">
+                                {% for review in block.review_list %}
+                                    <div class="col-md-6 col-lg-4">
+                                        <div class="card h-100 border-0 shadow-sm p-4 text-center bg-white text-dark">
+                                            <div class="text-warning mb-3 fs-5">★★★★★</div>
+                                            <blockquote class="blockquote mb-3">
+                                                <p class="fs-6">"{{ review.quote }}"</p>
+                                            </blockquote>
+                                            <figcaption class="blockquote-footer mb-0">
+                                                {{ review.author }} <cite title="Source Title">on Google</cite>
+                                            </figcaption>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </section>
+
+                {% endif %}
+
+            {% endfor %}
+        {% endif %}
     </main>
 
-    <footer class="bg-dark text-white py-5 mt-5">
+    <footer class="bg-dark text-white py-5 mt-auto">
         <div class="container text-center">
             <p class="mb-2">&copy; 2026 {{ site.name }}</p>
-            <p class="small text-white-50">Located in Lynchburg, VA | <a href="/contact/" class="text-white-50">Work with us</a></p>
+            <p class="small text-white-50">
+                {{ site.footer_text }} | 
+                <a href="mailto:{{ site.contactEmail }}" class="text-white-50">{{ site.contactEmail }}</a> | 
+                {{ site.phone }}
+            </p>
         </div>
     </footer>
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

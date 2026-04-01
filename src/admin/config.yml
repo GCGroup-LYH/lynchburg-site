@@ -4,8 +4,7 @@ backend:
   branch: main
   site_url: https://lynchburg-site.emcitconsultants.workers.dev
 
-# Define the palette once as a "hidden" helper
-# We use a dummy collection or a top-level key to store the anchor
+# 1. YOUR BRAND PALETTE ANCHOR
 _brand_palette: &brand_palette
   label: "Page Theme"
   name: "section_theme"
@@ -20,11 +19,92 @@ _brand_palette: &brand_palette
     - { label: "Soft Gray (Light)", value: "bg-light text-dark" }
   default: "bg-primary text-white"
 
+# 2. YOUR UNIVERSAL PAGE BUILDER ANCHOR
+_page_builder: &page_builder
+  label: "Page Sections"
+  name: "sections"
+  widget: "list"
+  types:
+    - label: "Hero Section"
+      name: "hero"
+      widget: "object"
+      fields:
+        - { label: "Headline", name: "headline", widget: "string" }
+        - { label: "Sub-headline", name: "subtext", widget: "text" }
+        - { label: "Button Text", name: "btn_text", widget: "string", default: "Get Started" }
+        - { label: "Button Link", name: "btn_link", widget: "string", default: "/contact" }
+        - { label: "Background Image", name: "bg_image", widget: "image", required: false }
+        
+    - label: "Text & Image Split"
+      name: "split_block"
+      widget: "object"
+      fields:
+        - { label: "Heading", name: "heading", widget: "string" }
+        - { label: "Body Text", name: "body", widget: "markdown" }
+        - { label: "Image", name: "image", widget: "image" }
+        - { label: "Image Alignment", name: "align", widget: "select", options: ["Left", "Right"], default: "Right" }
+        - <<: *brand_palette
+        
+    - label: "Featured Google Reviews"
+      name: "testimonials"
+      widget: "object"
+      fields:
+        - { label: "Section Title", name: "title", widget: "string", default: "What Our Clients Say" }
+        - <<: *brand_palette
+        - label: "Reviews"
+          name: "review_list"
+          widget: "list"
+          fields:
+            - { label: "Reviewer Name", name: "author", widget: "string" }
+            - { label: "Review Text", name: "quote", widget: "text" }
+            
+    - label: "Call to Action (CTA)"
+      name: "cta"
+      widget: "object"
+      fields:
+        - { label: "Text", name: "text", widget: "string" }
+        - <<: *brand_palette
+
+    - label: "Feature Cards"
+      name: "features"
+      widget: "object"
+      fields:
+        - { label: "Section Title", name: "title", widget: "string" }
+        - label: "Cards"
+          name: "card_list"
+          widget: "list"
+          fields:
+            - { label: "Icon/Image", name: "icon", widget: "image" }
+            - { label: "Feature Name", name: "name", widget: "string" }
+            - { label: "Description", name: "desc", widget: "text" }
+
 # Ensure these match your actual folder names in src/assets
 media_folder: "src/assets/images" 
 public_folder: "/assets/images"
 
 collections:
+  # 3. GLOBAL SETTINGS (Nav & Footer)
+  - name: "global"
+    label: "Global Settings"
+    files:
+      - label: "Site Header & Contact Info"
+        name: "site"
+        file: "src/_data/site.json"
+        fields:
+          - { label: "Business Name", name: "name", widget: "string" }
+          - { label: "Client Portal URL", name: "practiceLink", widget: "string" }
+          - { label: "Contact Email", name: "contactEmail", widget: "string" }
+          - { label: "Phone Number", name: "phone", widget: "string" }
+          - label: "Navigation Menu"
+            name: "nav_links"
+            widget: "list"
+            summary: '{{fields.text}}'
+            fields:
+              - { label: "Link Text", name: "text", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
+          - { label: "Footer Text", name: "footer_text", widget: "string", default: "Located in Lynchburg, VA" }
+
+  # 4. MODULAR PAGES
   - name: "pages"
     label: "Pages"
     files:
@@ -32,87 +112,40 @@ collections:
         name: "home"
         file: "src/index.html"
         fields:
-          - { label: "Title", name: "title", widget: "hidden", default: "Home" }
-          - label: "Page Sections"
-            name: "sections"
-            widget: "list"
-            types:
-              - label: "Hero Section"
-                name: "hero"
-                widget: "object"
-                fields:
-                  - { label: "Headline", name: "headline", widget: "string" }
-                  - { label: "Sub-headline", name: "subtext", widget: "text" }
-                  - { label: "Button Text", name: "btn_text", widget: "string", default: "Get Started" }
-                  - { label: "Button Link", name: "btn_link", widget: "string", default: "/contact" }
-                  - { label: "Background Image", name: "bg_image", widget: "image", required: false }
-
-              - label: "Call to Action (CTA)"
-                name: "cta"
-                widget: "object"
-                fields:
-                  - { label: "Text", name: "text", widget: "string" }
-                  - <<: *brand_palette
-
-              - label: "Feature Cards"
-                name: "features"
-                widget: "object"
-                fields:
-                  - { label: "Section Title", name: "title", widget: "string" }
-                  - label: "Cards"
-                    name: "card_list"
-                    widget: "list"
-                    fields:
-                      - { label: "Icon/Image", name: "icon", widget: "image" }
-                      - { label: "Feature Name", name: "name", widget: "string" }
-                      - { label: "Description", name: "desc", widget: "text" }
+          - { label: "SEO Title", name: "title", widget: "string", default: "Home" }
+          - *page_builder
 
       - label: "About Us"
         name: "about"
         file: "src/about.html"
         fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - <<: *brand_palette
-          - { label: "Body Content", name: "body", widget: "markdown" }
+          - { label: "SEO Title", name: "title", widget: "string", default: "About Us" }
+          - *page_builder
 
       - label: "Services"
         name: "services"
         file: "src/services.html"
         fields:
-          - { label: "Page Title", name: "title", widget: "string" }
-          - <<: *brand_palette
-          - { label: "Intro Text", name: "intro", widget: "text", hint: "A short catchphrase above the service cards." }
-          - label: "Our Services"
-            name: "services_list"
-            widget: "list"
-            summary: '{{fields.name}}'
-            fields:
-              - { label: "Service Name", name: "name", widget: "string" }
-              - { label: "Service Image/Icon", name: "image", widget: "image", required: false }
-              - { label: "Price", name: "price", widget: "string", hint: "e.g. $150/hr or Starting at $500" }
-              - { label: "Description", name: "description", widget: "text" }
-              - { label: "Featured Service?", name: "featured", widget: "boolean", default: false }
-              - { label: "Button Text", name: "cta_text", widget: "string", default: "Learn More" }
+          - { label: "SEO Title", name: "title", widget: "string", default: "Services" }
+          - *page_builder
 
       - label: "FAQ"
         name: "faq"
         file: "src/faq.html"
         fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - <<: *brand_palette
-          - { label: "Body Content", name: "body", widget: "markdown" }
+          - { label: "SEO Title", name: "title", widget: "string", default: "FAQ" }
+          - *page_builder
 
       - label: "Contact"
         name: "contact"
         file: "src/contact.html"
         fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - <<: *brand_palette
-          - { label: "Body Content", name: "body", widget: "markdown" }
+          - { label: "SEO Title", name: "title", widget: "string", default: "Contact" }
+          - *page_builder
 
       - label: "Component Library"
         name: "components"
         file: "src/components.html"
         fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Page Content", name: "body", widget: "markdown" } # Changed from code to markdown
+          - { label: "SEO Title", name: "title", widget: "string", default: "Components" }
+          - *page_builder
