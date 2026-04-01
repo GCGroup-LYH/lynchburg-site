@@ -110,42 +110,42 @@ collections:
     files:
       - label: "Home Page"
         name: "home"
-        file: "src/index.html"
+        file: "src/index.njk"
         fields:
           - { label: "SEO Title", name: "title", widget: "string", default: "Home" }
           - *page_builder
 
       - label: "About Us"
         name: "about"
-        file: "src/about.html"
+        file: "src/about.njk"
         fields:
           - { label: "SEO Title", name: "title", widget: "string", default: "About Us" }
           - *page_builder
 
       - label: "Services"
         name: "services"
-        file: "src/services.html"
+        file: "src/services.njk"
         fields:
           - { label: "SEO Title", name: "title", widget: "string", default: "Services" }
           - *page_builder
 
       - label: "FAQ"
         name: "faq"
-        file: "src/faq.html"
+        file: "src/faq.njk"
         fields:
           - { label: "SEO Title", name: "title", widget: "string", default: "FAQ" }
           - *page_builder
 
       - label: "Contact"
         name: "contact"
-        file: "src/contact.html"
+        file: "src/contact.njk"
         fields:
           - { label: "SEO Title", name: "title", widget: "string", default: "Contact" }
           - *page_builder
 
       - label: "Component Library"
         name: "components"
-        file: "src/components.html"
+        file: "src/components.njk"
         fields:
           - { label: "SEO Title", name: "title", widget: "string", default: "Components" }
           - *page_builder
