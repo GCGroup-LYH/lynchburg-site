@@ -339,6 +339,37 @@
     </div>
 </section>
 
+{% elif block.type == 'alert_banner' %}
+<section class="alert-block py-4 {{ block.theme }} text-white text-center">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                {# Using a warning icon to draw the eye immediately #}
+                <i class="bi-exclamation-triangle-fill fs-1 mb-2 d-block" aria-hidden="true"></i>
+                <h2 class="h4 text-white mb-2">{{ block.headline }}</h2>
+                <p class="mb-0 fs-5">{{ block.message }}</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% elif block.type == 'logo_cloud' %}
+<section class="logo-cloud-block py-5 bg-white border-top border-bottom">
+    <div class="container text-center">
+        {% if block.title %}
+        <p class="text-muted text-uppercase fw-bold mb-5" style="letter-spacing: 1px; font-size: 0.85rem;">{{ block.title }}</p>
+        {% endif %}
+        
+        <div class="d-flex flex-wrap justify-content-center align-items-center gap-5">
+            {% for logo in block.logo_list %}
+            <div class="logo-wrapper">
+                <img src="{{ logo.image }}" alt="{{ logo.alt }}" class="img-fluid" style="height: 60px; width: auto; object-fit: contain; filter: grayscale(100%) opacity(60%); transition: all 0.3s ease;">
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
                 {% elif block.type == "testimonials" %}
                     <section class="testimonials-block py-5 {{ block.section_theme }}">
                         <div class="container">
