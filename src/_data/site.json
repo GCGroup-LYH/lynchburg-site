@@ -7,6 +7,10 @@
     { "text": "FAQ", "url": "/faq/" },
     { "text": "Contact", "url": "/contact/" }
   ],
+  "footer_links": [
+    { "text": "Privacy Policy", "url": "/privacy/" },
+    { "text": "Accessibility", "url": "/accessibility/" }
+  ],
   "contactEmail": "example@emailaddress.com",
   "phone": "(555) 123-4567",
   "practiceLink": "https://your-portal-link.com"

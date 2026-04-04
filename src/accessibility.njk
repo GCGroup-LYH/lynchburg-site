@@ -1,0 +1,26 @@
+---
+layout: base.njk
+title: Accessibility Statement
+---
+<section class="py-5 bg-white text-dark">
+    <div class="container" style="max-width: 800px;">
+        <h1 class="mb-4">Our Commitment to Accessibility</h1>
+        
+        <p class="lead">We believe that mental health support should be accessible to everyone. We are continually working to improve the user experience for everyone and applying the relevant accessibility standards.</p>
+        
+        <h3 class="mt-5">What we are doing</h3>
+        <ul class="list-group list-group-flush mb-4">
+            <li class="list-group-item border-0 ps-0"><strong>Navigation:</strong> Ensuring our site can be navigated fully by keyboard.</li>
+            <li class="list-group-item border-0 ps-0"><strong>Clarity:</strong> Using high-contrast colors and readable fonts.</li>
+            <li class="list-group-item border-0 ps-0"><strong>Assistive Tech:</strong> Adding descriptive "Alt Text" to all images for screen readers.</li>
+        </ul>
+
+        <h3 class="mt-5">Need help?</h3>
+        <p>If you are experiencing difficulty with any content on our site or require assistance, please contact us. We are happy to provide any information via a method that works best for you.</p>
+        
+        <div class="bg-light p-4 rounded mt-4">
+            <p class="mb-1"><strong>Email:</strong> <a href="mailto:{{ site.contactEmail }}">{{ site.contactEmail }}</a></p>
+            <p class="mb-0"><strong>Phone:</strong> <a href="tel:{{ site.phone | replace('-', '') | replace(' ', '') | replace('(', '') | replace(')', '') }}">{{ site.phone }}</a></p>
+        </div>
+    </div>
+</section>

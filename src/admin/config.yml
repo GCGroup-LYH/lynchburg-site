@@ -34,6 +34,7 @@ _page_builder: &page_builder
         - { label: "Button Text", name: "btn_text", widget: "string", default: "Get Started" }
         - { label: "Button Link", name: "btn_link", widget: "string", default: "/contact" }
         - { label: "Background Image", name: "bg_image", widget: "image", required: false }
+        - { label: "Image Description (Alt Text)", name: "alt", widget: "string", required: true, hint: "Describe the image for visually impaired users. Leave blank ONLY if the image is purely decorative." }
         
     - label: "Text & Image Split"
       name: "split_block"
@@ -42,6 +43,7 @@ _page_builder: &page_builder
         - { label: "Heading", name: "heading", widget: "string" }
         - { label: "Body Text", name: "body", widget: "markdown" }
         - { label: "Image", name: "image", widget: "image" }
+        - { label: "Image Description (Alt Text)", name: "alt", widget: "string", required: true, hint: "Describe the image for visually impaired users. Leave blank ONLY if the image is purely decorative." }
         - { label: "Image Alignment", name: "align", widget: "select", options: ["Left", "Right"], default: "Right" }
         - <<: *brand_palette
         
@@ -75,6 +77,7 @@ _page_builder: &page_builder
           widget: "list"
           fields:
             - { label: "Icon/Image", name: "icon", widget: "image" }
+            - { label: "Image Description (Alt Text)", name: "alt", widget: "string", required: true, hint: "Describe the image for visually impaired users. Leave blank ONLY if the image is purely decorative." }
             - { label: "Feature Name", name: "name", widget: "string" }
             - { label: "Description", name: "desc", widget: "text" }
 

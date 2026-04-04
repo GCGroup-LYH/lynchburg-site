@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="/assets/css/main.css">
 </head>
 <body class="d-flex flex-column min-vh-100 {{ section_theme }}">
+    <a href="#main-content" class="visually-hidden-focusable p-3 m-2 bg-primary text-white position-absolute z-3 rounded">
+        Skip to main content
+    </a>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom sticky-top">
         <div class="container">
@@ -41,7 +44,7 @@
         </div>
     </nav>
 
-    <main class="flex-grow-1">
+    <main id="main-content" class="flex-grow-1">
         {{ content | safe }}
 
         {% if sections %}
@@ -72,7 +75,7 @@
                                 {% for card in block.card_list %}
                                     <div class="col-md-4">
                                         <div class="card h-100 border-0 shadow-sm text-center p-4">
-                                            {% if card.icon %}<img src="{{ card.icon }}" class="mx-auto mb-3" style="width: 64px;">{% endif %}
+                                            {% if card.icon %}<img src="{{ card.icon }}" class="mx-auto mb-3" style="width: 64px;" alt="{{ card.alt }}">{% endif %}
                                             <h3>{{ card.name }}</h3>
                                             <p>{{ card.desc }}</p>
                                         </div>
@@ -92,7 +95,7 @@
                                         <div>{{ block.body | safe }}</div> 
                                     </div>
                                     <div class="col-md-6">
-                                        <img src="{{ block.image }}" class="img-fluid rounded shadow" alt="{{ block.heading }}">
+                                        <img src="{{ block.image }}" class="img-fluid rounded shadow" alt="{{ block.alt }}">
                                     </div>
                                 {% else %}
                                     <div class="col-md-6 order-md-2 mb-4 mb-md-0">
@@ -100,7 +103,7 @@
                                         <div>{{ block.body | safe }}</div>
                                     </div>
                                     <div class="col-md-6 order-md-1">
-                                        <img src="{{ block.image }}" class="img-fluid rounded shadow" alt="{{ block.heading }}">
+                                        <img src="{{ block.image }}" class="img-fluid rounded shadow" alt="{{ block.alt }}">
                                     </div>
                                 {% endif %}
                             </div>
