@@ -30,6 +30,12 @@
 .text-dark-force {
   color: #333 !important;
 }
+/* Make keyboard navigation focus highly visible */
+:focus-visible {
+    outline: 3px solid #0d6efd !important; /* Bootstrap primary blue */
+    outline-offset: 3px;
+    box-shadow: none !important;
+}
 
 /*!
  * Bootstrap  v5.3.8 (https://getbootstrap.com/)
@@ -11971,6 +11977,42 @@ section {
 
 .text-white {
   color: #ffffff !important;
+}
+/* ==========================================================================
+   OVERRIDING THE THEME COLORS (Added April 3)
+   ========================================================================== */
+:root {
+    --bs-primary: #0271cb !important; 
+    --bs-primary-rgb: 2, 113, 203 !important; 
+    
+    --bs-secondary: #269388 !important; 
+    --bs-secondary-rgb: 38, 147, 136 !important;
+
+    --bs-success: #8aca1b !important;
+    --bs-success-rgb: 138, 202, 27 !important;
+
+    --bs-info: #66c2fd !important;
+    --bs-info-rgb: 102, 194, 253 !important;
+
+    --bs-dark: #325c2d !important;
+    --bs-dark-rgb: 50, 92, 45 !important;
+}
+
+[data-bs-theme="dark"] {
+    --bs-primary: #3399ff !important; 
+    --bs-primary-rgb: 51, 153, 255 !important;
+    
+    --bs-secondary: #4ac2b6 !important; 
+    --bs-secondary-rgb: 74, 194, 182 !important;
+
+    --bs-dark: #1f3d1c !important;
+    --bs-dark-rgb: 31, 61, 28 !important;
+}
+
+:focus-visible {
+    outline: 3px solid var(--bs-primary) !important;
+    outline-offset: 3px;
+    box-shadow: none !important;
 }
 
 /*# sourceMappingURL=main.css.map */

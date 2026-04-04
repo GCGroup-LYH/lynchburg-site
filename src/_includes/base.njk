@@ -30,9 +30,22 @@
                     
                     {% for link in site.nav_links %}
                         <li class="nav-item">
-                            <a class="nav-link {% if page.url == link.url %}active fw-bold{% endif %}" href="{{ link.url }}">{{ link.text }}</a>
+                            <a class="nav-link {% if page.url == link.url %}active fw-bold{% endif %}" href="{{ link.url }}" {% if page.url == link.url %}aria-current="page"{% endif %}>{{ link.text }}</a>
                         </li>
                     {% endfor %}
+
+                    <li class="nav-item dropdown ms-lg-3">
+                    <a class="nav-link dropdown-toggle" href="#" id="a11yDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Accessibility Options">
+                    <span aria-hidden="true">⚙️</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end shadow-sm" aria-labelledby="a11yDropdown">
+                        <li><button class="dropdown-item d-flex justify-content-between" onclick="toggleTheme()">Dark Mode <span id="theme-icon">🌙</span></button></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><button class="dropdown-item" onclick="changeFontSize(1)">Increase Text (A+)</button></li>
+                        <li><button class="dropdown-item" onclick="changeFontSize(-1)">Decrease Text (A-)</button></li>
+                        <li><button class="dropdown-item" onclick="resetFontSize()">Reset Text</button></li>
+                    </ul>
+                    </li>
 
                     <li class="nav-item ms-lg-3">
                         <a class="btn btn-primary shadow-sm" href="{{ site.practiceLink }}" target="_blank">
@@ -166,5 +179,50 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // --- Dark Mode Logic ---
+        function toggleTheme() {
+            const htmlTag = document.documentElement;
+            const currentTheme = htmlTag.getAttribute('data-bs-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            htmlTag.setAttribute('data-bs-theme', newTheme);
+            localStorage.setItem('siteTheme', newTheme);
+            document.getElementById('theme-icon').textContent = newTheme === 'dark' ? '☀️' : '🌙';
+        }
+
+        // Apply saved theme on page load
+        if (localStorage.getItem('siteTheme') === 'dark') {
+            document.documentElement.setAttribute('data-bs-theme', 'dark');
+            document.getElementById('theme-icon').textContent = '☀️';
+        }
+
+        // --- Text Resizer Logic ---
+        let currentSize = 16; // Base size in pixels
+        const rootElement = document.documentElement;
+
+        function changeFontSize(direction) {
+            currentSize += (direction * 2); // Goes up or down by 2px
+            // Cap the sizes so it doesn't break the layout
+            if (currentSize > 24) currentSize = 24; 
+            if (currentSize < 14) currentSize = 14; 
+            
+            rootElement.style.fontSize = currentSize + 'px';
+            localStorage.setItem('siteFontSize', currentSize);
+        }
+
+        function resetFontSize() {
+            currentSize = 16;
+            rootElement.style.fontSize = '16px';
+            localStorage.removeItem('siteFontSize');
+        }
+
+        // Apply saved font size on load
+        const savedSize = localStorage.getItem('siteFontSize');
+        if (savedSize) {
+            currentSize = parseInt(savedSize);
+            rootElement.style.fontSize = currentSize + 'px';
+        }
+    </script>
 </body>
 </html>

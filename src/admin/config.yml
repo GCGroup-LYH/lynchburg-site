@@ -6,18 +6,16 @@ backend:
 
 # 1. YOUR BRAND PALETTE ANCHOR
 _brand_palette: &brand_palette
-  label: "Page Theme"
+  label: "Section Theme"
   name: "section_theme"
   widget: "select"
   options:
-    - { label: "Lynchburg Blue (Primary)", value: "bg-primary text-white" }
-    - { label: "Neutral Gray (Secondary)", value: "bg-secondary text-white" }
-    - { label: "Success Green", value: "bg-success text-white" }
-    - { label: "Sky Blue (Info)", value: "bg-info text-dark" }
-    - { label: "Teal (Warning)", value: "bg-warning text-white" }
-    - { label: "Forest Green (Danger)", value: "bg-danger text-white" }
-    - { label: "Soft Gray (Light)", value: "bg-light text-dark" }
-  default: "bg-primary text-white"
+    - { label: "Standard (Adapts to Light/Dark)", value: "bg-body text-body" }
+    - { label: "Subtle Contrast (Adapts to Light/Dark)", value: "bg-body-tertiary text-body" }
+    - { label: "Brand Primary (Main Color)", value: "bg-primary text-white" }
+    - { label: "Brand Accent (Secondary Color)", value: "bg-secondary text-white" }
+    - { label: "Deep Dark (Always Dark)", value: "bg-dark text-white" }
+  default: "bg-body text-body"
 
 # 2. YOUR UNIVERSAL PAGE BUILDER ANCHOR
 _page_builder: &page_builder
