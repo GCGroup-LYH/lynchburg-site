@@ -144,6 +144,13 @@ _page_builder: &page_builder
                 widget: "list"
                 fields:
                   - { label: "Insurance Provider", name: "provider", widget: "string" }
+    - label: "Location & Map"
+      name: "location"
+      widget: "object"
+      fields:
+        - { label: "Section Title", name: "title", widget: "string", default: "Our Office" }
+        - { label: "Address", name: "address", widget: "text", hint: "Press enter to create line breaks." }
+        - { label: "Google Maps Embed Code", name: "map_iframe", widget: "text", hint: "Go to Google Maps, find your office, click Share > Embed a map, copy the HTML, and paste it here." }
 
 # Ensure these match your actual folder names in src/assets
 media_folder: "src/assets/images" 

@@ -235,6 +235,31 @@
                         </div>
                     </section>
 
+                    {% elif block.type == 'location' %}
+<section class="location-block py-5 bg-white">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-5">
+                <h2 class="mb-4">{{ block.title }}</h2>
+                <div class="d-flex mb-4">
+                    <i class="bi-geo-alt-fill text-primary fs-3 me-3" aria-hidden="true"></i>
+                    <div>
+                        <h3 class="h5 mb-1">Address</h3>
+                        {# 'white-space: pre-line' keeps the stakeholder's line breaks! #}
+                        <p class="text-muted mb-0 fs-5" style="white-space: pre-line;">{{ block.address }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7">
+                {# The 'ratio ratio-16x9' classes force the iframe to be perfectly responsive! #}
+                <div class="ratio ratio-16x9 shadow-sm rounded overflow-hidden">
+                    {{ block.map_iframe | safe }}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
                 {% elif block.type == "testimonials" %}
                     <section class="testimonials-block py-5 {{ block.section_theme }}">
                         <div class="container">
