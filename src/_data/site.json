@@ -12,8 +12,13 @@
     { "text": "Privacy Policy", "url": "/privacy/" },
     { "text": "Accessibility", "url": "/accessibility/" }
   ],
+  "social_links": [
+    { "platform": "Facebook", "url": "https://facebook.com/yourpractice" }
+  ],
+  
   "footer_text": "Located in Lynchburg, VA",
   "contactEmail": "example@emailaddress.com",
   "phone": "(555) 123-4567",
   "practiceLink": "https://your-portal-link.com"
+  
 }

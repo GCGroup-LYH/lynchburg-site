@@ -245,6 +245,18 @@ collections:
               - { label: "Link Text", name: "text", widget: "string" }
               - { label: "URL", name: "url", widget: "string" }
           - { label: "Footer Text", name: "footer_text", widget: "string", default: "Located in Lynchburg, VA" }
+          
+          - label: "Social Media Links"
+            name: "social_links"
+            widget: "list"
+            required: false
+            summary: '{{fields.platform}}'
+            fields:
+              - label: "Platform"
+                name: "platform"
+                widget: "select"
+                options: ["Facebook", "Instagram", "LinkedIn", "Twitter", "YouTube"]
+              - { label: "Profile URL", name: "url", widget: "string" }
 
   # 4. MODULAR PAGES
   - name: "pages"
