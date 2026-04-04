@@ -82,6 +82,17 @@ _page_builder: &page_builder
                 widget: "string"
                 hint: "Go to https://icons.getbootstrap.com. Find an icon and type its name here (e.g., bi-heart). Leave blank for no icon."
                 required: false
+              - label: "Icon Color"
+                name: "icon_color"
+                widget: "select"
+                options:
+                  - { label: "Brand Blue (Primary)", value: "text-primary" }
+                  - { label: "Brand Teal (Secondary)", value: "text-secondary" }
+                  - { label: "Soft Blue (Info)", value: "text-info" }
+                  - { label: "Dark Gray", value: "text-dark" }
+                  - { label: "White (For dark backgrounds)", value: "text-white" }
+                default: "text-primary"
+                required: false
               - { label: "Feature Name", name: "name", widget: "string" }
               - { label: "Description", name: "desc", widget: "text" }
 

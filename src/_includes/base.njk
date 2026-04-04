@@ -97,7 +97,7 @@
                         
                         {# NEW BOOTSTRAP ICON LOGIC #}
                         {% if card.icon %}
-                            <i class="{{ card.icon }} display-4 text-primary mb-3" aria-hidden="true"></i>
+                            <i class="{{ card.icon }} display-4 {{ card.icon_color | default('text-primary') }} mb-3" aria-hidden="true"></i>
                         {% endif %}
                         
                                 <h3>{{ card.name }}</h3>
