@@ -228,7 +228,6 @@ collections:
           - { label: "Business Name (Also used for SEO)", name: "name", widget: "string" }
           - { label: "Default SEO Description", name: "site_description", widget: "text", required: false, hint: "A short paragraph describing the practice for Google search results." }
           - { label: "Client Portal URL", name: "practiceLink", widget: "string" }
-          - { label: "Client Portal URL", name: "practiceLink", widget: "string" }
           - label: "Portal Button Color"
             name: "portal_btn_color"
             widget: "select"
