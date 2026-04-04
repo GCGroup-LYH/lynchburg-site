@@ -72,15 +72,18 @@ _page_builder: &page_builder
       name: "features"
       widget: "object"
       fields:
-        - { label: "Section Title", name: "title", widget: "string" }
-        - label: "Cards"
-          name: "card_list"
-          widget: "list"
-          fields:
-            - { label: "Icon/Image", name: "icon", widget: "image" }
-            - { label: "Image Description (Alt Text)", name: "alt", widget: "string", required: true, hint: "Describe the image for visually impaired users. Leave blank ONLY if the image is purely decorative." }
-            - { label: "Feature Name", name: "name", widget: "string" }
-            - { label: "Description", name: "desc", widget: "text" }
+          - { label: "Section Title", name: "title", widget: "string" }
+          - label: "Cards"
+            name: "card_list"
+            widget: "list"
+            fields:
+              - label: "Bootstrap Icon Name"
+                name: "icon"
+                widget: "string"
+                hint: "Go to https://icons.getbootstrap.com. Find an icon and type its name here (e.g., bi-heart). Leave blank for no icon."
+                required: false
+              - { label: "Feature Name", name: "name", widget: "string" }
+              - { label: "Description", name: "desc", widget: "text" }
 
 # Ensure these match your actual folder names in src/assets
 media_folder: "src/assets/images" 
