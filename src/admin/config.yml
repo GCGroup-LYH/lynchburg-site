@@ -20,6 +20,22 @@ _brand_palette: &brand_palette
     - { label: "Brand Dark Gray", value: "bg-brand-gray-dark text-white" }
   default: "bg-body text-body"
 
+  # 2. YOUR TEXT/ICON PALETTE ANCHOR
+_text_palette: &text_palette
+  label: "Icon Color"
+  name: "icon_color"
+  widget: "select"
+  options:
+    - { label: "Brand Blue (Primary)", value: "text-primary" }
+    - { label: "Brand Teal (Secondary)", value: "text-secondary" }
+    - { label: "Soft Blue (Info)", value: "text-info" }
+    - { label: "Earthy Green (Dark)", value: "text-dark" }
+    - { label: "Brand Light Gray", value: "text-secondary" } # Using secondary as a safe fallback
+    - { label: "Brand Dark Gray", value: "text-dark" }
+    - { label: "White (For dark backgrounds)", value: "text-white" }
+  default: "text-primary"
+  required: false
+
 # 2. YOUR UNIVERSAL PAGE BUILDER ANCHOR
 _page_builder: &page_builder
   label: "Page Sections"
@@ -82,17 +98,7 @@ _page_builder: &page_builder
                 widget: "string"
                 hint: "Go to https://icons.getbootstrap.com. Find an icon and type its name here (e.g., bi-heart). Leave blank for no icon."
                 required: false
-              - label: "Icon Color"
-                name: "icon_color"
-                widget: "select"
-                options:
-                  - { label: "Brand Blue (Primary)", value: "text-primary" }
-                  - { label: "Brand Teal (Secondary)", value: "text-secondary" }
-                  - { label: "Soft Blue (Info)", value: "text-info" }
-                  - { label: "Dark Gray", value: "text-dark" }
-                  - { label: "White (For dark backgrounds)", value: "text-white" }
-                default: "text-primary"
-                required: false
+              - *text_palette
               - { label: "Feature Name", name: "name", widget: "string" }
               - { label: "Description", name: "desc", widget: "text" }
 
