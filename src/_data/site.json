@@ -15,7 +15,8 @@
   "social_links": [
     { "platform": "Facebook", "url": "https://facebook.com/yourpractice" }
   ],
-  
+
+  "portal_btn_color": "btn-primary",
   "footer_text": "Located in Lynchburg, VA",
   "contactEmail": "example@emailaddress.com",
   "phone": "(555) 123-4567",
