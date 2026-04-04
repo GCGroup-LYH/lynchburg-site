@@ -152,6 +152,25 @@ _page_builder: &page_builder
         - { label: "Address", name: "address", widget: "text", hint: "Press enter to create line breaks." }
         - { label: "Google Maps Embed Code", name: "map_iframe", widget: "text", hint: "Go to Google Maps, find your office, click Share > Embed a map, copy the HTML, and paste it here." }
 
+    - label: "Rich Text / Article"
+      name: "rich_text"
+      widget: "object"
+      fields:
+        - { label: "Content", name: "content", widget: "markdown", hint: "Use this for standard paragraphs, bulleted lists, and bold/italic text." }
+
+    - label: "Divider & Spacing"
+      name: "divider"
+      widget: "object"
+      fields:
+        - label: "Visual Style"
+          name: "style"
+          widget: "select"
+          options:
+            - { label: "Invisible Space (Standard)", value: "py-5" }
+            - { label: "Invisible Space (Small)", value: "py-3" }
+            - { label: "Visible Subtle Line", value: "line" }
+          default: "py-5"
+
 # Ensure these match your actual folder names in src/assets
 media_folder: "src/assets/images" 
 public_folder: "/assets/images"
