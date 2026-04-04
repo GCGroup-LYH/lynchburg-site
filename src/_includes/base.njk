@@ -260,6 +260,33 @@
     </div>
 </section>
 
+{% elif block.type == 'rich_text' %}
+<section class="rich-text-block py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            {# We use col-lg-8 to constrain the width. Long lines of text are hard to read! #}
+            <div class="col-lg-8">
+                <div class="content-prose fs-5 text-muted">
+                    {{ block.content | safe }}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% elif block.type == 'divider' %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            {% if block.style == 'line' %}
+                <hr class="text-muted opacity-25 my-5">
+            {% else %}
+                <div class="{{ block.style }}"></div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
                 {% elif block.type == "testimonials" %}
                     <section class="testimonials-block py-5 {{ block.section_theme }}">
                         <div class="container">
