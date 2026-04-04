@@ -145,6 +145,17 @@
 
     <footer class="bg-dark text-white py-5 mt-auto">
         <div class="container text-center">
+            
+            {% if site.footer_links %}
+            <ul class="list-inline mb-4">
+                {% for link in site.footer_links %}
+                    <li class="list-inline-item mx-3">
+                        <a href="{{ link.url }}" class="text-white text-decoration-none border-bottom border-secondary pb-1">{{ link.text }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
             <p class="mb-2">&copy; 2026 {{ site.name }}</p>
             <p class="small text-white-50">
                 {{ site.footer_text }} | 
