@@ -170,6 +170,20 @@ _page_builder: &page_builder
             - { label: "Invisible Space (Small)", value: "py-3" }
             - { label: "Visible Subtle Line", value: "line" }
           default: "py-5"
+    
+    - label: "Image Carousel"
+      name: "carousel"
+      widget: "object"
+      fields:
+        - { label: "Section Title (Optional)", name: "title", widget: "string", required: false }
+        - label: "Slides"
+          name: "slide_list"
+          widget: "list"
+          fields:
+            - { label: "Image", name: "image", widget: "image" }
+            - { label: "Alt Text (For Screen Readers)", name: "alt", widget: "string", required: true, hint: "Required for ADA compliance. Describe the image briefly." }
+            - { label: "Caption Heading", name: "heading", widget: "string", required: false }
+            - { label: "Caption Text", name: "text", widget: "string", required: false }
 
 # Ensure these match your actual folder names in src/assets
 media_folder: "src/assets/images" 
