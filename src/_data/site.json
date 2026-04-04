@@ -1,5 +1,6 @@
 {
   "name": "Growthpoint",
+  "site_description": "A compassionate mental health practice located in Lynchburg, VA, dedicated to your personal growth and healing.",
   "nav_links": [
     { "text": "Home", "url": "/" },
     { "text": "About", "url": "/about/" },
@@ -11,6 +12,7 @@
     { "text": "Privacy Policy", "url": "/privacy/" },
     { "text": "Accessibility", "url": "/accessibility/" }
   ],
+  "footer_text": "Located in Lynchburg, VA",
   "contactEmail": "example@emailaddress.com",
   "phone": "(555) 123-4567",
   "practiceLink": "https://your-portal-link.com"

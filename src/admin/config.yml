@@ -184,12 +184,20 @@ collections:
         name: "site"
         file: "src/_data/site.json"
         fields:
-          - { label: "Business Name", name: "name", widget: "string" }
+          - { label: "Business Name (Also used for SEO)", name: "name", widget: "string" }
+          - { label: "Default SEO Description", name: "site_description", widget: "text", required: false, hint: "A short paragraph describing the practice for Google search results." }
           - { label: "Client Portal URL", name: "practiceLink", widget: "string" }
           - { label: "Contact Email", name: "contactEmail", widget: "string" }
           - { label: "Phone Number", name: "phone", widget: "string" }
           - label: "Navigation Menu"
             name: "nav_links"
+            widget: "list"
+            summary: '{{fields.text}}'
+            fields:
+              - { label: "Link Text", name: "text", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
+          - label: "Footer Links"
+            name: "footer_links"
             widget: "list"
             summary: '{{fields.text}}'
             fields:
