@@ -12,9 +12,12 @@ _brand_palette: &brand_palette
   options:
     - { label: "Standard (Adapts to Light/Dark)", value: "bg-body text-body" }
     - { label: "Subtle Contrast (Adapts to Light/Dark)", value: "bg-body-tertiary text-body" }
-    - { label: "Brand Primary (Main Color)", value: "bg-primary text-white" }
-    - { label: "Brand Accent (Secondary Color)", value: "bg-secondary text-white" }
-    - { label: "Deep Dark (Always Dark)", value: "bg-dark text-white" }
+    - { label: "Brand Blue (Primary)", value: "bg-primary text-white" }
+    - { label: "Brand Teal (Secondary)", value: "bg-secondary text-white" }
+    - { label: "Earthy Green (Dark)", value: "bg-dark text-white" }
+    - { label: "Soft Blue (Info)", value: "bg-info text-dark" }
+    - { label: "Brand Light Gray", value: "bg-brand-gray-light text-dark" }
+    - { label: "Brand Dark Gray", value: "bg-brand-gray-dark text-white" }
   default: "bg-body text-body"
 
 # 2. YOUR UNIVERSAL PAGE BUILDER ANCHOR

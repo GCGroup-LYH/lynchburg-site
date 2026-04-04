@@ -12015,5 +12015,17 @@ section {
     outline-offset: 3px;
     box-shadow: none !important;
 }
+/* ==========================================================================
+   4. CUSTOM BRAND GRAY UTILITY CLASSES
+   ========================================================================== */
+/* Light Gray Background (Pairs well with dark text) */
+.bg-brand-gray-light {
+    background-color: var(--brand-gray-light) !important;
+}
+
+/* Dark Gray Background (Pairs well with white text) */
+.bg-brand-gray-dark {
+    background-color: var(--brand-gray-dark) !important;
+}
 
 /*# sourceMappingURL=main.css.map */
