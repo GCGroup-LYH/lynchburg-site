@@ -109,6 +109,107 @@
                      </div>
                     </section>
 
+                 
+{% elif block.type == 'faq' %}
+<section class="faq-block py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">{{ block.title }}</h2>
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                {# Notice the unique IDs to make the toggles work perfectly #}
+                <div class="accordion shadow-sm" id="faqAccordion">
+                    {% for item in block.faq_list %}
+                    <div class="accordion-item border-0 border-bottom">
+                        <h3 class="accordion-header" id="heading-{{ loop.index }}">
+                            <button class="accordion-button {% if not loop.first %}collapsed{% endif %} bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{ loop.index }}">
+                                <strong>{{ item.question }}</strong>
+                            </button>
+                        </h3>
+                        <div id="collapse-{{ loop.index }}" class="accordion-collapse collapse {% if loop.first %}show{% endif %}" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted">
+                                {{ item.answer }}
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% elif block.type == 'team' %}
+<section class="team-block py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-5">{{ block.title }}</h2>
+        <div class="row g-4 justify-content-center">
+            {% for member in block.member_list %}
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 border-0 shadow-sm text-center p-4">
+                    {% if member.image %}
+                    <img src="{{ member.image }}" alt="{{ member.name }}" class="rounded-circle mx-auto mb-3 object-fit-cover shadow-sm" style="width: 140px; height: 140px;">
+                    {% endif %}
+                    <h3 class="h4 mb-1">{{ member.name }}</h3>
+                    {% if member.credentials %}<p class="text-primary fw-bold mb-3">{{ member.credentials }}</p>{% endif %}
+                    <p class="text-muted mb-0" style="font-size: 0.95rem;">{{ member.bio }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% elif block.type == 'rates' %}
+<section class="rates-block py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">{{ block.title }}</h2>
+        {% if block.intro %}
+        <p class="text-center text-muted mb-5 mx-auto" style="max-width: 700px;">{{ block.intro }}</p>
+        {% endif %}
+        
+        <div class="row g-5">
+            {# Left Column: Rates Table #}
+            <div class="col-md-7">
+                <h3 class="h5 mb-4">Service Rates</h3>
+                <div class="table-responsive shadow-sm rounded">
+                    <table class="table table-hover align-middle mb-0 bg-white">
+                        <thead class="table-light">
+                            <tr>
+                                <th class="py-3 px-4">Service</th>
+                                <th class="py-3 px-4 text-end">Fee</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for rate in block.rate_list %}
+                            <tr>
+                                <td class="py-3 px-4">{{ rate.service }}</td>
+                                <td class="py-3 px-4 text-end fw-bold text-dark">{{ rate.price }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            {# Right Column: Insurance List #}
+            <div class="col-md-5">
+                <div class="card border-0 bg-light p-4 h-100 shadow-sm">
+                    <h3 class="h5 mb-4">Accepted Insurance</h3>
+                    <ul class="list-unstyled mb-0">
+                        {% for item in block.insurance_list %}
+                        <li class="mb-3 d-flex align-items-center">
+                            {# We are using the bi-check-circle-fill icon here! #}
+                            <i class="bi-check-circle-fill text-primary me-3 fs-5" aria-hidden="true"></i> 
+                            <span class="text-dark fw-medium">{{ item.provider }}</span>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
                 {% elif block.type == "split_block" %}
                     <section class="split-block py-5 {{ block.section_theme }}">
                         <div class="container">

@@ -101,6 +101,49 @@ _page_builder: &page_builder
               - *text_palette
               - { label: "Feature Name", name: "name", widget: "string" }
               - { label: "Description", name: "desc", widget: "text" }
+    - label: "FAQ Accordion"
+      name: "faq"
+      widget: "object"
+      fields:
+              - { label: "Section Title", name: "title", widget: "string", default: "Frequently Asked Questions" }
+              - label: "Questions & Answers"
+                name: "faq_list"
+                widget: "list"
+                fields:
+                  - { label: "Question", name: "question", widget: "string" }
+                  - { label: "Answer", name: "answer", widget: "text" }
+
+    - label: "Team Bios"
+      name: "team"
+      widget: "object"
+      fields:
+              - { label: "Section Title", name: "title", widget: "string", default: "Meet Our Therapists" }
+              - label: "Team Members"
+                name: "member_list"
+                widget: "list"
+                fields:
+                  - { label: "Headshot", name: "image", widget: "image", required: false, hint: "Use square images for the best results." }
+                  - { label: "Name", name: "name", widget: "string" }
+                  - { label: "Credentials (e.g., LCSW, PsyD)", name: "credentials", widget: "string", required: false }
+                  - { label: "Bio", name: "bio", widget: "text" }
+
+    - label: "Rates & Insurance"
+      name: "rates"
+      widget: "object"
+      fields:
+              - { label: "Section Title", name: "title", widget: "string", default: "Rates & Insurance" }
+              - { label: "Introductory Text", name: "intro", widget: "text", required: false, hint: "A brief sentence about your sliding scale or out-of-network policies." }
+              - label: "Service Rates"
+                name: "rate_list"
+                widget: "list"
+                fields:
+                  - { label: "Service (e.g., 50-Minute Intake)", name: "service", widget: "string" }
+                  - { label: "Price", name: "price", widget: "string" }
+              - label: "Accepted Insurances"
+                name: "insurance_list"
+                widget: "list"
+                fields:
+                  - { label: "Insurance Provider", name: "provider", widget: "string" }
 
 # Ensure these match your actual folder names in src/assets
 media_folder: "src/assets/images" 
