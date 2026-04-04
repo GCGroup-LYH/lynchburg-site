@@ -185,32 +185,32 @@ _page_builder: &page_builder
             - { label: "Caption Heading", name: "heading", widget: "string", required: false }
             - { label: "Caption Text", name: "text", widget: "string", required: false }
 
-        - label: "Emergency / Alert Banner"
-          name: "alert_banner"
-          widget: "object"
-          fields:
-            - label: "Alert Type"
-              name: "theme"
-              widget: "select"
-              options:
-                - { label: "Emergency Crisis (Red)", value: "bg-danger" }
-                - { label: "Important Info (Dark Blue)", value: "bg-dark" }
-                - { label: "Standard Notice (Soft Blue)", value: "bg-info" }
-              default: "bg-danger"
-            - { label: "Headline", name: "headline", widget: "string", default: "In Crisis? Get Help Now." }
-            - { label: "Message", name: "message", widget: "text", hint: "Keep this to one or two sentences." }
+    - label: "Emergency / Alert Banner"
+      name: "alert_banner"
+      widget: "object"
+      fields:
+        - label: "Alert Type"
+          name: "theme"
+          widget: "select"
+          options:
+            - { label: "Emergency Crisis (Red)", value: "bg-danger" }
+            - { label: "Important Info (Dark Blue)", value: "bg-dark" }
+            - { label: "Standard Notice (Soft Blue)", value: "bg-info" }
+          default: "bg-danger"
+        - { label: "Headline", name: "headline", widget: "string", default: "In Crisis? Get Help Now." }
+        - { label: "Message", name: "message", widget: "text", hint: "Keep this to one or two sentences." }
 
-        - label: "Logo Cloud (Insurances / Associations)"
-          name: "logo_cloud"
-          widget: "object"
+    - label: "Logo Cloud (Insurances / Associations)"
+      name: "logo_cloud"
+      widget: "object"
+      fields:
+        - { label: "Section Title", name: "title", widget: "string", default: "Accepted Insurances & Professional Affiliations" }
+        - label: "Logos"
+          name: "logo_list"
+          widget: "list"
           fields:
-            - { label: "Section Title", name: "title", widget: "string", default: "Accepted Insurances & Professional Affiliations" }
-            - label: "Logos"
-              name: "logo_list"
-              widget: "list"
-              fields:
-                - { label: "Logo Image", name: "image", widget: "image", hint: "Upload a transparent PNG or SVG for best results." }
-                - { label: "Alt Text (Required)", name: "alt", widget: "string", hint: "E.g., 'Blue Cross Blue Shield Logo'" }
+            - { label: "Logo Image", name: "image", widget: "image", hint: "Upload a transparent PNG or SVG for best results." }
+            - { label: "Alt Text (Required)", name: "alt", widget: "string", hint: "E.g., 'Blue Cross Blue Shield Logo'" }
 
 # Ensure these match your actual folder names in src/assets
 media_folder: "src/assets/images" 
