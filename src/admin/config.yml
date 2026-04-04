@@ -43,14 +43,14 @@ _page_builder: &page_builder
         - { label: "Image", name: "image", widget: "image" }
         - { label: "Image Description (Alt Text)", name: "alt", widget: "string", required: true, hint: "Describe the image for visually impaired users. Leave blank ONLY if the image is purely decorative." }
         - { label: "Image Alignment", name: "align", widget: "select", options: ["Left", "Right"], default: "Right" }
-        - <<: *brand_palette
+        - *brand_palette
         
     - label: "Featured Google Reviews"
       name: "testimonials"
       widget: "object"
       fields:
         - { label: "Section Title", name: "title", widget: "string", default: "What Our Clients Say" }
-        - <<: *brand_palette
+        - *brand_palette
         - label: "Reviews"
           name: "review_list"
           widget: "list"
@@ -63,7 +63,7 @@ _page_builder: &page_builder
       widget: "object"
       fields:
         - { label: "Text", name: "text", widget: "string" }
-        - <<: *brand_palette
+        - *brand_palette
 
     - label: "Feature Cards"
       name: "features"
