@@ -223,6 +223,24 @@ _page_builder: &page_builder
             - { label: "Logo Image", name: "image", widget: "image", hint: "Upload a transparent PNG or SVG for best results." }
             - { label: "Alt Text (Required)", name: "alt", widget: "string", hint: "E.g., 'Blue Cross Blue Shield Logo'" }
 
+    - label: "Methodologies & Modalities"
+      name: "modalities"
+      widget: "object"
+      fields:
+        - { label: "Section Title", name: "title", widget: "string", default: "Our Therapeutic Approaches" }
+        - { label: "Subtitle", name: "subtitle", widget: "text", default: "We utilize evidence-based practices tailored to your unique needs and goals.", required: false }
+        - label: "Modalities List"
+          name: "modality_list"
+          widget: "list"
+          fields:
+            - label: "Bootstrap Icon Name"
+              name: "icon"
+              widget: "string"
+              hint: "Go to https://icons.getbootstrap.com. Type name here (e.g., bi-brain, bi-flower1). Leave blank for no icon."
+              required: false
+            - { label: "Modality Name", name: "name", widget: "string" }
+            - { label: "Summary", name: "summary", widget: "text" }
+
 # Ensure these match your actual folder names in src/assets
 media_folder: "src/assets/images" 
 public_folder: "/assets/images"
