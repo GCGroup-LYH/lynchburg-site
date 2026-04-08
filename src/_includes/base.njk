@@ -68,7 +68,7 @@
         {% if sections %}
             {% for block in sections %}
             
-                {% elif block.type == "hero" %}
+                {% if block.type == "hero" %}
     <section class="hero-block py-5 {{ block.text_theme }}" 
         style="
             {% if block.bg_image %}
