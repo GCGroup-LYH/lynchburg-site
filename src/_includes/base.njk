@@ -75,16 +75,20 @@
                 background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('{{ block.bg_image }}'); 
                 background-size: cover; 
                 background-position: center;
+                background-repeat: no-repeat;
             {% else %}
-                background-color: {{ block.bg_color }};
+                {# We force the background-image to 'none' to clear out any ghosts #}
+                background-image: none;
+                background-color: {{ block.bg_color | default('#ffffff') }};
             {% endif %}
             min-height: 550px; 
             display: flex; 
             align-items: center;
         ">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-7">
+            {# Added 'justify-content-center' and 'text-center' to fix your alignment #}
+            <div class="row justify-content-center text-center">
+                <div class="col-lg-10">
                     <h1 class="display-3 fw-bold mb-3">{{ block.headline }}</h1>
                     {% if block.subtext %}
                         <p class="lead mb-5" style="opacity: 0.95;">{{ block.subtext }}</p>
