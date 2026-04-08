@@ -1,6 +1,7 @@
 {
   "name": "Growthpoint",
   "site_description": "A compassionate mental health practice located in Lynchburg, VA, dedicated to your personal growth and healing.",
+  "logo": "/assets/images/Growthpoint Counseling Group Logo_color.png",
   "nav_links": [
     { "text": "Home", "url": "/" },
     { "text": "About", "url": "/about/" },
