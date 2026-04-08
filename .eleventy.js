@@ -19,6 +19,15 @@ module.exports = function(eleventyConfig) {
     return md.render(content);
   });
 
+  // Custom Date Filter
+  eleventyConfig.addFilter("date", function(dateVal) {
+    return new Date(dateVal).toLocaleDateString('en-US', {
+      year: 'numeric', 
+      month: 'long', 
+      day: 'numeric'
+    });
+  });
+
   return {
     dir: {
       input: "src",

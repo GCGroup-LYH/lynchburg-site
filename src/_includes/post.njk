@@ -11,7 +11,7 @@ layout: "base.njk"  # (Change this if your main layout has a different name!)
       {% endif %}
 
       <h1 class="mb-3">{{ title }}</h1>
-      <p class="text-muted mb-4">By {{ author | default("Our Team") }} | {{ date | date("MMM Do, YYYY") }}</p>
+      <p class="text-muted mb-4">By {{ author | default("Our Team") }} | {{ date | date }}</p>
 
       <div class="blog-content">
         {{ content | safe }}
