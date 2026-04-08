@@ -68,19 +68,51 @@
         {% if sections %}
             {% for block in sections %}
             
-                {% if block.type == "hero" %}
-                    <section class="hero-block py-5 text-center" 
-         {% if block.bg_image %}
-         style="background-image: url('{{ block.bg_image }}'); background-size: cover; background-position: center;" 
-         role="img" 
-         aria-label="{{ block.alt }}"
-         {% endif %}>
-                        <div class="container py-5">
-                            <h1 class="display-3 fw-bold">{{ block.headline }}</h1>
-                            <p class="lead">{{ block.subtext }}</p>
-                            <a href="{{ block.btn_link }}" class="btn btn-primary btn-lg">{{ block.btn_text }}</a>
-                        </div>
-                    </section>
+                {% elif block.type == "hero" %}
+    <section class="hero-block py-5 {{ block.text_theme }}" 
+        style="
+            {% if block.bg_image %}
+                background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('{{ block.bg_image }}'); 
+                background-size: cover; 
+                background-position: center;
+            {% else %}
+                background-color: {{ block.bg_color }};
+            {% endif %}
+            min-height: 550px; 
+            display: flex; 
+            align-items: center;
+        ">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7">
+                    <h1 class="display-3 fw-bold mb-3">{{ block.headline }}</h1>
+                    {% if block.subtext %}
+                        <p class="lead mb-5" style="opacity: 0.95;">{{ block.subtext }}</p>
+                    {% endif %}
+                    
+                    {% if block.btn_text %}
+                        <a href="{{ block.btn_link }}" 
+                           class="btn btn-lg px-4 py-3 shadow-sm brand-hero-btn" 
+                           style="background-color: {{ block.btn_bg_color }}; 
+                                  color: {{ block.btn_txt_color }}; 
+                                  border: 2px solid {{ block.btn_bg_color }};
+                                  font-weight: 600;">
+                            {{ block.btn_text }}
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        .brand-hero-btn { transition: all 0.3s ease; }
+        .brand-hero-btn:hover {
+            filter: brightness(90%);
+            transform: translateY(-2px);
+            color: {{ block.btn_txt_color }};
+        }
+    </style>
 
                 {% elif block.type == "cta" %}
                     <section class="cta-block py-4 {{ block.section_theme }}">
