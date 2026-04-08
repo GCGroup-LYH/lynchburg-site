@@ -325,3 +325,16 @@ collections:
         fields:
           - { label: "SEO Title", name: "title", widget: "string", default: "Components" }
           - *page_builder
+
+  - name: "blog"
+    label: "Blog Posts"
+    folder: "src/blog"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Author", name: "author", widget: "string", default: "Our Team" }
+      - { label: "Featured Image", name: "image", widget: "image", required: false }
+      - { label: "Short Summary", name: "summary", widget: "text", hint: "A brief intro for the blog list page." }
+      - { label: "Post Content", name: "body", widget: "markdown" }

@@ -1,0 +1,20 @@
+<h1>Therapy Insights & Articles</h1>
+
+{% if collections.blog.length > 0 %}
+  <div class="blog-grid">
+    {% for post in collections.blog | reverse %}
+      <div class="card">
+        <img src="{{ post.data.image }}" alt="{{ post.data.title }}">
+        <h2><a href="{{ post.url }}">{{ post.data.title }}</a></h2>
+        <p>{{ post.data.summary }}</p>
+        <small>By {{ post.data.author }} on {{ post.data.date | date("MMM Do, YYYY") }}</small>
+      </div>
+    {% endfor %}
+  </div>
+
+{% else %}
+  <div class="coming-soon-message py-5">
+    <h2>Our Blog is Coming Soon!</h2>
+    <p>Our team is currently working on some helpful resources and articles. Check back soon!</p>
+  </div>
+{% endif %}
