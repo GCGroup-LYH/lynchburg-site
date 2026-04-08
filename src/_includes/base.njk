@@ -392,12 +392,7 @@
                         </div>
                     </section>
 
-                {% endif %}
-
-            {% endfor %}
-        {% endif %}
-
-        {% elif block.type == "modalities" %}
+                    {% elif block.type == "modalities" %}
     <section class="modalities-block py-5 bg-light-subtle rounded-4 my-4">
         <div class="container text-center">
             {% if block.title %}
@@ -425,6 +420,10 @@
             </div>
         </div>
     </section>
+
+                {% endif %}
+            {% endfor %}
+        {% endif %}
     </main>
 
     <footer class="bg-dark text-white py-5 mt-auto">
