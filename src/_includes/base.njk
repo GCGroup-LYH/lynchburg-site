@@ -80,7 +80,9 @@
                     <section class="cta-block py-4 {{ block.section_theme }}">
                         <div class="container d-md-flex align-items-center justify-content-between text-center">
                             <h2 class="mb-3 mb-md-0">{{ block.text }}</h2>
-                            <a href="/contact" class="btn btn-outline-light btn-lg">Contact Us</a>
+                            <a href="{{ block.btn_link | default('/contact') }}" class="btn {{ block.btn_color | default('btn-outline-light') }} btn-lg">
+                                {{ block.btn_text | default('Contact Us') }}
+                            </a>
                         </div>
                     </section>
 

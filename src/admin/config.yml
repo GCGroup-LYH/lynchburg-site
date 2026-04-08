@@ -81,8 +81,19 @@ _page_builder: &page_builder
       name: "cta"
       widget: "object"
       fields:
-        - { label: "Text", name: "text", widget: "string" }
-        - *brand_palette
+        - { label: "Heading", name: "text", widget: "string" } 
+        - { label: "Button Text", name: "btn_text", widget: "string", default: "Contact Us" }
+        - { label: "Button Link", name: "btn_link", widget: "string", default: "/contact" }
+        - label: "Button Color"
+          name: "btn_color"
+          widget: "select"
+          required: false
+          options:
+            - { label: "Outline Light", value: "btn-outline-light" }
+            - { label: "Solid Primary", value: "btn-primary" }
+            - { label: "Solid Dark", value: "btn-dark" }
+            - { label: "Solid Info (Light Blue)", value: "btn-info" }
+          default: "btn-outline-light"
 
     - label: "Feature Cards"
       name: "features"
