@@ -1,24 +1,34 @@
 ---
-title: "Home"
-sections: []
-
+title: Home
+sections:
+  - type: hero
+    headline: Check out the hero section
+    subtext: testing the hero section
+    bg_image: ''
+    alt: none
+    bg_color: '#198754'
+    text_theme: text-dark
+    btn_text: Get Started
+    btn_link: /contact
+    btn_bg_color: '#0d6efd'
+    btn_txt_color: '#ffffff'
+layout: base.njk
 sections_old:
-  - type: "hero"
-    headline: "Welcome"
-    subtext: "This is just a test"
-    bg_image: ""  # Keep this empty for color-only mode
-    alt: "Growthpoint Counseling Group's company logo" # Quotes save the day here!
-    bg_color: "#198754"
-    text_theme: "text-white"
-    btn_text: "Test"
-    btn_link: "/contact"
-    btn_bg_color: "#0d6efd"
-    btn_txt_color: "#ffffff"
-  - type: "features"
-    title: "Testing the card section"
-    card_list:
-      - icon: "bi-journal"
-        name: "Testing feature name"
-        desc: "testing the desc. field"
-layout: "base.njk"
+  - btn_txt_color: '#ffffff'
+    btn_bg_color: '#0d6efd'
+    btn_link: /contact
+    btn_text: Test
+    text_theme: text-white
+    bg_color: '#198754'
+    alt: Growthpoint Counseling Group's company logo
+    bg_image: ''
+    subtext: This is just a test
+    headline: Welcome
+    type: hero
+  - card_list:
+      - desc: testing the desc. field
+        name: Testing feature name
+        icon: bi-journal
+    title: Testing the card section
+    type: features
 ---
