@@ -41,6 +41,7 @@ _page_builder: &page_builder
   label: "Page Sections"
   name: "sections"
   widget: "list"
+  summary: '{{fields.headline}}{{fields.title}}{{fields.heading}} ({{type}})'
   types:
     - label: "Hero Section"
       name: "hero"
