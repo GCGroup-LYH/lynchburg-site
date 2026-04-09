@@ -146,6 +146,7 @@ _page_builder: &page_builder
       widget: "object"
       fields:
         - { label: "Section Title", name: "title", widget: "string" }
+        - *brand_palette
         - label: "Cards"
           name: "card_list"
           widget: "list"

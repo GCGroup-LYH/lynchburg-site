@@ -129,27 +129,33 @@
                     </section>
 
                 {% elif block.type == "features" %}
-                    <section class="features-block py-5 bg-light">
-                        <div class="container">
-                            <h2 class="text-center mb-5">{{ block.title }}</h2>
-                                <div class="row g-4">
-                                 {% for card in block.card_list %}
-                                 <div class="col-md-4">
-                                    <div class="card h-100 border-0 shadow-sm text-center p-4">
-                        
-                        {# NEW BOOTSTRAP ICON LOGIC #}
-                        {% if card.icon %}
-                            <i class="{{ card.icon }} display-4 {{ card.icon_color | default('text-primary') }} mb-3" aria-hidden="true"></i>
-                        {% endif %}
-                        
-                                <h3>{{ card.name }}</h3>
-                                <p>{{ card.desc }}</p>
-                             </div>
-                             </div>
-                            {% endfor %}
+                <section class="features-block py-5 {{ block.section_theme | default('bg-body') }}">
+                    <div class="container">
+                    {% if block.title %}
+                        <h2 class="text-center mb-5">{{ block.title }}</h2>
+                    {% endif %}
+      
+                    <div class="row g-4">
+                        {% for card in block.card_list %}
+                    <div class="col-md-4">
+                        <div class="card h-100 border-0 shadow-sm text-center p-4">
+              
+                             {# Icon Logic #}
+                            {% if card.icon %}
+                                {# Ensure icon_color matches the 'name' in your config.yml #}
+                                <i class="bi {{ card.icon }} display-4 {{ card.icon_color | default('text-primary') }} mb-3" aria-hidden="true"></i>
+                            {% endif %}
+              
+                            <h3 class="h5">{{ card.name }}</h3>
+                            <div class="card-text text-muted">
+                                {{ card.desc | njk | safe if card.desc else "" }}
+                            </div>
+                            </div>
                         </div>
-                     </div>
-                    </section>
+                        {% endfor %}
+                    </div>
+                    </div>
+                </section>
 
                  
 {% elif block.type == 'faq' %}
