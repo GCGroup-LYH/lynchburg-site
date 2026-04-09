@@ -148,7 +148,7 @@
               
                             <h3 class="h5">{{ card.name }}</h3>
                             <div class="card-text text-muted">
-                                {{ card.desc | njk | safe if card.desc else "" }}
+                                {{ card.desc | safe if card.desc else "" }}
                             </div>
                             </div>
                         </div>
