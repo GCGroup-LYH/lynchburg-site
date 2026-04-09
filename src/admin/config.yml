@@ -145,21 +145,26 @@ _page_builder: &page_builder
       name: "features"
       widget: "object"
       fields:
-          - { label: "Section Title", name: "title", widget: "string" }
-          - label: "Cards"
-            name: "card_list"
-            widget: "list"
-            summary: '{{fields.name}}'
-            fields:
-              - label: "Bootstrap Icon Name"
-                name: "icon"
-                widget: "string"
-                hint: "Go to https://icons.getbootstrap.com. Find an icon and type its name here (e.g., bi-heart). Leave blank for no icon."
-                required: false
-              - *text_palette
-              - { label: "Feature Name", name: "name", widget: "string" }
-              - { label: "Description", name: "desc", widget: "text" }
-              
+        - { label: "Section Title", name: "title", widget: "string" }
+        - label: "Cards"
+          name: "card_list"
+          widget: "list"
+          summary: '{{fields.name}}'
+          fields:
+            - { label: "Bootstrap Icon Name", name: "icon", widget: "string", required: false }
+            # Replace the *text_palette anchor with the explicit field here:
+            - label: "Icon Color"
+              name: "icon_color"
+              widget: "select"
+              options:
+                - { label: "Brand Blue (Primary)", value: "text-primary" }
+                - { label: "Brand Teal (Secondary)", value: "text-secondary" }
+                - { label: "White", value: "text-white" }
+              default: "text-primary"
+              required: false
+            - { label: "Feature Name", name: "name", widget: "string" }
+            - { label: "Description", name: "desc", widget: "text" }
+
     - label: "FAQ Accordion"
       name: "faq"
       widget: "object"
