@@ -149,6 +149,7 @@ _page_builder: &page_builder
           - label: "Cards"
             name: "card_list"
             widget: "list"
+            summary: '{{fields.name}}'
             fields:
               - label: "Bootstrap Icon Name"
                 name: "icon"
@@ -158,6 +159,7 @@ _page_builder: &page_builder
               - *text_palette
               - { label: "Feature Name", name: "name", widget: "string" }
               - { label: "Description", name: "desc", widget: "text" }
+              
     - label: "FAQ Accordion"
       name: "faq"
       widget: "object"
