@@ -140,11 +140,23 @@
                     <div class="col-md-4">
                         <div class="card h-100 border-0 shadow-sm text-center p-4">
               
-                             {# Icon Logic #}
-                            {% if card.icon %}
-                                {# Ensure icon_color matches the 'name' in your config.yml #}
-                                <i class="bi {{ card.icon }} display-4 {{ card.icon_color | default('text-primary') }} mb-3" aria-hidden="true"></i>
-                            {% endif %}
+                                {# NEW BULLETPROOF ICON LOGIC #}
+                        {% if card.icon %}
+                            {% set colorClass = card.icon_color | default('text-primary') %}
+    
+                         {# Map the CMS class name directly to the core Bootstrap CSS variable #}
+                            {% set hexColor = "var(--bs-primary)" %}
+                            {% if colorClass == 'text-secondary' %}{% set hexColor = "var(--bs-secondary)" %}{% endif %}
+                            {% if colorClass == 'text-info' %}{% set hexColor = "var(--bs-info)" %}{% endif %}
+                            {% if colorClass == 'text-dark' %}{% set hexColor = "var(--bs-dark)" %}{% endif %}
+                            {% if colorClass == 'text-white' %}{% set hexColor = "#ffffff" %}{% endif %}
+
+                            <div class="mb-3">
+                            <i class="bi {{ card.icon }} display-4" 
+                            style="color: {{ hexColor }} !important;" 
+                            aria-hidden="true"></i>
+                            </div>
+                        {% endif %}
               
                             <h3 class="h5">{{ card.name }}</h3>
                             <div class="card-text text-muted">
