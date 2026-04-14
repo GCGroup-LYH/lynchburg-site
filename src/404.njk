@@ -1,0 +1,181 @@
+---
+layout: base.njk
+title: Page Not Found
+permalink: 404.html
+---
+
+<style>
+    /* We wrap everything in this class instead of the 'body' tag 
+       so it doesn't break your navbar or footer! 
+    */
+    .error-wrapper {
+        /* 👉 CHANGE THIS HEX CODE TO YOUR BRAND GREEN/TEAL */
+        --brand-color: #269388; 
+
+        background: var(--brand-color);
+        color: #fff;
+        position: relative;
+        min-height: 80vh; /* Takes up most of the screen */
+        overflow: hidden;
+        padding-bottom: 100px;
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    .error-wrapper .c {
+        text-align: center;
+        display: block;
+        position: relative;
+        width: 80%;
+        margin: 100px auto;
+        z-index: 10;
+    }
+
+    .error-wrapper ._404 {
+        font-size: 220px;
+        position: relative;
+        display: inline-block;
+        z-index: 2;
+        height: 250px;
+        letter-spacing: 15px;
+    }
+
+    .error-wrapper ._1 {
+        text-align: center;
+        display: block;
+        position: relative;
+        letter-spacing: 12px;
+        font-size: 4em;
+        line-height: 80%;
+        margin-bottom: 20px;
+    }
+
+    .error-wrapper ._2 {
+        text-align: center;
+        display: block;
+        position: relative;
+        font-size: 20px;
+        margin-bottom: 40px;
+    }
+
+    .error-wrapper .btn {
+        background-color: rgb(255, 255, 255);
+        position: relative;
+        display: inline-block;
+        width: 358px;
+        padding: 15px;
+        z-index: 5;
+        font-size: 25px;
+        margin: 0 auto;
+        color: var(--brand-color); /* Matches button text to background */
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+        transition: all 0.3s ease;
+    }
+
+    .error-wrapper .btn:hover {
+        transform: scale(1.05);
+        color: var(--brand-color);
+    }
+    
+    .error-wrapper hr {
+        padding: 0;
+        border: none;
+        border-top: 5px solid #fff;
+        color: #fff;
+        text-align: center;
+        margin: 0px auto 30px auto;
+        width: 420px;
+        height: 10px;
+        z-index: -10;
+        opacity: 1; /* Overrides Bootstrap hr opacity */
+    }
+    
+    .error-wrapper hr:after {
+        content: "\2022";
+        display: inline-block;
+        position: relative;
+        top: -0.75em;
+        font-size: 2em;
+        padding: 0 0.2em;
+        background: var(--brand-color); /* Matches bullet to background */
+    }
+
+    /* CLOUD STYLES */
+    #clouds {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        pointer-events: none; /* Lets you click the button through the clouds */
+    }
+    
+    .cloud {
+        width: 350px; height: 120px;
+        background: #FFF;
+        border-radius: 100px;
+        position: absolute;
+        margin: 120px auto 20px;
+        transition: ease 1s;
+    }
+
+    .cloud:after, .cloud:before {
+        content: '';
+        position: absolute;
+        background: #FFF;
+        z-index: -1
+    }
+
+    .cloud:after {
+        width: 100px; height: 100px;
+        top: -50px; left: 50px;
+        border-radius: 100px;
+    }
+
+    .cloud:before {
+        width: 180px; height: 180px;
+        top: -90px; right: 50px;
+        border-radius: 200px;
+    }
+    
+    .x1 { top: -50px; left: 100px; transform: scale(0.3); opacity: 0.9; animation: moveclouds 15s linear infinite; }
+    .x1_5 { top: -80px; left: 250px; transform: scale(0.3); animation: moveclouds 17s linear infinite; }
+    .x2 { left: 250px; top: 30px; transform: scale(0.6); opacity: 0.6; animation: moveclouds 25s linear infinite; }
+    .x3 { left: 250px; bottom: -70px; transform: scale(0.6); opacity: 0.8; animation: moveclouds 25s linear infinite; }
+    .x4 { left: 470px; bottom: 20px; transform: scale(0.75); opacity: 0.75; animation: moveclouds 18s linear infinite; }
+    .x5 { left: 200px; top: 300px; transform: scale(0.5); opacity: 0.8; animation: moveclouds 20s linear infinite; }
+
+    @keyframes moveclouds {
+        0% { margin-left: 1000px; }
+        100% { margin-left: -1000px; }
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+        .error-wrapper ._404 { font-size: 120px; height: 150px; letter-spacing: 5px; }
+        .error-wrapper ._1 { font-size: 2.5em; letter-spacing: 5px; }
+        .error-wrapper hr { width: 80%; }
+        .error-wrapper .btn { width: 80%; font-size: 20px; }
+    }
+</style>
+
+<div class="error-wrapper">
+    <div id="clouds">
+        <div class="cloud x1"></div>
+        <div class="cloud x1_5"></div>
+        <div class="cloud x2"></div>
+        <div class="cloud x3"></div>
+        <div class="cloud x4"></div>
+        <div class="cloud x5"></div>
+    </div>
+    
+    <div class='c'>
+        <div class='_404'>404</div>
+        <hr>
+        <div class='_1'>THE PAGE</div>
+        <div class='_2'>WAS NOT FOUND</div>
+        <a class='btn shadow' href='/'>BACK TO HOME</a>
+    </div>
+</div>
