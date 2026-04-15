@@ -398,6 +398,13 @@ collections:
         fields:
           - { label: "SEO Title", name: "title", widget: "string", default: "Components" }
           - *page_builder
+          
+      - label: "Privacy Policy"
+        name: "privacy"
+        file: "src/privacy.njk"
+        fields:
+          - { label: "SEO Title", name: "title", widget: "string", default: "Privacy Policy" }
+          - *page_builder
 
   - name: "blog"
     label: "Blog Posts"
