@@ -356,6 +356,8 @@ collections:
   # 4. MODULAR PAGES
   - name: "pages"
     label: "Pages"
+    editor:
+      preview: false
     files:
       - label: "Home Page"
         name: "home"
