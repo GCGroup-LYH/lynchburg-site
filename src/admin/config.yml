@@ -3,7 +3,7 @@ backend:
   repo: GCGroup-LYH/lynchburg-site
   branch: main
   site_url: https://lynchburg-site.emcitconsultants.workers.dev
-  base_url: sveltia-cms-auth.emcitconsultants.workers.dev 
+  base_url: https://sveltia-cms-auth.emcitconsultants.workers.dev 
 
 # 1. YOUR BRAND PALETTE ANCHOR
 _brand_palette: &brand_palette
