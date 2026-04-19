@@ -422,3 +422,25 @@ collections:
       - { label: "Featured Image", name: "image", widget: "image", required: false }
       - { label: "Short Summary", name: "summary", widget: "text", hint: "A brief intro for the blog list page." }
       - { label: "Post Content", name: "body", widget: "markdown" }
+  
+  - name: "team"
+    label: "Team Members"
+    label_singular: "Team Member"
+    folder: "src/team" 
+    create: true
+    slug: "{{slug}}" 
+    fields:
+      - { label: "Layout", name: "layout", widget: "hidden", default: "bio.njk" }
+      - label: "Clinician Type"
+        name: "clinician_type"
+        widget: "select"
+        options:
+          - "Therapist"
+          - "Residential Clinician"
+        default: "Therapist"
+        hint: "This determines which section of the Meet the Team page they appear in."
+      - { label: "Name", name: "title", widget: "string" }
+      - { label: "Credentials / Title", name: "role", widget: "string", hint: "e.g., LPC, LMFT" }
+      - { label: "Headshot", name: "image", widget: "image" }
+      - { label: "Short Bio (For the Card)", name: "short_bio", widget: "text", hint: "A 2-3 sentence teaser for the grid." }
+      - { label: "Full Bio", name: "body", widget: "markdown", hint: "The complete bio for their individual page." }
