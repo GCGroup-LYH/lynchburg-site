@@ -268,40 +268,81 @@
 
 {% elif block.type == 'team' %}
 
-{# 1. Sort the entire team collection by the CMS dropdown field #}
-{% set team_by_type = collections.team | groupby("data.clinician_type") %}
-
 <section class="team-block py-5 bg-light">
     <div class="container">
         <h2 class="text-center mb-5">{{ block.title | default('Our Therapists') }}</h2>
-        
-        {# --- TOP SECTION: FULL THERAPISTS --- #}
-        <div class="row g-4 justify-content-center">
-            {% for person in team_by_type["Therapist"] %}
-            <div class="col-md-6 col-lg-4">
-                <div class="card h-100 border-0 shadow-sm text-center p-4">
-                    {% if person.data.image %}
-                    <img src="{{ person.data.image }}" alt="{{ person.data.title }}" class="rounded-circle mx-auto mb-3 object-fit-cover shadow-sm" style="width: 140px; height: 140px;">
-                    {% endif %}
-                    
-                    <h3 class="h4 mb-1">{{ person.data.title }}</h3>
-                    
-                    {% if person.data.role %}
-                    <p class="text-primary fw-bold mb-3">{{ person.data.role }}</p>
-                    {% endif %}
-                    
-                    <p class="text-muted mb-4" style="font-size: 0.95rem;">{{ person.data.short_bio }}</p>
-                    
-                    {# Auto-generated link to their full bio page #}
-                    <div class="mt-auto">
-                        <a href="{{ person.url }}" class="text-decoration-none fw-bold text-success">
-                            Visit {{ person.data.title | split(" ") | first }}'s Page &rarr;
-                        </a>
+
+        {% if collections.team and collections.team.length > 0 %}
+            {# 1. Sort the entire team collection by the CMS dropdown field #}
+            {% set team_by_type = collections.team | groupby("data.clinician_type") %}
+
+            {# --- TOP SECTION: FULL THERAPISTS --- #}
+            <div class="row g-4 justify-content-center">
+                {% for person in team_by_type["Therapist"] %}
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-0 shadow-sm text-center p-4">
+                        {% if person.data.image %}
+                        <img src="{{ person.data.image }}" alt="{{ person.data.title }}" class="rounded-circle mx-auto mb-3 object-fit-cover shadow-sm" style="width: 140px; height: 140px;">
+                        {% endif %}
+                        
+                        <h3 class="h4 mb-1">{{ person.data.title }}</h3>
+                        
+                        {% if person.data.role %}
+                        <p class="text-primary fw-bold mb-3">{{ person.data.role }}</p>
+                        {% endif %}
+                        
+                        <p class="text-muted mb-4" style="font-size: 0.95rem;">{{ person.data.short_bio }}</p>
+                        
+                        <div class="mt-auto">
+                            <a href="{{ person.url }}" class="text-decoration-none fw-bold text-success">
+                                Visit {{ person.data.title | split(" ") | first }}'s Page &rarr;
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            {# --- BOTTOM SECTION: RESIDENT CLINICIANS (Only shows if they exist) --- #}
+            {% if team_by_type["Resident Clinician"] %}
+            <div class="row mt-5 mb-4">
+                <div class="col-12 text-center">
+                    <div class="p-4 rounded shadow-sm" style="background-color: #008080; color: white;">
+                        <h3 class="mb-2">Resident Clinicians</h3>
+                        <p class="mb-0">Our dedicated Resident Clinicians are under the supervision of our senior staff.</p>
                     </div>
                 </div>
             </div>
-            {% endfor %}
-        </div>
+
+            <div class="row g-4 justify-content-center">
+                {% for person in team_by_type["Resident Clinician"] %}
+                <div class="col-md-6 col-lg-4">
+                    {# This uses the same card design as above #}
+                    <div class="card h-100 border-0 shadow-sm text-center p-4">
+                        {% if person.data.image %}
+                        <img src="{{ person.data.image }}" alt="{{ person.data.title }}" class="rounded-circle mx-auto mb-3 object-fit-cover shadow-sm" style="width: 140px; height: 140px;">
+                        {% endif %}
+                        <h3 class="h4 mb-1">{{ person.data.title }}</h3>
+                        <p class="text-primary fw-bold mb-3">{{ person.data.role }}</p>
+                        <p class="text-muted mb-4" style="font-size: 0.95rem;">{{ person.data.short_bio }}</p>
+                        <div class="mt-auto">
+                            <a href="{{ person.url }}" class="text-decoration-none fw-bold text-success">
+                                Visit {{ person.data.title | split(" ") | first }}'s Page &rarr;
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+        {% else %}
+            {# --- FALLBACK: If no team members exist yet --- #}
+            <div class="text-center py-5">
+                <p class="lead text-muted">We are currently updating our staff directory. Please check back soon!</p>
+            </div>
+        {% endif %}
+        
     </div>
 </section>
 
