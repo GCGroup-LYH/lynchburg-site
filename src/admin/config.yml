@@ -279,9 +279,11 @@ _page_builder: &page_builder
           name: "section_bg"
           widget: "select"
           options:
-            - { label: "Subtle Green/Light", value: "bg-light" }
+            - { label: "Soft Gray (Light)", value: "bg-light" }
             - { label: "White", value: "bg-white" }
-            - { label: "Brand Primary", value: "bg-primary" }
+            - { label: "Teal", value: "bg-warning" }
+            - { label: "Dark Green", value: "bg-danger" }
+            - { label: "Dark/Black", value: "bg-dark" }
           default: "bg-light"
 
         # 2. PILL INNER COLOR
@@ -290,7 +292,8 @@ _page_builder: &page_builder
           widget: "select"
           options:
             - { label: "White", value: "bg-white" }
-            - { label: "Brand Primary", value: "bg-primary" }
+            - { label: "Teal", value: "bg-warning" }
+            - { label: "Dark Green", value: "bg-danger" }
             - { label: "Transparent", value: "bg-transparent" }
           default: "bg-white"
           
@@ -299,21 +302,22 @@ _page_builder: &page_builder
           name: "pill_border"
           widget: "select"
           options:
-            - { label: "Brand Primary", value: "border-primary" }
-            - { label: "Brand Secondary", value: "border-secondary" }
+            - { label: "Teal", value: "border-warning" }
+            - { label: "Dark Green", value: "border-danger" }
+            - { label: "White", value: "border-white" }
             - { label: "No Border", value: "border-0" }
-          default: "border-primary"
+          default: "border-warning"
           
         # 4. PILL TEXT COLOR
         - label: "Pill Text Color"
           name: "pill_text"
           widget: "select"
           options:
-            - { label: "Brand Primary", value: "text-primary" }
-            - { label: "Brand Secondary", value: "text-secondary" }
+            - { label: "Teal", value: "text-warning" }
+            - { label: "Dark Green", value: "text-danger" }
             - { label: "White", value: "text-white" }
             - { label: "Dark Text", value: "text-dark" }
-          default: "text-primary"
+          default: "text-warning"
           
         # --- THE GRID ITEMS ---
         - label: "Modalities List"
