@@ -13,26 +13,33 @@ _brand_palette: &brand_palette
   options:
     - { label: "Standard (Adapts to Light/Dark)", value: "bg-body text-body" }
     - { label: "Subtle Contrast (Adapts to Light/Dark)", value: "bg-body-tertiary text-body" }
-    - { label: "Brand Blue (Primary)", value: "bg-primary text-white" }
-    - { label: "Brand Teal (Secondary)", value: "bg-secondary text-white" }
-    - { label: "Earthy Green (Dark)", value: "bg-dark text-white" }
+    - { label: "Brand Blue", value: "bg-primary text-white" }
+    # Teal is actually $warning in your SCSS
+    - { label: "Brand Teal", value: "bg-warning text-white" } 
+    # Earthy/Forest Green is actually $danger in your SCSS
+    - { label: "Earthy Green", value: "bg-danger text-white" }
     - { label: "Soft Blue (Info)", value: "bg-info text-dark" }
-    - { label: "Brand Light Gray", value: "bg-brand-gray-light text-dark" }
-    - { label: "Brand Dark Gray", value: "bg-brand-gray-dark text-white" }
+    # Soft Gray is $light in your SCSS
+    - { label: "Soft Gray", value: "bg-light text-dark" }
+    # Neutral Dark Gray is $secondary in your SCSS
+    - { label: "Neutral Dark Gray", value: "bg-secondary text-white" }
   default: "bg-body text-body"
 
-  # 2. YOUR TEXT/ICON PALETTE ANCHOR
 _text_palette: &text_palette
-  label: "Icon Color"
+  label: "Icon/Text Color"
   name: "icon_color"
   widget: "select"
   options:
-    - { label: "Brand Blue (Primary)", value: "text-primary" }
-    - { label: "Brand Teal (Secondary)", value: "text-secondary" }
+    - { label: "Brand Blue", value: "text-primary" }
+    # Teal mapped to warning
+    - { label: "Brand Teal", value: "text-warning" }
+    # Earthy Green mapped to danger
+    - { label: "Earthy Green", value: "text-danger" }
     - { label: "Soft Blue (Info)", value: "text-info" }
-    - { label: "Earthy Green (Dark)", value: "text-dark" }
-    - { label: "Brand Light Gray", value: "text-secondary" } # Using secondary as a safe fallback
-    - { label: "Brand Dark Gray", value: "text-dark" }
+    # Soft Gray mapped to light
+    - { label: "Soft Gray", value: "text-light" } 
+    # Dark Gray mapped to secondary
+    - { label: "Neutral Dark Gray", value: "text-secondary" }
     - { label: "White (For dark backgrounds)", value: "text-white" }
   default: "text-primary"
   required: false
