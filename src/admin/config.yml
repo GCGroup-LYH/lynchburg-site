@@ -51,61 +51,26 @@ _page_builder: &page_builder
   widget: "list"
   summary: '{{fields.headline}}{{fields.title}}{{fields.heading}} ({{type}})'
   types:
-    - label: "Hero Section"
-      name: "hero"
+    - label: "Home Hero (Centered Lottie)"
+      name: "hero_home"
+      widget: "object"
+      fields:
+        - { label: "Lottie File", name: "lottie_file", widget: "file", hint: "Upload the .json file for your line art animation." }
+        - { label: "Primary Button Text", name: "btn_1_text", widget: "string", default: "Meet Our Team" }
+        - { label: "Primary Button Link", name: "btn_1_link", widget: "string", default: "/team" }
+        - { label: "Secondary Button Text", name: "btn_2_text", widget: "string", default: "Learn More" }
+        - { label: "Secondary Button Link", name: "btn_2_link", widget: "string", default: "/about" }
+        - *brand_palette
+
+    - label: "Inner Page Hero (Standard)"
+      name: "hero_inner"
       widget: "object"
       fields:
         - { label: "Headline", name: "headline", widget: "string" }
-        - { label: "Sub-headline", name: "subtext", widget: "text" }
-            
-        # --- BACKGROUND OPTIONS ---
+        - { label: "Subtext", name: "subtext", widget: "text", required: false }
         - { label: "Background Image", name: "bg_image", widget: "image", required: false }
-        - { label: "Image Description (Alt Text)", name: "alt", widget: "string", required: true }
-            
-        - label: "Background Color (If no image)"
-          name: "bg_color"
-          widget: "select"
-          options:
-            - { label: "Standard White", value: "#ffffff" }
-            - { label: "Subtle Contrast (Light Gray)", value: "#f8f9fa" }
-            - { label: "Brand Blue (Primary)", value: "#0d6efd" }
-            - { label: "Brand Teal (Secondary)", value: "#20c997" }
-            - { label: "Earthy Green (Dark)", value: "#198754" }
-            - { label: "Soft Blue (Info)", value: "#0dcaf0" }
-            - { label: "Brand Light Gray", value: "#e9ecef" }
-            - { label: "Brand Dark Gray", value: "#212529" }
-          default: "#ffffff"
-
-        - label: "Text Color Theme"
-          name: "text_theme"
-          widget: "select"
-          options:
-            - { label: "Dark Text (For light backgrounds)", value: "text-dark" }
-            - { label: "Light Text (For dark backgrounds)", value: "text-white" }
-          default: "text-dark"
-
-        # --- BUTTON OPTIONS ---
-        - { label: "Button Text", name: "btn_text", widget: "string", default: "Get Started" }
-        - { label: "Button Link", name: "btn_link", widget: "string", default: "/contact" }
-            
-        - label: "Button Background Color"
-          name: "btn_bg_color"
-          widget: "select"
-          options:
-            - { label: "Brand Blue (Primary)", value: "#0d6efd" }
-            - { label: "Brand Teal (Secondary)", value: "#20c997" }
-            - { label: "Earthy Green (Dark)", value: "#198754" }
-            - { label: "Brand Dark Gray", value: "#212529" }
-          default: "#0d6efd"
-
-        - label: "Button Text Color"
-          name: "btn_txt_color"
-          widget: "select"
-          options:
-            - { label: "White", value: "#ffffff" }
-            - { label: "Dark Gray", value: "#212529" }
-            - { label: "Light Gray", value: "#f8f9fa" }
-          default: "#ffffff"
+        - *brand_palette
+        - *text_palette
         
     - label: "Text & Image Split"
       name: "split_block"

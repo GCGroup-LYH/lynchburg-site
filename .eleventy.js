@@ -6,6 +6,8 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
   
   eleventyConfig.addPassthroughCopy("src/admin");
+
+  eleventyConfig.addPassthroughCopy("src/assets/uploads");
   
 
   const md = new markdownIt({
