@@ -141,19 +141,11 @@ _page_builder: &page_builder
                   - { label: "Question", name: "question", widget: "string" }
                   - { label: "Answer", name: "answer", widget: "text" }
 
-    - label: "Team Bios"
+    - label: "Meet the Team Grid"
       name: "team"
       widget: "object"
       fields:
-              - { label: "Section Title", name: "title", widget: "string", default: "Meet Our Therapists" }
-              - label: "Team Members"
-                name: "member_list"
-                widget: "list"
-                fields:
-                  - { label: "Headshot", name: "image", widget: "image", required: false, hint: "Use square images for the best results." }
-                  - { label: "Name", name: "name", widget: "string" }
-                  - { label: "Credentials (e.g., LCSW, PsyD)", name: "credentials", widget: "string", required: false }
-                  - { label: "Bio", name: "bio", widget: "text" }
+        - { label: "Section Title", name: "title", widget: "string", default: "Our Therapists" }
 
     - label: "Rates & Insurance"
       name: "rates"

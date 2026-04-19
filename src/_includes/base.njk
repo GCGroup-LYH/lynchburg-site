@@ -267,25 +267,87 @@
 </section>
 
 {% elif block.type == 'team' %}
+
+{# 1. Sort the entire team collection by the CMS dropdown field #}
+{% set team_by_type = collections.team | groupby("data.clinician_type") %}
+
 <section class="team-block py-5 bg-light">
     <div class="container">
-        <h2 class="text-center mb-5">{{ block.title }}</h2>
+        <h2 class="text-center mb-5">{{ block.title | default('Our Therapists') }}</h2>
+        
+        {# --- TOP SECTION: FULL THERAPISTS --- #}
         <div class="row g-4 justify-content-center">
-            {% for member in block.member_list %}
+            {% for person in team_by_type["Therapist"] %}
             <div class="col-md-6 col-lg-4">
                 <div class="card h-100 border-0 shadow-sm text-center p-4">
-                    {% if member.image %}
-                    <img src="{{ member.image }}" alt="{{ member.name }}" class="rounded-circle mx-auto mb-3 object-fit-cover shadow-sm" style="width: 140px; height: 140px;">
+                    {% if person.data.image %}
+                    <img src="{{ person.data.image }}" alt="{{ person.data.title }}" class="rounded-circle mx-auto mb-3 object-fit-cover shadow-sm" style="width: 140px; height: 140px;">
                     {% endif %}
-                    <h3 class="h4 mb-1">{{ member.name }}</h3>
-                    {% if member.credentials %}<p class="text-primary fw-bold mb-3">{{ member.credentials }}</p>{% endif %}
-                    <p class="text-muted mb-0" style="font-size: 0.95rem;">{{ member.bio }}</p>
+                    
+                    <h3 class="h4 mb-1">{{ person.data.title }}</h3>
+                    
+                    {% if person.data.role %}
+                    <p class="text-primary fw-bold mb-3">{{ person.data.role }}</p>
+                    {% endif %}
+                    
+                    <p class="text-muted mb-4" style="font-size: 0.95rem;">{{ person.data.short_bio }}</p>
+                    
+                    {# Auto-generated link to their full bio page #}
+                    <div class="mt-auto">
+                        <a href="{{ person.url }}" class="text-decoration-none fw-bold text-success">
+                            Visit {{ person.data.title | split(" ") | first }}'s Page &rarr;
+                        </a>
+                    </div>
                 </div>
             </div>
             {% endfor %}
         </div>
     </div>
 </section>
+
+{# --- BOTTOM SECTION: RESIDENTS (CONDITIONAL) --- #}
+{% if team_by_type["Residential Clinician"] and team_by_type["Residential Clinician"].length > 0 %}
+    
+    {# The Teal Divider matching your Figma #}
+    {# Note: Update the background color variable if you have a specific custom class for that teal #}
+    <section class="py-5 text-center text-white" style="background-color: #3b8e88;"> 
+        <div class="container">
+            <h2 class="fw-bold mb-2">Residential Clinicians</h2>
+            <p class="lead mb-0 opacity-75" style="font-size: 1.1rem;">Supervised student clinicians completing their graduate training under licensed supervision.</p>
+        </div>
+    </section>
+
+    {# The Resident Grid #}
+    <section class="team-residents-block py-5 bg-light">
+        <div class="container">
+            <div class="row g-4 justify-content-center">
+                {% for person in team_by_type["Residential Clinician"] %}
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-0 shadow-sm text-center p-4">
+                        {% if person.data.image %}
+                        <img src="{{ person.data.image }}" alt="{{ person.data.title }}" class="rounded-circle mx-auto mb-3 object-fit-cover shadow-sm" style="width: 140px; height: 140px;">
+                        {% endif %}
+                        
+                        <h3 class="h4 mb-1">{{ person.data.title }}</h3>
+                        
+                        {% if person.data.role %}
+                        <p class="text-primary fw-bold mb-3">{{ person.data.role }}</p>
+                        {% endif %}
+                        
+                        <p class="text-muted mb-4" style="font-size: 0.95rem;">{{ person.data.short_bio }}</p>
+                        
+                        <div class="mt-auto">
+                            <a href="{{ person.url }}" class="text-decoration-none fw-bold text-success">
+                                Visit {{ person.data.title | split(" ") | first }}'s Page &rarr;
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endif %}
 
 {% elif block.type == 'rates' %}
 <section class="rates-block py-5">
