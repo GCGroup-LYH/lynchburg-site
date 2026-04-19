@@ -488,33 +488,34 @@
                     </section>
 
                     {% elif block.type == "modalities" %}
-    <section class="modalities-block py-5 bg-light-subtle rounded-4 my-4">
-        <div class="container text-center">
-            {% if block.title %}
-                <h2 class="mb-3">{{ block.title }}</h2>
-            {% endif %}
-            
-            {% if block.subtitle %}
-                <p class="lead mb-5 text-muted">{{ block.subtitle }}</p>
-            {% endif %}
-            
-            <div class="row g-4 justify-content-center">
-                {% for modality in block.modality_list %}
-                    <div class="col-md-6 col-lg-3">
-                        <div class="card h-100 border-0 shadow-sm text-center p-4">
-                            {% if modality.icon %}
-                                <div class="display-4 text-primary mb-3">
-                                    <i class="bi {{ modality.icon }}"></i>
+                {# 1. Section Background applied here #}
+                <section class="py-5 {{ block.section_bg | default('bg-light') }}">
+                    <div class="container">
+                        {% if block.title %}
+                            <h2 class="mb-5 fw-semibold text-dark">{{ block.title }}</h2>
+                        {% endif %}
+                        
+                        <div class="row g-3 justify-content-center ms-lg-5">
+                            {% for item in block.modality_list %}
+                            <div class="col-6 col-md-4 col-lg-3 d-flex">
+                                
+                                {# 2, 3, 4. Pill classes injected dynamically #}
+                                <div class="w-100 p-3 text-center d-flex align-items-center justify-content-center border {{ block.pill_bg | default('bg-white') }} {{ block.pill_border | default('border-primary') }} {{ block.pill_text | default('text-primary') }}" 
+                                     style="
+                                        border-radius: 8px;
+                                        font-size: 0.95rem;
+                                        font-weight: 500;
+                                        min-height: 80px;
+                                        transition: all 0.2s ease-in-out;
+                                     ">
+                                    {{ item.name }}
                                 </div>
-                            {% endif %}
-                            <h3 class="h5 card-title">{{ modality.name }}</h3>
-                            <p class="card-text text-muted small">{{ modality.summary }}</p>
+                                
+                            </div>
+                            {% endfor %}
                         </div>
                     </div>
-                {% endfor %}
-            </div>
-        </div>
-    </section>
+                </section>
 
                 {% endif %}
             {% endfor %}

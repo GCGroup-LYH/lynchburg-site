@@ -272,19 +272,56 @@ _page_builder: &page_builder
       name: "modalities"
       widget: "object"
       fields:
-        - { label: "Section Title", name: "title", widget: "string", default: "Our Therapeutic Approaches" }
-        - { label: "Subtitle", name: "subtitle", widget: "text", default: "We utilize evidence-based practices tailored to your unique needs and goals.", required: false }
+        - { label: "Section Title", name: "title", widget: "string", default: "Therapeutic Approaches" }
+        
+        # 1. SECTION BACKGROUND
+        - label: "Section Background"
+          name: "section_bg"
+          widget: "select"
+          options:
+            - { label: "Subtle Green/Light", value: "bg-light" }
+            - { label: "White", value: "bg-white" }
+            - { label: "Brand Primary", value: "bg-primary" }
+          default: "bg-light"
+
+        # 2. PILL INNER COLOR
+        - label: "Pill Background Color"
+          name: "pill_bg"
+          widget: "select"
+          options:
+            - { label: "White", value: "bg-white" }
+            - { label: "Brand Primary", value: "bg-primary" }
+            - { label: "Transparent", value: "bg-transparent" }
+          default: "bg-white"
+          
+        # 3. PILL OUTLINE
+        - label: "Pill Border Color"
+          name: "pill_border"
+          widget: "select"
+          options:
+            - { label: "Brand Primary", value: "border-primary" }
+            - { label: "Brand Secondary", value: "border-secondary" }
+            - { label: "No Border", value: "border-0" }
+          default: "border-primary"
+          
+        # 4. PILL TEXT COLOR
+        - label: "Pill Text Color"
+          name: "pill_text"
+          widget: "select"
+          options:
+            - { label: "Brand Primary", value: "text-primary" }
+            - { label: "Brand Secondary", value: "text-secondary" }
+            - { label: "White", value: "text-white" }
+            - { label: "Dark Text", value: "text-dark" }
+          default: "text-primary"
+          
+        # --- THE GRID ITEMS ---
         - label: "Modalities List"
           name: "modality_list"
           widget: "list"
+          summary: '{{fields.name}}'
           fields:
-            - label: "Bootstrap Icon Name"
-              name: "icon"
-              widget: "string"
-              hint: "Go to https://icons.getbootstrap.com. Type name here (e.g., bi-brain, bi-flower1). Leave blank for no icon."
-              required: false
             - { label: "Modality Name", name: "name", widget: "string" }
-            - { label: "Summary", name: "summary", widget: "text" }
 
 # Ensure these match your actual folder names in src/assets
 media_folder: "src/assets/images" 
