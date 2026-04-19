@@ -356,12 +356,14 @@ collections:
             widget: "select"
             required: false
             options:
-              - { label: "Solid Primary", value: "btn-primary" }
-              - { label: "Solid Dark", value: "btn-dark" }
-              - { label: "Solid Info (Light Blue)", value: "btn-info" }
-              - { label: "Outline Primary", value: "btn-outline-primary" }
-              - { label: "Outline Dark", value: "btn-outline-dark" }
-            default: "btn-primary"
+              - { label: "Earthy Green (Solid)", value: "btn-danger text-white" }
+              - { label: "Teal (Solid)", value: "btn-warning text-white" }
+              - { label: "Main Brand Blue (Solid)", value: "btn-primary text-white" }
+              - { label: "Neutral Dark Gray (Solid)", value: "btn-secondary text-white" }
+              - { label: "Outline Earthy Green", value: "btn-outline-danger" }
+              - { label: "Outline Teal", value: "btn-outline-warning" }
+              - { label: "Outline Brand Blue", value: "btn-outline-primary" }
+            default: "btn-danger text-white"
           - { label: "Contact Email", name: "contactEmail", widget: "string" }
           - { label: "Phone Number", name: "phone", widget: "string" }
           - label: "Navigation Menu"
@@ -379,6 +381,17 @@ collections:
               - { label: "Link Text", name: "text", widget: "string" }
               - { label: "URL", name: "url", widget: "string" }
           - { label: "Footer Text", name: "footer_text", widget: "string", default: "Located in Lynchburg, VA" }
+          - label: "Footer Background Theme"
+            name: "footer_theme"
+            widget: "select"
+            options:
+              - { label: "Standard (Adapts to Light/Dark)", value: "bg-body text-body" }
+              - { label: "Earthy Green", value: "bg-danger text-white" }
+              - { label: "Teal", value: "bg-warning text-white" }
+              - { label: "Brand Blue", value: "bg-primary text-white" }
+              - { label: "Neutral Dark Gray", value: "bg-secondary text-white" }
+              - { label: "Soft Gray", value: "bg-light text-dark" }
+            default: "bg-danger text-white"
 
           - label: "Social Media Links"
             name: "social_links"

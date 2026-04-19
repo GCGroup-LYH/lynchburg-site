@@ -522,7 +522,7 @@
         {% endif %}
     </main>
 
-    <footer class="bg-dark text-white py-5 mt-auto">
+    <footer class="py-5 {{ site.footer_theme | default('bg-danger text-white') }}">
         <div class="container text-center">
             
             {% if site.footer_links %}
