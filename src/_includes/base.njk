@@ -131,42 +131,77 @@
                 {% elif block.type == "features" %}
                 <section class="features-block py-5 {{ block.section_theme | default('bg-body') }}">
                     <div class="container">
-                    {% if block.title %}
-                        <h2 class="text-center mb-5">{{ block.title }}</h2>
-                    {% endif %}
-      
-                    <div class="row g-4">
-                        {% for card in block.card_list %}
-                    <div class="col-md-4">
-                        <div class="card h-100 border-0 shadow-sm text-center p-4">
-              
-                                {# NEW BULLETPROOF ICON LOGIC #}
-                        {% if card.icon %}
-                            {% set colorClass = card.icon_color | default('text-primary') %}
-    
-                         {# Map the CMS class name directly to the core Bootstrap CSS variable #}
-                            {% set hexColor = "var(--bs-primary)" %}
-                            {% if colorClass == 'text-secondary' %}{% set hexColor = "var(--bs-secondary)" %}{% endif %}
-                            {% if colorClass == 'text-info' %}{% set hexColor = "var(--bs-info)" %}{% endif %}
-                            {% if colorClass == 'text-dark' %}{% set hexColor = "var(--bs-dark)" %}{% endif %}
-                            {% if colorClass == 'text-white' %}{% set hexColor = "#ffffff" %}{% endif %}
-
-                            <div class="mb-3">
-                            <i class="bi {{ card.icon }} display-4" 
-                            style="color: {{ hexColor }} !important;" 
-                            aria-hidden="true"></i>
-                            </div>
+                        {% if block.title %}
+                            <h2 class="text-center mb-5 fw-semibold" style="color: #3b5249;">{{ block.title }}</h2>
                         {% endif %}
-              
-                            <h3 class="h5">{{ card.name }}</h3>
-                            <div class="card-text text-muted">
-                                {{ card.desc | safe if card.desc else "" }}
+                        
+                        {# col-lg-3 creates the 4-column layout from your Figma design #}
+                        <div class="row g-4 justify-content-center">
+                            {% for card in block.card_list %}
+                            <div class="col-md-6 col-lg-3">
+                                
+                                {# The Wrapper bounds the grid space #}
+                                <div class="card-wrapper position-relative h-100">
+                                    
+                                    {# 1. THE GHOST: Invisible structure to keep the row height from collapsing #}
+                                    <div class="card border-0 p-4 invisible h-100">
+                                        <h3 class="h6 mb-2">{{ card.name }}</h3>
+                                        <p class="card-text small mb-0">{{ card.desc }}</p>
+                                    </div>
+
+                                    {# 2. THE REAL CARD: Positioned over the ghost, allowed to grow on hover #}
+                                    <div class="card border-0 shadow-sm p-4 hover-expand-card position-absolute top-0 start-0 w-100" style="border-radius: 10px;">
+                                        <h3 class="h6 mb-3 fw-semibold text-dark">{{ card.name }}</h3>
+                                        <p class="card-text text-muted small mb-0 lh-sm">{{ card.desc }}</p>
+                                        
+                                        {% if card.expanded_desc %}
+                                        <div class="expanded-content">
+                                            <div class="expanded-inner">
+                                                <hr class="my-3 opacity-25">
+                                                <p class="card-text text-muted small mb-0 lh-sm">{{ card.expanded_desc }}</p>
+                                            </div>
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                    
+                                </div>
                             </div>
-                            </div>
+                            {% endfor %}
                         </div>
-                        {% endfor %}
                     </div>
-                    </div>
+
+                    <style>
+                        /* Base card styling */
+                        .hover-expand-card {
+                            height: 100%; /* Matches ghost height initially */
+                            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+                            z-index: 1;
+                            background: #ffffff;
+                        }
+                        
+                        /* The CSS Grid animation trick for smooth expanding text */
+                        .expanded-content {
+                            display: grid;
+                            grid-template-rows: 0fr;
+                            transition: grid-template-rows 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+                            overflow: hidden;
+                        }
+                        .expanded-inner {
+                            min-height: 0; /* Required for the grid animation to work */
+                        }
+                        
+                        /* HOVER MAGIC */
+                        .card-wrapper:hover .hover-expand-card {
+                            height: auto; /* Allows it to break out of its container */
+                            min-height: 100%;
+                            z-index: 10;
+                            box-shadow: 0 1rem 2.5rem rgba(0,0,0,0.12) !important;
+                            transform: scale(1.03); /* Subtle pop forward */
+                        }
+                        .card-wrapper:hover .expanded-content {
+                            grid-template-rows: 1fr; /* Opens the hidden text drawer */
+                        }
+                    </style>
                 </section>
 
                  
