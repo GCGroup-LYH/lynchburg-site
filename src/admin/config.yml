@@ -374,18 +374,11 @@ collections:
           - { label: "SEO Title", name: "title", widget: "string", default: "About Us" }
           - *page_builder
 
-      - label: "Services"
-        name: "services"
-        file: "src/services.njk"
+      - label: "Meet the Team"
+        name: "team"
+        file: "src/team.njk"
         fields:
           - { label: "SEO Title", name: "title", widget: "string", default: "Services" }
-          - *page_builder
-
-      - label: "FAQ"
-        name: "faq"
-        file: "src/faq.njk"
-        fields:
-          - { label: "SEO Title", name: "title", widget: "string", default: "FAQ" }
           - *page_builder
 
       - label: "Contact"

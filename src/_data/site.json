@@ -12,21 +12,18 @@
       "url": "/"
     },
     {
-      "text": "About",
+      "text": "About Us",
       "url": "/about/"
     },
     {
-      "text": "Services",
-      "url": "/services/"
-    },
-    {
-      "text": "FAQ",
-      "url": "/faq/"
+      "text": "Meet the Team",
+      "url": "/team/"
     },
     {
       "text": "Contact",
       "url": "/contact/"
     }
+
   ],
   "footer_links": [
     {
