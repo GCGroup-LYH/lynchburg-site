@@ -444,3 +444,12 @@ collections:
       - { label: "Headshot", name: "image", widget: "image" }
       - { label: "Short Bio (For the Card)", name: "short_bio", widget: "text", hint: "A 2-3 sentence teaser for the grid." }
       - { label: "Full Bio", name: "body", widget: "markdown", hint: "The complete bio for their individual page." }
+      - { label: "Card Quote", name: "quote", widget: "text", hint: "The teal quote that appears on the therapist's card." }
+      - { label: "Direct Email", name: "email", widget: "string", hint: "Where should the contact form on their bio page send emails?" }
+      
+      # The individual list of approaches for this specific therapist
+      - label: "Therapeutic Approaches"
+        name: "approaches"
+        widget: "list"
+        summary: '{{fields.approach}}'
+        field: { label: "Approach", name: "approach", widget: "string" }

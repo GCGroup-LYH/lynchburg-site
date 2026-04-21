@@ -11973,4 +11973,103 @@ section {
   color: #ffffff !important;
 }
 
+/* Therapist Card Styling */
+.therapist-card {
+    border: 1px solid #e2ebd9; /* Very soft green border */
+    border-radius: 16px;
+    background-color: #ffffff;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.therapist-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.08) !important;
+}
+
+.therapist-photo {
+    height: 260px; /* Forces uniform image heights */
+    width: 100%;
+    object-fit: cover;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.therapist-quote {
+    color: #3b8280; /* Teal/Green color from your mockup */
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.therapist-divider {
+    border-top: 1px solid #3b8280;
+    opacity: 0.3;
+    margin: 1rem 0;
+}
+
+.therapist-link {
+    color: #92c04d; /* The bright green link color */
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.therapist-link:hover {
+    color: #72963a;
+}
+
+/* Bio Page Specific Styles */
+.bio-page-image {
+    border: 1.5px solid #3b8e88; /* Matches the green border in your mockup */
+    border-radius: 12px;
+    object-fit: cover;
+    width: 100%;
+}
+
+/* Therapeutic Approach Pills */
+.approach-pill {
+    padding: 0.6rem 1.5rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-align: center;
+    border-width: 1px;
+    border-style: solid;
+    transition: all 0.2s ease;
+}
+
+/* Minimalist Form Inputs */
+.minimal-input {
+    border: none;
+    border-bottom: 1px solid #b0b0b0;
+    border-radius: 0;
+    background-color: transparent;
+    padding: 0.75rem 0;
+    font-size: 1rem;
+    width: 100%;
+    color: #333;
+}
+
+.minimal-input:focus {
+    outline: none;
+    border-bottom-color: #3b8e88;
+    box-shadow: none;
+}
+
+/* Form Submit Button */
+.btn-dark-green {
+    background-color: #2c5e3b; /* Dark green from your mockup */
+    color: #fff;
+    border-radius: 6px;
+    padding: 0.75rem 2rem;
+    font-weight: 500;
+    border: none;
+    transition: background-color 0.2s;
+}
+
+.btn-dark-green:hover {
+    background-color: #1e4229;
+    color: #fff;
+}
+
 /*# sourceMappingURL=main.css.map */

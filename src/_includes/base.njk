@@ -279,57 +279,80 @@
             {# --- TOP SECTION: FULL THERAPISTS --- #}
             <div class="row g-4 justify-content-center">
                 {% for person in team_by_type["Therapist"] %}
-                <div class="col-md-6 col-lg-4">
-                    <div class="card h-100 border-0 shadow-sm text-center p-4">
+                <div class="col-md-6 col-lg-5"> {# Slightly constrained width for perfect proportions #}
+                    <div class="card therapist-card h-100 border-0 shadow-sm">
+                        
                         {% if person.data.image %}
-                        <img src="{{ person.data.image }}" alt="{{ person.data.title }}" class="rounded-circle mx-auto mb-3 object-fit-cover shadow-sm" style="width: 140px; height: 140px;">
+                        <img src="{{ person.data.image }}" alt="{{ person.data.title }}" class="therapist-photo">
                         {% endif %}
                         
-                        <h3 class="h4 mb-1">{{ person.data.title }}</h3>
-                        
-                        {% if person.data.role %}
-                        <p class="text-primary fw-bold mb-3">{{ person.data.role }}</p>
-                        {% endif %}
-                        
-                        <p class="text-muted mb-4" style="font-size: 0.95rem;">{{ person.data.short_bio }}</p>
-                        
-                        <div class="mt-auto">
-                            <a href="{{ person.url }}" class="text-decoration-none fw-bold text-success">
-                                Visit {{ person.data.title | split(" ") | first }}'s Page &rarr;
-                            </a>
+                        {# text-start aligns the text to the left like your Figma #}
+                        <div class="card-body d-flex flex-column p-4 text-start">
+                            
+                            {% if person.data.quote %}
+                            <p class="therapist-quote mb-0">"{{ person.data.quote }}"</p>
+                            <hr class="therapist-divider">
+                            {% endif %}
+                            
+                            <h3 class="h4 mb-0 fw-bold">{{ person.data.title }}</h3>
+                            <p class="text-dark small fw-semibold mb-3">{{ person.data.credentials }}</p>
+                            
+                            <p class="text-muted" style="font-size: 0.95rem;">
+                                {{ person.data.short_bio }}
+                            </p>
+                            
+                            <div class="mt-auto pt-3">
+                                <a href="{{ person.url }}" class="therapist-link">
+                                    Meet {{ person.data.title | split(" ") | first }} &rarr;
+                                </a>
+                            </div>
                         </div>
+
                     </div>
                 </div>
                 {% endfor %}
             </div>
 
-            {# --- BOTTOM SECTION: RESIDENT CLINICIANS (Only shows if they exist) --- #}
-            {% if team_by_type["Resident Clinician"] %}
-            <div class="row mt-5 mb-4">
-                <div class="col-12 text-center">
-                    <div class="p-4 rounded shadow-sm" style="background-color: #008080; color: white;">
-                        <h3 class="mb-2">Resident Clinicians</h3>
-                        <p class="mb-0">Our dedicated Resident Clinicians are under the supervision of our senior staff.</p>
-                    </div>
+            {# --- BOTTOM SECTION: RESIDENT CLINICIANS (CONDITIONAL) --- #}
+            {% if team_by_type["Resident Clinician"] and team_by_type["Resident Clinician"].length > 0 %}
+            
+            <div class="row mt-5 mb-4 justify-content-center">
+                <div class="col-12 text-center text-white p-5 rounded shadow-sm" style="background-color: #3b8e88;">
+                    <h2 class="fw-bold mb-2">Resident Clinicians</h2>
+                    <p class="lead mb-0 opacity-75" style="font-size: 1.1rem;">Supervised student clinicians completing their graduate training under licensed supervision.</p>
                 </div>
             </div>
 
             <div class="row g-4 justify-content-center">
                 {% for person in team_by_type["Resident Clinician"] %}
-                <div class="col-md-6 col-lg-4">
-                    {# This uses the same card design as above #}
-                    <div class="card h-100 border-0 shadow-sm text-center p-4">
+                <div class="col-md-6 col-lg-5">
+                    <div class="card therapist-card h-100 border-0 shadow-sm">
+                        
                         {% if person.data.image %}
-                        <img src="{{ person.data.image }}" alt="{{ person.data.title }}" class="rounded-circle mx-auto mb-3 object-fit-cover shadow-sm" style="width: 140px; height: 140px;">
+                        <img src="{{ person.data.image }}" alt="{{ person.data.title }}" class="therapist-photo">
                         {% endif %}
-                        <h3 class="h4 mb-1">{{ person.data.title }}</h3>
-                        <p class="text-primary fw-bold mb-3">{{ person.data.role }}</p>
-                        <p class="text-muted mb-4" style="font-size: 0.95rem;">{{ person.data.short_bio }}</p>
-                        <div class="mt-auto">
-                            <a href="{{ person.url }}" class="text-decoration-none fw-bold text-success">
-                                Visit {{ person.data.title | split(" ") | first }}'s Page &rarr;
-                            </a>
+                        
+                        <div class="card-body d-flex flex-column p-4 text-start">
+                            
+                            {% if person.data.quote %}
+                            <p class="therapist-quote mb-0">"{{ person.data.quote }}"</p>
+                            <hr class="therapist-divider">
+                            {% endif %}
+                            
+                            <h3 class="h4 mb-0 fw-bold">{{ person.data.title }}</h3>
+                            <p class="text-dark small fw-semibold mb-3">{{ person.data.credentials }}</p>
+                            
+                            <p class="text-muted" style="font-size: 0.95rem;">
+                                {{ person.data.short_bio }}
+                            </p>
+                            
+                            <div class="mt-auto pt-3">
+                                <a href="{{ person.url }}" class="therapist-link">
+                                    Meet {{ person.data.title | split(" ") | first }} &rarr;
+                                </a>
+                            </div>
                         </div>
+
                     </div>
                 </div>
                 {% endfor %}
@@ -345,50 +368,6 @@
         
     </div>
 </section>
-
-{# --- BOTTOM SECTION: RESIDENTS (CONDITIONAL) --- #}
-{% if team_by_type["Residential Clinician"] and team_by_type["Residential Clinician"].length > 0 %}
-    
-    {# The Teal Divider matching your Figma #}
-    {# Note: Update the background color variable if you have a specific custom class for that teal #}
-    <section class="py-5 text-center text-white" style="background-color: #3b8e88;"> 
-        <div class="container">
-            <h2 class="fw-bold mb-2">Residential Clinicians</h2>
-            <p class="lead mb-0 opacity-75" style="font-size: 1.1rem;">Supervised student clinicians completing their graduate training under licensed supervision.</p>
-        </div>
-    </section>
-
-    {# The Resident Grid #}
-    <section class="team-residents-block py-5 bg-light">
-        <div class="container">
-            <div class="row g-4 justify-content-center">
-                {% for person in team_by_type["Residential Clinician"] %}
-                <div class="col-md-6 col-lg-4">
-                    <div class="card h-100 border-0 shadow-sm text-center p-4">
-                        {% if person.data.image %}
-                        <img src="{{ person.data.image }}" alt="{{ person.data.title }}" class="rounded-circle mx-auto mb-3 object-fit-cover shadow-sm" style="width: 140px; height: 140px;">
-                        {% endif %}
-                        
-                        <h3 class="h4 mb-1">{{ person.data.title }}</h3>
-                        
-                        {% if person.data.role %}
-                        <p class="text-primary fw-bold mb-3">{{ person.data.role }}</p>
-                        {% endif %}
-                        
-                        <p class="text-muted mb-4" style="font-size: 0.95rem;">{{ person.data.short_bio }}</p>
-                        
-                        <div class="mt-auto">
-                            <a href="{{ person.url }}" class="text-decoration-none fw-bold text-success">
-                                Visit {{ person.data.title | split(" ") | first }}'s Page &rarr;
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-        </div>
-    </section>
-{% endif %}
 
 {% elif block.type == 'rates' %}
 <section class="rates-block py-5">
