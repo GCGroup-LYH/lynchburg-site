@@ -49,7 +49,7 @@ layout: base.njk
 
 {# --- FULL WIDTH TEAL BANNER --- #}
 <div class="container-fluid py-4 text-center text-white" style="background-color: #3b8e88;">
-    <h2 class="fw-semibold m-0">Schedule a Session With {{ title | split(" ") | first }}</h2>
+    <h2 class="fw-semibold m-0">Schedule a Session With {{ title.split(" ")[0] }}</h2>
 </div>
 
 {# --- MINIMALIST CONTACT FORM --- #}
