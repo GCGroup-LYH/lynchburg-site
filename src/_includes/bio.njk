@@ -36,12 +36,23 @@ layout: base.njk
         <div class="text-center mb-5 pb-5">
             <h3 class="fw-semibold mb-4" style="color: #666;">Therapeutic Approaches</h3>
             
-            {# This creates a 1-column grid on mobile, 2-column on small screens, and 3-column on medium/large screens #}
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mx-auto" style="max-width: 800px;">
+            <div class="row g-3 justify-content-center mx-auto" style="max-width: 1000px;">
                 {% for item in approaches %}
-                    <div class="col">
-                        <div class="approach-pill border-warning text-warning w-100">{{ item }}</div>
+                <div class="col-6 col-md-4 col-lg-3 d-flex">
+                    
+                    {# Matches your modular Modalities block perfectly #}
+                    <div class="w-100 p-3 text-center d-flex align-items-center justify-content-center border bg-white border-warning text-warning" 
+                         style="
+                            border-radius: 8px;
+                            font-size: 0.95rem;
+                            font-weight: 500;
+                            min-height: 80px;
+                            transition: all 0.2s ease-in-out;
+                         ">
+                        {{ item }}
                     </div>
+                    
+                </div>
                 {% endfor %}
             </div>
         </div>
