@@ -36,9 +36,12 @@ layout: base.njk
         <div class="text-center mb-5 pb-5">
             <h3 class="fw-semibold mb-4" style="color: #666;">Therapeutic Approaches</h3>
             
-            <div class="d-flex flex-wrap justify-content-center gap-3 mx-auto" style="max-width: 800px;">
+            {# This creates a 1-column grid on mobile, 2-column on small screens, and 3-column on medium/large screens #}
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mx-auto" style="max-width: 800px;">
                 {% for item in approaches %}
-                    <div class="approach-pill border-warning text-warning">{{ item }}</div>
+                    <div class="col">
+                        <div class="approach-pill border-warning text-warning w-100">{{ item }}</div>
+                    </div>
                 {% endfor %}
             </div>
         </div>

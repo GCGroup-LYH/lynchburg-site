@@ -124,3 +124,37 @@ section {
 /* Theme Overrides */
 .bg-secondary { background-color: #6c757d !important; }
 .text-white { color: #ffffff !important; }
+
+/* --- TEAM BIO & CARDS CUSTOM STYLES --- */
+
+/* The approach pills */
+.approach-pill {
+    padding: 0.5rem 1.25rem;
+    border: 1px solid;
+    border-radius: 50rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: inline-block;
+}
+
+/* The minimalist contact form inputs */
+.minimal-input {
+    border: none !important;
+    border-bottom: 1px solid #ccc !important;
+    border-radius: 0 !important;
+    padding: 0.5rem 0 !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+}
+
+.minimal-input:focus {
+    border-bottom-color: #3b8e88 !important; /* Your teal color */
+    outline: none;
+}
+
+/* Force the card images to cover perfectly without stretching */
+.team-card-img {
+    height: 300px;
+    object-fit: cover;
+    object-position: top center;
+}
