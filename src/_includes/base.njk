@@ -550,14 +550,34 @@
 </section>
 
 {% elif block.type == 'alert_banner' %}
-<section class="alert-block py-4 {{ block.theme }} text-white text-center">
+<section class="alert-block py-4">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-lg-8">
-                {# Using a warning icon to draw the eye immediately #}
-                <i class="bi-exclamation-triangle-fill fs-1 mb-2 d-block" aria-hidden="true"></i>
-                <h2 class="h4 text-white mb-2">{{ block.headline }}</h2>
-                <p class="mb-0 fs-5">{{ block.message }}</p>
+            <div class="col-lg-10">
+                
+                {# New Crisis Box Styling applied to existing alert_banner block #}
+                <div class="crisis-alert-box bg-white rounded p-3 p-md-4 d-flex align-items-start border-start border-success border-5 shadow-sm text-warning">
+                    
+                    {# Green Info Icon #}
+                    <span class="fs-4 me-3 mt-1 text-success" style="line-height: 1;">
+                        <i class="bi bi-info-circle-fill" aria-hidden="true"></i>
+                    </span>
+                    
+                    {# Content area using your existing CMS variables #}
+                    <div class="crisis-body text-start">
+                        {% if block.headline %}
+                            <h6 class="fw-semibold mb-2 m-0 fs-6">{{ block.headline }}</h6>
+                        {% endif %}
+                        
+                        {% if block.message %}
+                            <div class="m-0 fs-7" style="line-height: 1.6;">
+                                {{ block.message | markdown | safe }}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                </div>
+
             </div>
         </div>
     </div>
