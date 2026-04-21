@@ -36,24 +36,29 @@ layout: base.njk
         <div class="text-center mb-5 pb-5">
             <h3 class="fw-semibold mb-4" style="color: #666;">Therapeutic Approaches</h3>
             
-            <div class="row g-3 justify-content-center mx-auto" style="max-width: 1000px;">
-                {% for item in approaches %}
-                <div class="col-6 col-md-4 col-lg-3 d-flex">
-                    
-                    {# Matches your modular Modalities block perfectly #}
-                    <div class="w-100 p-3 text-center d-flex align-items-center justify-content-center border bg-white border-warning text-warning" 
-                         style="
-                            border-radius: 8px;
-                            font-size: 0.95rem;
-                            font-weight: 500;
-                            min-height: 80px;
-                            transition: all 0.2s ease-in-out;
-                         ">
-                        {{ item }}
+            {# Added a standard container here instead of a restricted max-width #}
+            <div class="container">
+                <div class="row g-3 justify-content-center">
+                    {% for item in approaches %}
+                    <div class="col-6 col-md-4 col-lg-3 d-flex">
+                        
+                        {# Adjusted to match your teal theme and exact padding/sizing #}
+                        <div class="w-100 p-3 text-center d-flex align-items-center justify-content-center border bg-white" 
+                             style="
+                                border-color: #3b8e88 !important;
+                                color: #3b8e88;
+                                border-radius: 8px;
+                                font-size: 0.95rem;
+                                font-weight: 500;
+                                min-height: 80px;
+                                transition: all 0.2s ease-in-out;
+                             ">
+                            {{ item }}
+                        </div>
+                        
                     </div>
-                    
+                    {% endfor %}
                 </div>
-                {% endfor %}
             </div>
         </div>
         {% endif %}
