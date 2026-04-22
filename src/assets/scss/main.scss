@@ -86,7 +86,7 @@ section {
 }
 
 // Make sure images in cards don't blow up the layout
-.card img {
+.card img:not(.therapist-photo) {
   max-width: 80px;
   height: auto;
 }
