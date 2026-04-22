@@ -299,6 +299,101 @@
     </div>
 </section>
 
+{% elif block.type == "contact_layout" %}
+<section class="contact-layout-block py-5">
+    <div class="container">
+        <div class="row g-5 align-items-start">
+
+            {# LEFT COLUMN — Rich Text #}
+            <div class="col-md-5">
+                {% if block.heading %}
+                <h2 class="h4 fw-semibold mb-4" style="color: #333;">{{ block.heading }}</h2>
+                {% endif %}
+                <div class="text-muted" style="font-size: 0.95rem; line-height: 1.8;">
+                    {{ block.body | markdown | safe }}
+                </div>
+            </div>
+
+            {# RIGHT COLUMN — Contact Form #}
+            <div class="col-md-7">
+                <form id="contactLayoutForm" class="custom-minimal-form">
+                    <input type="hidden" name="form_type" value="{{ block.route_to }}">
+
+                    <div class="mb-4">
+                        <label for="cl-name" class="visually-hidden">Contact name</label>
+                        <input type="text" class="form-control minimal-input" id="cl-name" name="name" placeholder="Contact name" required>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="cl-phone" class="visually-hidden">Phone</label>
+                        <input type="tel" class="form-control minimal-input" id="cl-phone" name="phone" placeholder="Phone">
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="cl-email" class="visually-hidden">E-mail</label>
+                        <input type="email" class="form-control minimal-input" id="cl-email" name="email" placeholder="E-mail" required>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="cl-message" class="visually-hidden">Let's talk</label>
+                        <textarea class="form-control minimal-input" id="cl-message" name="message" placeholder="Let's talk" rows="1" required></textarea>
+                    </div>
+
+                    <div style="max-width: 300px;">
+                        <div class="cf-turnstile mb-4" data-sitekey="0x4AAAAAADBTgmkyOA3eOEqs" data-theme="light"></div>
+                    </div>
+
+                    <div id="cl-form-status" class="mb-3" role="alert" aria-live="polite"></div>
+
+                    <button type="submit" id="cl-submit-btn" class="btn btn-{{ block.button_color | default('danger') }} w-100 py-3 rounded-2 fw-bold">
+                        Submit
+                    </button>
+
+                    {% if block.disclaimer %}
+                    <p class="small text-muted mt-3" style="font-size: 0.8rem;">{{ block.disclaimer }}</p>
+                    {% endif %}
+                </form>
+
+                <script>
+                    document.getElementById('contactLayoutForm').addEventListener('submit', async function(e) {
+                        e.preventDefault();
+                        const btn = document.getElementById('cl-submit-btn');
+                        const status = document.getElementById('cl-form-status');
+                        btn.disabled = true;
+                        btn.textContent = 'Sending...';
+                        status.innerHTML = '';
+                        const formData = new FormData(this);
+                        try {
+                            const res = await fetch('/api/submit', {
+                                method: 'POST',
+                                body: formData
+                            });
+                            const data = await res.json();
+                            if (data.ok) {
+                                this.reset();
+                                if (window.turnstile) window.turnstile.reset();
+                                status.innerHTML = '<div class="alert alert-success">Thank you! We\'ll be in touch within 3 business days.</div>';
+                                btn.textContent = 'Sent!';
+                            } else {
+                                status.innerHTML = '<div class="alert alert-danger">Something went wrong. Please try again or call us directly.</div>';
+                                btn.disabled = false;
+                                btn.textContent = 'Submit';
+                                if (window.turnstile) window.turnstile.reset();
+                            }
+                        } catch(err) {
+                            status.innerHTML = '<div class="alert alert-danger">Network error. Please check your connection and try again.</div>';
+                            btn.disabled = false;
+                            btn.textContent = 'Submit';
+                            if (window.turnstile) window.turnstile.reset();
+                        }
+                    });
+                </script>
+            </div>
+
+        </div>
+    </div>
+</section>
+
 {% elif block.type == 'team' %}
 
 <section class="team-block py-5 bg-light">
