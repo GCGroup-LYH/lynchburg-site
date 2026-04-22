@@ -146,6 +146,18 @@ _page_builder: &page_builder
       widget: "object"
       fields:
         - { label: "Section Title", name: "title", widget: "string", default: "Our Therapists" }
+        - label: "Card Style"
+          name: "card_style"
+          widget: "select"
+          options:
+            - { label: "Full Bio (Meet the Team page)", value: "full" }
+            - { label: "Compact (Homepage, etc.)", value: "compact" }
+          default: "full"
+        - label: "Show Resident Clinicians Section"
+          name: "show_residents"
+          widget: "boolean"
+          default: false
+          hint: "Enable on the Meet the Team page only."
 
     - label: "Contact Form"
       name: "contact_form"
@@ -462,6 +474,7 @@ collections:
       - { label: "Name", name: "title", widget: "string" }
       - { label: "Credentials / Title", name: "role", widget: "string", hint: "e.g., LPC, LMFT" }
       - { label: "Headshot", name: "image", widget: "image" }
+      - { label: "Compact Card Photo (Optional)", name: "thumbnail", widget: "image", required: false, hint: "A square or landscape crop for the homepage card. Falls back to the main headshot if left blank." }
       - { label: "Short Bio (For the Card)", name: "short_bio", widget: "text", hint: "A 2-3 sentence teaser for the grid." }
       - { label: "Full Bio", name: "body", widget: "markdown", hint: "The complete bio for their individual page." }
       - { label: "Card Quote", name: "quote", widget: "text", hint: "The teal quote that appears on the therapist's card." }

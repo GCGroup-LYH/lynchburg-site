@@ -278,43 +278,55 @@
 
             {# --- TOP SECTION: FULL THERAPISTS --- #}
             <div class="row g-4 justify-content-center">
-                {% for person in team_by_type["Therapist"] %}
-                <div class="col-md-6 col-lg-5"> {# Slightly constrained width for perfect proportions #}
-                    <div class="card therapist-card h-100 border-0 shadow-sm">
-                        
-                        {% if person.data.image %}
-                        <img src="{{ person.data.image }}" alt="{{ person.data.title }}" class="therapist-photo">
-                        {% endif %}
-                        
-                        {# text-start aligns the text to the left like your Figma #}
-                        <div class="card-body d-flex flex-column p-4 text-start">
-                            
-                            {% if person.data.quote %}
-                            <p class="therapist-quote mb-0">{{ person.data.quote }}</p>
-                            <hr class="therapist-divider">
-                            {% endif %}
-                            
-                            <h3 class="h4 mb-0 fw-bold">{{ person.data.title }}</h3>
-                            <p class="text-dark small fw-semibold mb-3">{{ person.data.role }}</p>
-                            
-                            <p class="text-muted" style="font-size: 0.95rem;">
-                                {{ person.data.short_bio }}
-                            </p>
-                            
-                            <div class="mt-auto pt-3">
-                                <a href="{{ person.url }}" class="therapist-link">
-                                    Meet {{ person.data.title | split(" ") | first }} &rarr;
-                                </a>
-                            </div>
-                        </div>
+    {% for person in team_by_type["Therapist"] %}
+    <div class="{% if block.card_style == 'compact' %}col-md-4 col-lg-3{% else %}col-md-6 col-lg-5{% endif %}">
+        <div class="card therapist-card h-100 border-0 shadow-sm">
 
+            {% if block.card_style == 'compact' %}
+                {# --- COMPACT CARD --- #}
+                {% set compact_img = person.data.thumbnail if person.data.thumbnail else person.data.image %}
+                {% if compact_img %}
+                <img src="{{ compact_img }}" alt="{{ person.data.title }}" class="therapist-photo" style="height: 200px; object-position: top center;">
+                {% endif %}
+                <div class="card-body d-flex flex-column p-3 text-center">
+                    <h3 class="h5 mb-0 fw-bold">{{ person.data.title }}</h3>
+                    <p class="text-muted small mb-3">{{ person.data.role }}</p>
+                    <p class="text-muted mb-3" style="font-size: 0.85rem;">{{ person.data.short_bio }}</p>
+                    <div class="mt-auto">
+                        <a href="{{ person.url }}" class="therapist-link">
+                            Meet {{ person.data.title | split(" ") | first }} &rarr;
+                        </a>
                     </div>
                 </div>
-                {% endfor %}
-            </div>
+
+            {% else %}
+                {# --- FULL CARD --- #}
+                {% if person.data.image %}
+                <img src="{{ person.data.image }}" alt="{{ person.data.title }}" class="therapist-photo">
+                {% endif %}
+                <div class="card-body d-flex flex-column p-4 text-start">
+                    {% if person.data.quote %}
+                    <p class="therapist-quote mb-0">{{ person.data.quote }}</p>
+                    <hr class="therapist-divider">
+                    {% endif %}
+                    <h3 class="h4 mb-0 fw-bold">{{ person.data.title }}</h3>
+                    <p class="text-dark small fw-semibold mb-3">{{ person.data.role }}</p>
+                    <p class="text-muted" style="font-size: 0.95rem;">{{ person.templateContent | safe }}</p>
+                    <div class="mt-auto pt-3">
+                        <a href="{{ person.url }}" class="therapist-link">
+                            Meet {{ person.data.title | split(" ") | first }} &rarr;
+                        </a>
+                    </div>
+                </div>
+            {% endif %}
+
+        </div>
+    </div>
+    {% endfor %}
+</div>
 
             {# --- BOTTOM SECTION: RESIDENT CLINICIANS (CONDITIONAL) --- #}
-            {% if team_by_type["Resident Clinician"] and team_by_type["Resident Clinician"].length > 0 %}
+            {% if block.show_residents and team_by_type["Resident Clinician"] and team_by_type["Resident Clinician"].length > 0 %}
             
             <div class="row mt-5 mb-4 justify-content-center">
                 <div class="col-12 text-center text-white p-5 rounded shadow-sm" style="background-color: #3b8e88;">
