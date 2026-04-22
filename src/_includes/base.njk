@@ -295,7 +295,7 @@
                             {% endif %}
                             
                             <h3 class="h4 mb-0 fw-bold">{{ person.data.title }}</h3>
-                            <p class="text-dark small fw-semibold mb-3">{{ person.data.credentials }}</p>
+                            <p class="text-dark small fw-semibold mb-3">{{ person.data.role }}</p>
                             
                             <p class="text-muted" style="font-size: 0.95rem;">
                                 {{ person.data.short_bio }}
@@ -485,33 +485,87 @@
 </section>
 
 {% elif block.type == "contact_form" %}
-      <section class="contact-form-section my-5">
-        <form action="/api/submit" method="POST" class="custom-minimal-form">
-          <input type="hidden" name="form_type" value="{{ block.route_to }}"> 
-          
+<section class="contact-form-section my-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6">
+
+        <form id="mainContactForm" class="custom-minimal-form">
+          <input type="hidden" name="form_type" value="{{ block.route_to }}">
+
           <div class="mb-4">
-            <label for="name" class="visually-hidden">Contact name</label>
-            <input type="text" class="form-control minimal-input" id="name" name="name" placeholder="Contact name" required>
+            <label for="main-name" class="visually-hidden">Contact name</label>
+            <input type="text" class="form-control minimal-input" id="main-name" name="name" placeholder="Contact name" required>
           </div>
-          
+
           <div class="mb-4">
-            <label for="phone" class="visually-hidden">Phone</label>
-            <input type="tel" class="form-control minimal-input" id="phone" name="phone" placeholder="Phone">
+            <label for="main-phone" class="visually-hidden">Phone</label>
+            <input type="tel" class="form-control minimal-input" id="main-phone" name="phone" placeholder="Phone">
           </div>
-          
+
           <div class="mb-4">
-            <label for="email" class="visually-hidden">E-mail</label>
-            <input type="email" class="form-control minimal-input" id="email" name="email" placeholder="E-mail" required>
+            <label for="main-email" class="visually-hidden">E-mail</label>
+            <input type="email" class="form-control minimal-input" id="main-email" name="email" placeholder="E-mail" required>
           </div>
-          
+
           <div class="mb-5">
-            <label for="message" class="visually-hidden">Let's talk</label>
-            <textarea class="form-control minimal-input" id="message" name="message" placeholder="Let's talk" rows="1" required></textarea>
+            <label for="main-message" class="visually-hidden">Let's talk</label>
+            <textarea class="form-control minimal-input" id="main-message" name="message" placeholder="Let's talk" rows="1" required></textarea>
           </div>
-          
-          <button type="submit" class="btn btn-{{ block.button_color | default('danger') }} w-100 py-3 rounded-2 text-white-force fw-bold">Submit</button>
+
+          <!-- Turnstile widget — replace YOUR_SITE_KEY -->
+          <div class="cf-turnstile mb-4" data-sitekey="0x4AAAAAADBTgmkyOA3eOEqs" data-theme="light"></div>
+
+          <div id="main-form-status" class="mb-3" role="alert" aria-live="polite"></div>
+
+          <button type="submit" id="main-submit-btn" class="btn btn-{{ block.button_color | default('danger') }} w-100 py-3 rounded-2 fw-bold">
+            Submit
+          </button>
         </form>
-      </section>
+
+        <script>
+          document.getElementById('mainContactForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const btn = document.getElementById('main-submit-btn');
+            const status = document.getElementById('main-form-status');
+            
+            btn.disabled = true;
+            btn.textContent = 'Sending...';
+            status.innerHTML = '';
+
+            const formData = new FormData(this);
+
+            try {
+              const res = await fetch('/api/submit', {
+                method: 'POST',
+                body: formData
+              });
+              const data = await res.json();
+
+              if (data.ok) {
+                this.reset();
+                if (window.turnstile) window.turnstile.reset();
+                status.innerHTML = '<div class="alert alert-success">Thank you! We\'ll be in touch within 3 business days.</div>';
+                btn.textContent = 'Sent!';
+              } else {
+                status.innerHTML = '<div class="alert alert-danger">Something went wrong. Please try again or call us directly.</div>';
+                btn.disabled = false;
+                btn.textContent = 'Submit';
+                if (window.turnstile) window.turnstile.reset();
+              }
+            } catch(err) {
+              status.innerHTML = '<div class="alert alert-danger">Network error. Please check your connection and try again.</div>';
+              btn.disabled = false;
+              btn.textContent = 'Submit';
+              if (window.turnstile) window.turnstile.reset();
+            }
+          });
+        </script>
+
+      </div>
+    </div>
+  </div>
+</section>
 
 {% elif block.type == 'divider' %}
 <div class="container">
@@ -720,6 +774,7 @@
         </div>
     </footer>
 
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         // --- Dark Mode Logic ---
