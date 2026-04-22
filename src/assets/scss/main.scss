@@ -223,3 +223,20 @@ section {
     object-fit: cover;
     object-position: top center;
 }
+
+// Natural White - dark mode compatible custom color
+:root {
+    --color-natural-white: #F7FAF6;
+}
+
+[data-bs-theme="dark"] {
+    --color-natural-white: #1a1f1a; // A dark mode equivalent - deep forest dark
+}
+
+.bg-natural-white {
+    background-color: var(--color-natural-white) !important;
+}
+
+.text-natural-white {
+    color: var(--color-natural-white) !important;
+}

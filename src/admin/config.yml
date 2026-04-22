@@ -13,15 +13,12 @@ _brand_palette: &brand_palette
   options:
     - { label: "Standard (Adapts to Light/Dark)", value: "bg-body text-body" }
     - { label: "Subtle Contrast (Adapts to Light/Dark)", value: "bg-body-tertiary text-body" }
+    - { label: "Natural White (Adapts to Light/Dark)", value: "bg-natural-white text-body" }
     - { label: "Brand Blue", value: "bg-primary text-white" }
-    # Teal is actually $warning in your SCSS
-    - { label: "Brand Teal", value: "bg-warning text-white" } 
-    # Earthy/Forest Green is actually $danger in your SCSS
+    - { label: "Brand Teal", value: "bg-warning text-white" }
     - { label: "Earthy Green", value: "bg-danger text-white" }
     - { label: "Soft Blue (Info)", value: "bg-info text-dark" }
-    # Soft Gray is $light in your SCSS
     - { label: "Soft Gray", value: "bg-light text-dark" }
-    # Neutral Dark Gray is $secondary in your SCSS
     - { label: "Neutral Dark Gray", value: "bg-secondary text-white" }
   default: "bg-body text-body"
 
@@ -31,15 +28,12 @@ _text_palette: &text_palette
   widget: "select"
   options:
     - { label: "Brand Blue", value: "text-primary" }
-    # Teal mapped to warning
     - { label: "Brand Teal", value: "text-warning" }
-    # Earthy Green mapped to danger
     - { label: "Earthy Green", value: "text-danger" }
     - { label: "Soft Blue (Info)", value: "text-info" }
-    # Soft Gray mapped to light
-    - { label: "Soft Gray", value: "text-light" } 
-    # Dark Gray mapped to secondary
+    - { label: "Soft Gray", value: "text-light" }
     - { label: "Neutral Dark Gray", value: "text-secondary" }
+    - { label: "Natural White", value: "text-natural-white" }
     - { label: "White (For dark backgrounds)", value: "text-white" }
   default: "text-primary"
   required: false
@@ -79,7 +73,7 @@ _page_builder: &page_builder
         - { label: "Heading", name: "heading", widget: "string" }
         - { label: "Body Text", name: "body", widget: "markdown" }
         - { label: "Image", name: "image", widget: "image" }
-        - { label: "Image Description (Alt Text)", name: "alt", widget: "string", required: true, hint: "Describe the image for visually impaired users. Leave blank ONLY if the image is purely decorative." }
+        - { label: "Image Description (Alt Text)", name: "alt", widget: "string", required: true }
         - { label: "Image Alignment", name: "align", widget: "select", options: ["Left", "Right"], default: "Right" }
         - *brand_palette
         
@@ -100,16 +94,22 @@ _page_builder: &page_builder
       name: "cta"
       widget: "object"
       fields:
-        - { label: "Heading", name: "text", widget: "string" } 
+        - { label: "Heading", name: "text", widget: "string" }
         - { label: "Button Text", name: "btn_text", widget: "string", default: "Contact Us" }
         - { label: "Button Link", name: "btn_link", widget: "string", default: "/contact" }
+        - *brand_palette
         - label: "Button Color"
           name: "btn_color"
           widget: "select"
           required: false
           options:
             - { label: "Outline Light", value: "btn-outline-light" }
-            - { label: "Solid Primary", value: "btn-primary" }
+            - { label: "Outline Earthy Green", value: "btn-outline-danger" }
+            - { label: "Outline Teal", value: "btn-outline-warning" }
+            - { label: "Outline Brand Blue", value: "btn-outline-primary" }
+            - { label: "Solid Earthy Green", value: "btn-danger" }
+            - { label: "Solid Teal", value: "btn-warning" }
+            - { label: "Solid Brand Blue", value: "btn-primary" }
             - { label: "Solid Dark", value: "btn-dark" }
             - { label: "Solid Info (Light Blue)", value: "btn-info" }
           default: "btn-outline-light"
@@ -133,13 +133,13 @@ _page_builder: &page_builder
       name: "faq"
       widget: "object"
       fields:
-              - { label: "Section Title", name: "title", widget: "string", default: "Frequently Asked Questions" }
-              - label: "Questions & Answers"
-                name: "faq_list"
-                widget: "list"
-                fields:
-                  - { label: "Question", name: "question", widget: "string" }
-                  - { label: "Answer", name: "answer", widget: "text" }
+        - { label: "Section Title", name: "title", widget: "string", default: "Frequently Asked Questions" }
+        - label: "Questions & Answers"
+          name: "faq_list"
+          widget: "list"
+          fields:
+            - { label: "Question", name: "question", widget: "string" }
+            - { label: "Answer", name: "answer", widget: "text" }
 
     - label: "Meet the Team Grid"
       name: "team"
@@ -166,7 +166,7 @@ _page_builder: &page_builder
         - label: "Route Form To:"
           name: "route_to"
           widget: "select"
-          options: ["main", "brittany", "lindsey", "member3", "member4"]
+          options: ["main", "brittany", "lindsey", "jessica", "abby"]
           default: "main"
         - label: "Button Color"
           name: "button_color"
@@ -176,25 +176,26 @@ _page_builder: &page_builder
             - { label: "Brand Blue", value: "primary" }
             - { label: "Teal", value: "warning" }
             - { label: "Sky Blue", value: "info" }
+            - { label: "Dark", value: "dark" }
           default: "danger"
 
     - label: "Rates & Insurance"
       name: "rates"
       widget: "object"
       fields:
-              - { label: "Section Title", name: "title", widget: "string", default: "Rates & Insurance" }
-              - { label: "Introductory Text", name: "intro", widget: "text", required: false, hint: "A brief sentence about your sliding scale or out-of-network policies." }
-              - label: "Service Rates"
-                name: "rate_list"
-                widget: "list"
-                fields:
-                  - { label: "Service (e.g., 50-Minute Intake)", name: "service", widget: "string" }
-                  - { label: "Price", name: "price", widget: "string" }
-              - label: "Accepted Insurances"
-                name: "insurance_list"
-                widget: "list"
-                fields:
-                  - { label: "Insurance Provider", name: "provider", widget: "string" }
+        - { label: "Section Title", name: "title", widget: "string", default: "Rates & Insurance" }
+        - { label: "Introductory Text", name: "intro", widget: "text", required: false, hint: "A brief sentence about your sliding scale or out-of-network policies." }
+        - label: "Service Rates"
+          name: "rate_list"
+          widget: "list"
+          fields:
+            - { label: "Service (e.g., 50-Minute Intake)", name: "service", widget: "string" }
+            - { label: "Price", name: "price", widget: "string" }
+        - label: "Accepted Insurances"
+          name: "insurance_list"
+          widget: "list"
+          fields:
+            - { label: "Insurance Provider", name: "provider", widget: "string" }
 
     - label: "Location & Map"
       name: "location"
@@ -270,52 +271,49 @@ _page_builder: &page_builder
       fields:
         - { label: "Section Title", name: "title", widget: "string", default: "Therapeutic Approaches" }
         
-        # 1. SECTION BACKGROUND
         - label: "Section Background"
           name: "section_bg"
           widget: "select"
           options:
+            - { label: "Natural White", value: "bg-natural-white" }
             - { label: "Soft Gray (Light)", value: "bg-light" }
             - { label: "White", value: "bg-white" }
             - { label: "Teal", value: "bg-warning" }
-            - { label: "Dark Green", value: "bg-danger" }
+            - { label: "Earthy Green", value: "bg-danger" }
             - { label: "Dark/Black", value: "bg-dark" }
-          default: "bg-light"
+          default: "bg-natural-white"
 
-        # 2. PILL INNER COLOR
         - label: "Pill Background Color"
           name: "pill_bg"
           widget: "select"
           options:
             - { label: "White", value: "bg-white" }
+            - { label: "Natural White", value: "bg-natural-white" }
             - { label: "Teal", value: "bg-warning" }
-            - { label: "Dark Green", value: "bg-danger" }
+            - { label: "Earthy Green", value: "bg-danger" }
             - { label: "Transparent", value: "bg-transparent" }
           default: "bg-white"
           
-        # 3. PILL OUTLINE
         - label: "Pill Border Color"
           name: "pill_border"
           widget: "select"
           options:
             - { label: "Teal", value: "border-warning" }
-            - { label: "Dark Green", value: "border-danger" }
+            - { label: "Earthy Green", value: "border-danger" }
             - { label: "White", value: "border-white" }
             - { label: "No Border", value: "border-0" }
           default: "border-warning"
           
-        # 4. PILL TEXT COLOR
         - label: "Pill Text Color"
           name: "pill_text"
           widget: "select"
           options:
             - { label: "Teal", value: "text-warning" }
-            - { label: "Dark Green", value: "text-danger" }
+            - { label: "Earthy Green", value: "text-danger" }
             - { label: "White", value: "text-white" }
             - { label: "Dark Text", value: "text-dark" }
           default: "text-warning"
           
-        # --- THE GRID ITEMS ---
         - label: "Modalities List"
           name: "modality_list"
           widget: "list"
@@ -328,7 +326,6 @@ media_folder: "src/assets/images"
 public_folder: "/assets/images"
 
 collections:
-  # 3. GLOBAL SETTINGS (Nav & Footer)
   - name: "global"
     label: "Global Settings"
     files:
@@ -375,13 +372,13 @@ collections:
             widget: "select"
             options:
               - { label: "Standard (Adapts to Light/Dark)", value: "bg-body text-body" }
+              - { label: "Natural White (Adapts to Light/Dark)", value: "bg-natural-white text-body" }
               - { label: "Earthy Green", value: "bg-danger text-white" }
               - { label: "Teal", value: "bg-warning text-white" }
               - { label: "Brand Blue", value: "bg-primary text-white" }
               - { label: "Neutral Dark Gray", value: "bg-secondary text-white" }
               - { label: "Soft Gray", value: "bg-light text-dark" }
             default: "bg-danger text-white"
-
           - label: "Social Media Links"
             name: "social_links"
             widget: "list"
@@ -394,7 +391,6 @@ collections:
                 options: ["Facebook", "Instagram", "LinkedIn", "Twitter", "YouTube"]
               - { label: "Profile URL", name: "url", widget: "string" }
 
-  # 4. MODULAR PAGES
   - name: "pages"
     label: "Pages"
     editor:
@@ -418,7 +414,7 @@ collections:
         name: "team"
         file: "src/team.njk"
         fields:
-          - { label: "SEO Title", name: "title", widget: "string", default: "Services" }
+          - { label: "SEO Title", name: "title", widget: "string", default: "Meet the Team" }
           - *page_builder
 
       - label: "Contact"
@@ -479,8 +475,6 @@ collections:
       - { label: "Full Bio", name: "body", widget: "markdown", hint: "The complete bio for their individual page." }
       - { label: "Card Quote", name: "quote", widget: "text", hint: "The teal quote that appears on the therapist's card." }
       - { label: "Direct Email", name: "email", widget: "string", hint: "Where should the contact form on their bio page send emails?" }
-      
-      # The individual list of approaches for this specific therapist
       - label: "Therapeutic Approaches"
         name: "approaches"
         widget: "list"
