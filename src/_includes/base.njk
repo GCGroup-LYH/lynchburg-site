@@ -484,6 +484,35 @@
     </div>
 </section>
 
+{% elif block.type == "contact_form" %}
+      <section class="contact-form-section my-5">
+        <form action="/api/submit" method="POST" class="custom-minimal-form">
+          <input type="hidden" name="form_type" value="{{ block.route_to }}"> 
+          
+          <div class="mb-4">
+            <label for="name" class="visually-hidden">Contact name</label>
+            <input type="text" class="form-control minimal-input" id="name" name="name" placeholder="Contact name" required>
+          </div>
+          
+          <div class="mb-4">
+            <label for="phone" class="visually-hidden">Phone</label>
+            <input type="tel" class="form-control minimal-input" id="phone" name="phone" placeholder="Phone">
+          </div>
+          
+          <div class="mb-4">
+            <label for="email" class="visually-hidden">E-mail</label>
+            <input type="email" class="form-control minimal-input" id="email" name="email" placeholder="E-mail" required>
+          </div>
+          
+          <div class="mb-5">
+            <label for="message" class="visually-hidden">Let's talk</label>
+            <textarea class="form-control minimal-input" id="message" name="message" placeholder="Let's talk" rows="1" required></textarea>
+          </div>
+          
+          <button type="submit" class="btn btn-{{ block.button_color | default('danger') }} w-100 py-3 rounded-2 text-white-force fw-bold">Submit</button>
+        </form>
+      </section>
+
 {% elif block.type == 'divider' %}
 <div class="container">
     <div class="row justify-content-center">

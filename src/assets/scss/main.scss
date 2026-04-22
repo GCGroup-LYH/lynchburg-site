@@ -39,6 +39,35 @@ $light:     #b3b3b3; // Soft gray
 .text-white-force { color: #fff !important; }
 .text-dark-force { color: #333 !important; }
 
+.custom-minimal-form {
+  
+  .minimal-input {
+    border: none;
+    border-bottom: 1px solid #ccc; /* Standard light gray from your mockup */
+    border-radius: 0;
+    background-color: transparent;
+    padding: 10px 0; /* Aligns text perfectly flush with the left edge */
+    box-shadow: none !important; /* Removes the blue Bootstrap focus glow */
+    color: $secondary; /* Uses your #666666 for typed text */
+    
+    &::placeholder {
+      color: #333; /* Darker placeholder to match Figma */
+      font-weight: 500;
+    }
+
+    &:focus {
+      border-bottom: 2px solid $danger; /* Optional: Highlights the line in green when clicking */
+      background-color: transparent;
+    }
+  }
+
+  /* Specific tweak so the textarea doesn't look strange */
+  textarea.minimal-input {
+    resize: vertical;
+    min-height: 40px;
+  }
+}
+
 //Set Sofia Pro as the Mater Font
 $font-family-sans-serif: 'Sofia Pro', system-ui, -apple-system, sans-serif;
 

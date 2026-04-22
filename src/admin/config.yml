@@ -147,6 +147,25 @@ _page_builder: &page_builder
       fields:
         - { label: "Section Title", name: "title", widget: "string", default: "Our Therapists" }
 
+    - label: "Contact Form"
+      name: "contact_form"
+      widget: "object"
+      fields:
+        - label: "Route Form To:"
+          name: "route_to"
+          widget: "select"
+          options: ["main", "brittany", "lindsey", "member3", "member4"]
+          default: "main"
+        - label: "Button Color"
+          name: "button_color"
+          widget: "select"
+          options: 
+            - { label: "Forest Green", value: "danger" }
+            - { label: "Brand Blue", value: "primary" }
+            - { label: "Teal", value: "warning" }
+            - { label: "Sky Blue", value: "info" }
+          default: "danger
+
     - label: "Rates & Insurance"
       name: "rates"
       widget: "object"
