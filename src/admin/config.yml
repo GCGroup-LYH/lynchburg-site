@@ -164,7 +164,7 @@ _page_builder: &page_builder
             - { label: "Brand Blue", value: "primary" }
             - { label: "Teal", value: "warning" }
             - { label: "Sky Blue", value: "info" }
-          default: "danger
+          default: "danger"
 
     - label: "Rates & Insurance"
       name: "rates"
@@ -183,6 +183,7 @@ _page_builder: &page_builder
                 widget: "list"
                 fields:
                   - { label: "Insurance Provider", name: "provider", widget: "string" }
+
     - label: "Location & Map"
       name: "location"
       widget: "object"
