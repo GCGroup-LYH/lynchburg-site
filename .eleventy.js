@@ -21,6 +21,11 @@ module.exports = function(eleventyConfig) {
     return md.render(content);
   });
 
+  eleventyConfig.addFilter("split", (str, separator) => {
+  if (!str) return [];
+  return str.split(separator);
+});
+
   // Custom Date Filter
   eleventyConfig.addFilter("date", function(dateVal) {
     return new Date(dateVal).toLocaleDateString('en-US', {
