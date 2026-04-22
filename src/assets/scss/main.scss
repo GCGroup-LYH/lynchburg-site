@@ -240,3 +240,38 @@ section {
 .text-natural-white {
     color: var(--color-natural-white) !important;
 }
+
+/* Info Highlights Block */
+.info-icon-box {
+    width: 72px;
+    height: 72px;
+    border-radius: 16px;
+    background-color: var(--color-natural-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(59, 142, 136, 0.15);
+    transition: all 0.2s ease;
+
+    i {
+        font-size: 1.75rem;
+    }
+}
+
+.info-highlight-card:hover .info-icon-box {
+    background-color: #e8f5e9;
+    border-color: rgba(59, 142, 136, 0.3);
+    transform: translateY(-2px);
+}
+
+.info-highlight-link {
+    color: #92c04d;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.info-highlight-link:hover {
+    color: #72963a;
+}

@@ -265,6 +265,43 @@ _page_builder: &page_builder
             - { label: "Logo Image", name: "image", widget: "image", hint: "Upload a transparent PNG or SVG for best results." }
             - { label: "Alt Text (Required)", name: "alt", widget: "string", hint: "E.g., 'Blue Cross Blue Shield Logo'" }
 
+    - label: "Info Highlights"
+      name: "info_highlights"
+      widget: "object"
+      fields:
+        - { label: "Section Title (Optional)", name: "title", widget: "string", required: false }
+        - *brand_palette
+        - label: "Card 1"
+          name: "card_1"
+          widget: "object"
+          fields:
+            - { label: "Bootstrap Icon Name", name: "icon", widget: "string", hint: "e.g. geo-alt, building, wallet2, heart-pulse. Find icons at icons.getbootstrap.com" }
+            - *text_palette
+            - { label: "Heading", name: "heading", widget: "string" }
+            - { label: "Description", name: "desc", widget: "text" }
+            - { label: "Link Text (Optional)", name: "link_text", widget: "string", required: false }
+            - { label: "Link URL (Optional)", name: "link_url", widget: "string", required: false }
+        - label: "Card 2"
+          name: "card_2"
+          widget: "object"
+          fields:
+            - { label: "Bootstrap Icon Name", name: "icon", widget: "string", hint: "e.g. geo-alt, building, wallet2, heart-pulse. Find icons at icons.getbootstrap.com" }
+            - *text_palette
+            - { label: "Heading", name: "heading", widget: "string" }
+            - { label: "Description", name: "desc", widget: "text" }
+            - { label: "Link Text (Optional)", name: "link_text", widget: "string", required: false }
+            - { label: "Link URL (Optional)", name: "link_url", widget: "string", required: false }
+        - label: "Card 3"
+          name: "card_3"
+          widget: "object"
+          fields:
+            - { label: "Bootstrap Icon Name", name: "icon", widget: "string", hint: "e.g. geo-alt, building, wallet2, heart-pulse. Find icons at icons.getbootstrap.com" }
+            - *text_palette
+            - { label: "Heading", name: "heading", widget: "string" }
+            - { label: "Description", name: "desc", widget: "text" }
+            - { label: "Link Text (Optional)", name: "link_text", widget: "string", required: false }
+            - { label: "Link URL (Optional)", name: "link_url", widget: "string", required: false }
+
     - label: "Methodologies & Modalities"
       name: "modalities"
       widget: "object"
