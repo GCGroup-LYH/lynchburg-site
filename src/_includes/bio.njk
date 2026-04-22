@@ -104,7 +104,9 @@ layout: base.njk
           <div id="bio-form-status" class="mb-3" role="alert" aria-live="polite"></div>
 
           <div class="text-center">
-            <button type="submit" id="bio-submit-btn" class="btn btn-dark-green w-100 mb-3">Submit</button>
+            <button type="submit" id="main-submit-btn" class="btn btn-{{ block.button_color | default('danger') }} w-100 py-3 rounded-2 fw-bold">
+            Submit
+          </button>
             <p class="small text-muted" style="font-size: 0.8rem; max-width: 400px; margin: 0 auto;">
               After submitting, please add our email address to your safe senders list to ensure our reply reaches you. If you haven't heard back within 3 business days, please check your spam or junk folder.
             </p>
