@@ -155,6 +155,50 @@ section {
 .text-white { color: #ffffff !important; }
 
 /* --- TEAM BIO & CARDS CUSTOM STYLES --- */
+/* Therapist Card Styling */
+.therapist-card {
+    border: 1px solid #e2ebd9; /* Very soft green border */
+    border-radius: 16px;
+    background-color: #ffffff;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.therapist-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.08) !important;
+}
+
+.therapist-photo {
+    height: 260px; /* Forces uniform image heights */
+    width: 100%;
+    object-fit: cover;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.therapist-quote {
+    color: #3b8280; /* Teal/Green color from your mockup */
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.therapist-divider {
+    border-top: 1px solid #3b8280;
+    opacity: 0.3;
+    margin: 1rem 0;
+}
+
+.therapist-link {
+    color: #92c04d; /* The bright green link color */
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.therapist-link:hover {
+    color: #72963a;
+}
 
 
 /* The minimalist contact form inputs */
