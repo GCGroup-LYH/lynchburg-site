@@ -6,7 +6,7 @@ role: Licensed Professional Counselor
 image: /assets/images/alex-starnes-PK_t0Lrh7MM-unsplash.jpg
 short_bio: Works with anxiety, depression, trauma, and life transitions. Trained in EMDR and CBT
 quote: '"It is her passion to help clients from all walks of life find clarity, healing, and a path forward."'
-email: example@email.com
+email: emcitconsultants@outlook.com
 approaches:
   - Eye Movement Desensitization & Reprocessing Therapy (EMDR)
   - Cognitive Behavioral Therapy (CBT)
