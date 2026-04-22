@@ -81,22 +81,22 @@ layout: base.njk
           <input type="hidden" name="therapist_email" value="{{ email }}">
 
           <div class="mb-4">
-            <input type="text" class="minimal-input" id="bio-name" name="name" placeholder="Contact name" required>
+            <input type="text" class="form-control minimal-input" id="bio-name" name="name" placeholder="Contact name" required>
           </div>
 
           <div class="mb-4">
-            <input type="tel" class="minimal-input" id="bio-phone" name="phone" placeholder="Phone">
+            <input type="tel" class="form-control minimal-input" id="bio-phone" name="phone" placeholder="Phone">
           </div>
 
           <div class="mb-4">
-            <input type="email" class="minimal-input" id="bio-email" name="email" placeholder="E-mail" required>
+            <input type="email" class="form-control minimal-input" id="bio-email" name="email" placeholder="E-mail" required>
           </div>
 
           <div class="mb-5">
-            <input type="text" class="minimal-input" id="bio-message" name="message" placeholder="Let's talk" required>
+            <input type="text" class="form-control minimal-input" id="bio-message" name="message" placeholder="Let's talk" required>
           </div>
 
-          <!-- Turnstile widget — replace YOUR_SITE_KEY -->
+          <!-- Turnstile widget -->
           <div style="max-width: 300px;">
             <div class="cf-turnstile mb-4" data-sitekey="0x4AAAAAADBTgmkyOA3eOEqs" data-theme="light"></div>
           </div>
@@ -116,20 +116,16 @@ layout: base.njk
             e.preventDefault();
             const btn = document.getElementById('bio-submit-btn');
             const status = document.getElementById('bio-form-status');
-
             btn.disabled = true;
             btn.textContent = 'Sending...';
             status.innerHTML = '';
-
             const formData = new FormData(this);
-
             try {
               const res = await fetch('/api/submit', {
                 method: 'POST',
                 body: formData
               });
               const data = await res.json();
-
               if (data.ok) {
                 this.reset();
                 if (window.turnstile) window.turnstile.reset();
