@@ -53,7 +53,7 @@ layout: base.njk
                                 min-height: 80px;
                                 transition: all 0.2s ease-in-out;
                              ">
-                            {{ item.approach }}
+                            {{ item }}
                         </div>
                         
                     </div>
@@ -97,6 +97,7 @@ layout: base.njk
           </div>
 
           <!-- Turnstile widget — replace YOUR_SITE_KEY -->
+          <div style="max-width: 300px;">
           <div class="cf-turnstile mb-4" data-sitekey="0x4AAAAAADBTgmkyOA3eOEqs" data-theme="light"></div>
 
           <div id="bio-form-status" class="mb-3" role="alert" aria-live="polite"></div>
@@ -106,6 +107,7 @@ layout: base.njk
             <p class="small text-muted" style="font-size: 0.8rem; max-width: 400px; margin: 0 auto;">
               After submitting, please add our email address to your safe senders list to ensure our reply reaches you. If you haven't heard back within 3 business days, please check your spam or junk folder.
             </p>
+          </div>
           </div>
         </form>
 
