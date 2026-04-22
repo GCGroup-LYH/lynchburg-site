@@ -21,8 +21,8 @@ export default {
       "main": env.EMAIL_MAIN || "",
       "brittany": env.EMAIL_BRITTANY || "emcitconsultants@outlook.com",
       "lindsey": env.EMAIL_LINDSEY || "emcitconsultants@outlook.com",
-      "jessica": env.EMAIL_MEMBER3 || "emcitconsultants@outlook.com",
-      "abby": env.EMAIL_MEMBER4 || "emcitconsultants@outlook.com",
+      "jessica": env.EMAIL_JESSICA || "emcitconsultants@outlook.com",
+      "abby": env.EMAIL_ABBY || "emcitconsultants@outlook.com",
     };
 
     // Determine the destination. Default to "main" if the hidden field is weird.
