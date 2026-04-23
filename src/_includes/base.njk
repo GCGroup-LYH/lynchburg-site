@@ -113,8 +113,10 @@
 
                 // Slow it down
                 anim.setSpeed(0.75);
+                console.log('Lottie loaded, waiting for complete...');
 
                 anim.addEventListener('complete', function() {
+                    console.log('Animation complete fired!');
                     // Step 1 — fade in headline
                     var heroText = document.getElementById('hero-text');
                     heroText.style.opacity = '1';
