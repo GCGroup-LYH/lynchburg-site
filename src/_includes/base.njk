@@ -400,63 +400,70 @@
 </section>
 
 {% elif block.type == 'team' %}
-
 <section class="team-block py-5 bg-light">
     <div class="container">
         <h2 class="text-center mb-5">{{ block.title | default('Our Therapists') }}</h2>
 
         {% if collections.team and collections.team.length > 0 %}
-            {# 1. Sort the entire team collection by the CMS dropdown field #}
             {% set team_by_type = collections.team | groupby("data.clinician_type") %}
 
-            {# --- TOP SECTION: FULL THERAPISTS --- #}
-            <div class="row g-4 justify-content-center">
-    {% for person in team_by_type["Therapist"] %}
-    <div class="{% if block.card_style == 'compact' %}col-md-4 col-lg-3{% else %}col-md-6 col-lg-5{% endif %}">
-        <div class="card therapist-card h-100 border-0 shadow-sm">
+            {# --- TOP SECTION: THERAPISTS --- #}
+            <div class="row g-4">
+                {% for person in team_by_type["Therapist"] %}
+                <div class="{% if block.card_style == 'compact' %}col-md-4 col-lg-3{% else %}col-12{% endif %}">
+                    <div class="card therapist-card border-0 shadow-sm" style="border-radius: 16px; overflow: hidden;">
 
-            {% if block.card_style == 'compact' %}
-                {# --- COMPACT CARD --- #}
-                {% set compact_img = person.data.thumbnail if person.data.thumbnail else person.data.image %}
-                {% if compact_img %}
-                <img src="{{ compact_img }}" alt="{{ person.data.title }}" class="therapist-photo" style="height: 200px; object-position: top center;">
-                {% endif %}
-                <div class="card-body d-flex flex-column p-3 text-center">
-                    <h3 class="h5 mb-0 fw-bold">{{ person.data.title }}</h3>
-                    <p class="text-muted small mb-3">{{ person.data.role }}</p>
-                    <p class="text-muted mb-3" style="font-size: 0.85rem;">{{ person.data.short_bio }}</p>
-                    <div class="mt-auto">
-                        <a href="{{ person.url }}" class="therapist-link">
-                            Meet {{ person.data.title | split(" ") | first }} &rarr;
-                        </a>
+                        {% if block.card_style == 'compact' %}
+                            {# --- COMPACT CARD --- #}
+                            {% set compact_img = person.data.thumbnail if person.data.thumbnail else person.data.image %}
+                            {% if compact_img %}
+                            <img src="{{ compact_img }}" alt="{{ person.data.title }}" class="therapist-photo" style="height: 200px; object-position: top center;">
+                            {% endif %}
+                            <div class="card-body d-flex flex-column p-3 text-center">
+                                <h3 class="h5 mb-0 fw-bold">{{ person.data.title }}</h3>
+                                <p class="text-muted small mb-3">{{ person.data.role }}</p>
+                                <p class="text-muted mb-3" style="font-size: 0.85rem;">{{ person.data.short_bio }}</p>
+                                <div class="mt-auto">
+                                    <a href="{{ person.url }}" class="therapist-link">
+                                        Meet {{ person.data.title | split(" ") | first }} &rarr;
+                                    </a>
+                                </div>
+                            </div>
+
+                        {% else %}
+                            {# --- FULL HORIZONTAL CARD --- #}
+                            <div class="row g-0 align-items-stretch">
+                                <div class="col-md-4">
+                                    {% if person.data.image %}
+                                    <img src="{{ person.data.image }}" alt="{{ person.data.title }}"
+                                         style="width: 100%; height: 100%; object-fit: cover; object-position: top center; min-height: 300px;">
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body d-flex flex-column p-4 p-lg-5 h-100 text-start">
+                                        {% if person.data.quote %}
+                                        <p class="therapist-quote mb-0">{{ person.data.quote }}</p>
+                                        <hr class="therapist-divider">
+                                        {% endif %}
+                                        <h3 class="h4 mb-0 fw-bold">{{ person.data.title }}</h3>
+                                        <p class="text-dark small fw-semibold mb-3">{{ person.data.role }}</p>
+                                        <div class="text-muted mb-4" style="font-size: 0.95rem; line-height: 1.7;">
+                                            {{ person.templateContent | safe }}
+                                        </div>
+                                        <div class="mt-auto">
+                                            <a href="{{ person.url }}" class="therapist-link">
+                                                Meet {{ person.data.title | split(" ") | first }} &rarr;
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+
                     </div>
                 </div>
-
-            {% else %}
-                {# --- FULL CARD --- #}
-                {% if person.data.image %}
-                <img src="{{ person.data.image }}" alt="{{ person.data.title }}" class="therapist-photo">
-                {% endif %}
-                <div class="card-body d-flex flex-column p-4 text-start">
-                    {% if person.data.quote %}
-                    <p class="therapist-quote mb-0">{{ person.data.quote }}</p>
-                    <hr class="therapist-divider">
-                    {% endif %}
-                    <h3 class="h4 mb-0 fw-bold">{{ person.data.title }}</h3>
-                    <p class="text-dark small fw-semibold mb-3">{{ person.data.role }}</p>
-                    <p class="text-muted" style="font-size: 0.95rem;">{{ person.templateContent | safe }}</p>
-                    <div class="mt-auto pt-3">
-                        <a href="{{ person.url }}" class="therapist-link">
-                            Meet {{ person.data.title | split(" ") | first }} &rarr;
-                        </a>
-                    </div>
-                </div>
-            {% endif %}
-
-        </div>
-    </div>
-    {% endfor %}
-</div>
+                {% endfor %}
+            </div>
 
             {# --- BOTTOM SECTION: RESIDENT CLINICIANS (CONDITIONAL) --- #}
             {% if block.show_residents and team_by_type["Resident Clinician"] and team_by_type["Resident Clinician"].length > 0 %}
@@ -468,35 +475,57 @@
                 </div>
             </div>
 
-            <div class="row g-4 justify-content-center">
+            <div class="row g-4">
                 {% for person in team_by_type["Resident Clinician"] %}
-                <div class="col-md-6 col-lg-5">
-                    <div class="card therapist-card h-100 border-0 shadow-sm">
-                        
-                        {% if person.data.image %}
-                        <img src="{{ person.data.image }}" alt="{{ person.data.title }}" class="therapist-photo">
-                        {% endif %}
-                        
-                        <div class="card-body d-flex flex-column p-4 text-start">
-                            
-                            {% if person.data.quote %}
-                            <p class="therapist-quote mb-0">"{{ person.data.quote }}"</p>
-                            <hr class="therapist-divider">
+                <div class="{% if block.card_style == 'compact' %}col-md-4 col-lg-3{% else %}col-12{% endif %}">
+                    <div class="card therapist-card border-0 shadow-sm" style="border-radius: 16px; overflow: hidden;">
+
+                        {% if block.card_style == 'compact' %}
+                            {# --- COMPACT CARD --- #}
+                            {% set compact_img = person.data.thumbnail if person.data.thumbnail else person.data.image %}
+                            {% if compact_img %}
+                            <img src="{{ compact_img }}" alt="{{ person.data.title }}" class="therapist-photo" style="height: 200px; object-position: top center;">
                             {% endif %}
-                            
-                            <h3 class="h4 mb-0 fw-bold">{{ person.data.title }}</h3>
-                            <p class="text-dark small fw-semibold mb-3">{{ person.data.role }}</p>
-                            
-                            <p class="text-muted" style="font-size: 0.95rem;">
-                                {{ person.data.short_bio }}
-                            </p>
-                            
-                            <div class="mt-auto pt-3">
-                                <a href="{{ person.url }}" class="therapist-link">
-                                    Meet {{ person.data.title | split(" ") | first }} &rarr;
-                                </a>
+                            <div class="card-body d-flex flex-column p-3 text-center">
+                                <h3 class="h5 mb-0 fw-bold">{{ person.data.title }}</h3>
+                                <p class="text-muted small mb-3">{{ person.data.role }}</p>
+                                <p class="text-muted mb-3" style="font-size: 0.85rem;">{{ person.data.short_bio }}</p>
+                                <div class="mt-auto">
+                                    <a href="{{ person.url }}" class="therapist-link">
+                                        Meet {{ person.data.title | split(" ") | first }} &rarr;
+                                    </a>
+                                </div>
                             </div>
-                        </div>
+
+                        {% else %}
+                            {# --- FULL HORIZONTAL CARD --- #}
+                            <div class="row g-0 align-items-stretch">
+                                <div class="col-md-4">
+                                    {% if person.data.image %}
+                                    <img src="{{ person.data.image }}" alt="{{ person.data.title }}"
+                                         style="width: 100%; height: 100%; object-fit: cover; object-position: top center; min-height: 300px;">
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body d-flex flex-column p-4 p-lg-5 h-100 text-start">
+                                        {% if person.data.quote %}
+                                        <p class="therapist-quote mb-0">{{ person.data.quote }}</p>
+                                        <hr class="therapist-divider">
+                                        {% endif %}
+                                        <h3 class="h4 mb-0 fw-bold">{{ person.data.title }}</h3>
+                                        <p class="text-dark small fw-semibold mb-3">{{ person.data.role }}</p>
+                                        <div class="text-muted mb-4" style="font-size: 0.95rem; line-height: 1.7;">
+                                            {{ person.templateContent | safe }}
+                                        </div>
+                                        <div class="mt-auto">
+                                            <a href="{{ person.url }}" class="therapist-link">
+                                                Meet {{ person.data.title | split(" ") | first }} &rarr;
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
 
                     </div>
                 </div>
@@ -505,7 +534,6 @@
             {% endif %}
 
         {% else %}
-            {# --- FALLBACK: If no team members exist yet --- #}
             <div class="text-center py-5">
                 <p class="lead text-muted">We are currently updating our staff directory. Please check back soon!</p>
             </div>
