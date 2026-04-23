@@ -136,6 +136,7 @@ _page_builder: &page_builder
       widget: "object"
       fields:
         - { label: "Section Title", name: "title", widget: "string", default: "Frequently Asked Questions" }
+        - *brand_palette
         - label: "Questions & Answers"
           name: "faq_list"
           widget: "list"
@@ -148,6 +149,7 @@ _page_builder: &page_builder
       widget: "object"
       fields:
         - { label: "Section Title", name: "title", widget: "string", default: "Our Therapists" }
+        - *brand_palette
         - label: "Card Style"
           name: "card_style"
           widget: "select"
@@ -165,6 +167,7 @@ _page_builder: &page_builder
       name: "contact_form"
       widget: "object"
       fields:
+        - *brand_palette
         - label: "Route Form To:"
           name: "route_to"
           widget: "select"
@@ -186,6 +189,7 @@ _page_builder: &page_builder
       widget: "object"
       fields:
         - { label: "Section Title", name: "title", widget: "string", default: "Rates & Insurance" }
+        - *brand_palette
         - { label: "Introductory Text", name: "intro", widget: "text", required: false, hint: "A brief sentence about your sliding scale or out-of-network policies." }
         - { label: "Insurance Card Intro (Optional)", name: "intro_insurance", widget: "string", required: false, hint: "e.g. 'may vary depending on provider'" }
         - label: "Service Rates"
@@ -218,6 +222,7 @@ _page_builder: &page_builder
       widget: "object"
       fields:
         - { label: "Section Title", name: "title", widget: "string", default: "Our Office" }
+        - *brand_palette
         - { label: "Address", name: "address", widget: "text", hint: "Press enter to create line breaks." }
         - { label: "Google Maps Embed Code", name: "map_iframe", widget: "text", hint: "Go to Google Maps, find your office, click Share > Embed a map, copy the HTML, and paste it here." }
 
@@ -225,6 +230,7 @@ _page_builder: &page_builder
       name: "rich_text"
       widget: "object"
       fields:
+        - *brand_palette
         - { label: "Content", name: "content", widget: "markdown", hint: "Use this for standard paragraphs, bulleted lists, and bold/italic text." }
 
     - label: "Divider & Spacing"
@@ -245,6 +251,7 @@ _page_builder: &page_builder
       widget: "object"
       fields:
         - { label: "Section Title (Optional)", name: "title", widget: "string", required: false }
+        - *brand_palette
         - label: "Slides"
           name: "slide_list"
           widget: "list"
@@ -274,6 +281,7 @@ _page_builder: &page_builder
       widget: "object"
       fields:
         - { label: "Section Title", name: "title", widget: "string", default: "Accepted Insurances & Professional Affiliations" }
+        - *brand_palette
         - label: "Logos"
           name: "logo_list"
           widget: "list"
@@ -324,6 +332,7 @@ _page_builder: &page_builder
       fields:
         - { label: "Left Column Heading", name: "heading", widget: "string", default: "What to expect after reaching out:" }
         - { label: "Left Column Body", name: "body", widget: "markdown" }
+        - *brand_palette
         - { label: "Route Form To:", name: "route_to", widget: "select", options: ["main", "brittany", "lindsey", "jessica", "abby"], default: "main" }
         - label: "Button Color"
           name: "button_color"
@@ -341,7 +350,6 @@ _page_builder: &page_builder
       widget: "object"
       fields:
         - { label: "Section Title", name: "title", widget: "string", default: "Therapeutic Approaches" }
-        
         - label: "Section Background"
           name: "section_bg"
           widget: "select"
@@ -353,7 +361,6 @@ _page_builder: &page_builder
             - { label: "Earthy Green", value: "bg-danger" }
             - { label: "Dark/Black", value: "bg-dark" }
           default: "bg-natural-white"
-
         - label: "Pill Background Color"
           name: "pill_bg"
           widget: "select"
@@ -364,7 +371,6 @@ _page_builder: &page_builder
             - { label: "Earthy Green", value: "bg-danger" }
             - { label: "Transparent", value: "bg-transparent" }
           default: "bg-white"
-          
         - label: "Pill Border Color"
           name: "pill_border"
           widget: "select"
@@ -374,7 +380,6 @@ _page_builder: &page_builder
             - { label: "White", value: "border-white" }
             - { label: "No Border", value: "border-0" }
           default: "border-warning"
-          
         - label: "Pill Text Color"
           name: "pill_text"
           widget: "select"
@@ -384,7 +389,6 @@ _page_builder: &page_builder
             - { label: "White", value: "text-white" }
             - { label: "Dark Text", value: "text-dark" }
           default: "text-warning"
-          
         - label: "Modalities List"
           name: "modality_list"
           widget: "list"

@@ -244,7 +244,7 @@
 
                  
 {% elif block.type == 'faq' %}
-<section class="faq-block py-5">
+<section class="faq-block py-5 {{ block.section_theme | default('bg-body') }}">
     <div class="container">
         <h2 class="text-center mb-5">{{ block.title }}</h2>
         <div class="row justify-content-center">
@@ -305,7 +305,7 @@
 </section>
 
 {% elif block.type == "contact_layout" %}
-<section class="contact-layout-block py-5">
+<section class="contact-layout-block py-5 {{ block.section_theme | default('bg-body') }}">
     <div class="container">
         <div class="row g-5 align-items-start">
 
@@ -400,7 +400,7 @@
 </section>
 
 {% elif block.type == 'team' %}
-<section class="team-block py-5 bg-light">
+<section class="team-block py-5 {{ block.section_theme | default('bg-light') }}">
     <div class="container">
         <h2 class="text-center mb-5">{{ block.title | default('Our Therapists') }}</h2>
 
@@ -621,7 +621,7 @@
                     </section>
 
                     {% elif block.type == 'location' %}
-<section class="location-block py-5 bg-white">
+<section class="location-block py-5 {{ block.section_theme | default('bg-white') }}">
     <div class="container">
         <div class="row align-items-center g-5">
             <div class="col-lg-5">
@@ -646,7 +646,7 @@
 </section>
 
 {% elif block.type == 'rich_text' %}
-<section class="rich-text-block py-5">
+<section class="rich-text-block py-5 {{ block.section_theme | default('bg-body') }}">
     <div class="container">
         <div class="row justify-content-center">
             {# We use col-lg-8 to constrain the width. Long lines of text are hard to read! #}
@@ -660,7 +660,7 @@
 </section>
 
 {% elif block.type == "contact_form" %}
-<section class="contact-form-section my-5">
+<section class="contact-form-section my-5 {{ block.section_theme | default('bg-body') }}">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-8 col-lg-6">
@@ -757,7 +757,7 @@
 
 
 {% elif block.type == 'carousel' %}
-<section class="carousel-block py-5">
+<section class="carousel-block py-5 {{ block.section_theme | default('bg-body') }}">
     <div class="container">
         {% if block.title %}
         <h2 class="text-center mb-5">{{ block.title }}</h2>
@@ -842,7 +842,7 @@
 </section>
 
 {% elif block.type == 'logo_cloud' %}
-<section class="logo-cloud-block py-5 bg-white border-top border-bottom">
+<section class="logo-cloud-block py-5 border-top border-bottom {{ block.section_theme | default('bg-white') }}">
     <div class="container text-center">
         {% if block.title %}
         <p class="text-muted text-uppercase fw-bold mb-5" style="letter-spacing: 1px; font-size: 0.85rem;">{{ block.title }}</p>
