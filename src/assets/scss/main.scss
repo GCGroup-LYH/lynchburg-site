@@ -86,9 +86,9 @@ section {
 }
 
 // Make sure images in cards don't blow up the layout
-.card img:not(.therapist-photo) {
-  max-width: 80px;
-  height: auto;
+.card img:not(.therapist-photo):not(.therapist-photo-horizontal) {
+    max-width: 80px;
+    height: auto;
 }
 
 /* Services Grid Logic */
