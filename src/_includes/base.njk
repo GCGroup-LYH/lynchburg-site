@@ -510,52 +510,54 @@
 </section>
 
 {% elif block.type == 'rates' %}
-<section class="rates-block py-5">
+<section class="rates-block py-5 {{ block.section_theme | default('bg-body') }}">
     <div class="container">
-        <h2 class="text-center mb-4">{{ block.title }}</h2>
+        <h2 class="text-center mb-5 fw-semibold text-dark">{{ block.title }}</h2>
+
         {% if block.intro %}
         <p class="text-center text-muted mb-5 mx-auto" style="max-width: 700px;">{{ block.intro }}</p>
         {% endif %}
-        
-        <div class="row g-5">
-            {# Left Column: Rates Table #}
-            <div class="col-md-7">
-                <h3 class="h5 mb-4">Service Rates</h3>
-                <div class="table-responsive shadow-sm rounded">
-                    <table class="table table-hover align-middle mb-0 bg-white">
-                        <thead class="table-light">
-                            <tr>
-                                <th class="py-3 px-4">Service</th>
-                                <th class="py-3 px-4 text-end">Fee</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for rate in block.rate_list %}
-                            <tr>
-                                <td class="py-3 px-4">{{ rate.service }}</td>
-                                <td class="py-3 px-4 text-end fw-bold text-dark">{{ rate.price }}</td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
+
+        <div class="row g-4 justify-content-center">
+
+            {# Left Card: Rates + CTA #}
+            <div class="col-md-5">
+                <div class="card border-0 p-4 h-100" style="border: 1px solid #e2ebd9 !important; border-radius: 16px; box-shadow: 0 4px 16px rgba(59, 82, 73, 0.08);">
+                    <h3 class="h5 fw-semibold mb-4 text-dark">Service Rates</h3>
+                    {% for rate in block.rate_list %}
+                    <div class="d-flex justify-content-between align-items-start mb-3 pb-3 border-bottom border-light">
+                        <span class="text-muted" style="font-size: 0.95rem;">{{ rate.service }}</span>
+                        <span class="fw-bold text-dark ms-3 text-nowrap">{{ rate.price }}</span>
+                    </div>
+                    {% endfor %}
+                    {% if block.cta_text and block.cta_link %}
+                    <div class="mt-auto pt-3">
+                        <a href="{{ block.cta_link }}" class="btn btn-{{ block.cta_color | default('danger') }} px-4">
+                            {{ block.cta_text }}
+                        </a>
+                    </div>
+                    {% endif %}
                 </div>
             </div>
-            
-            {# Right Column: Insurance List #}
+
+            {# Right Card: Insurance #}
             <div class="col-md-5">
-                <div class="card border-0 bg-light p-4 h-100 shadow-sm">
-                    <h3 class="h5 mb-4">Accepted Insurance</h3>
+                <div class="card border-0 p-4 h-100" style="border: 1px solid #e2ebd9 !important; border-radius: 16px; box-shadow: 0 4px 16px rgba(59, 82, 73, 0.08);">
+                    <h3 class="h5 fw-semibold mb-4 text-dark">Accepted Insurance</h3>
+                    {% if block.intro_insurance %}
+                    <p class="text-muted small mb-4">{{ block.intro_insurance }}</p>
+                    {% endif %}
                     <ul class="list-unstyled mb-0">
                         {% for item in block.insurance_list %}
                         <li class="mb-3 d-flex align-items-center">
-                            {# We are using the bi-check-circle-fill icon here! #}
-                            <i class="bi-check-circle-fill text-primary me-3 fs-5" aria-hidden="true"></i> 
+                            <i class="bi-check-circle-fill text-primary me-3 fs-5" aria-hidden="true"></i>
                             <span class="text-dark fw-medium">{{ item.provider }}</span>
                         </li>
                         {% endfor %}
                     </ul>
                 </div>
             </div>
+
         </div>
     </div>
 </section>

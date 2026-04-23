@@ -185,6 +185,7 @@ _page_builder: &page_builder
       fields:
         - { label: "Section Title", name: "title", widget: "string", default: "Rates & Insurance" }
         - { label: "Introductory Text", name: "intro", widget: "text", required: false, hint: "A brief sentence about your sliding scale or out-of-network policies." }
+        - { label: "Insurance Card Intro (Optional)", name: "intro_insurance", widget: "string", required: false, hint: "e.g. 'may vary depending on provider'" }
         - label: "Service Rates"
           name: "rate_list"
           widget: "list"
@@ -196,6 +197,19 @@ _page_builder: &page_builder
           widget: "list"
           fields:
             - { label: "Insurance Provider", name: "provider", widget: "string" }
+        - { label: "CTA Button Text", name: "cta_text", widget: "string", required: false, default: "Connect with our Team" }
+        - { label: "CTA Button Link", name: "cta_link", widget: "string", required: false, default: "/contact" }
+        - label: "CTA Button Color"
+          name: "cta_color"
+          widget: "select"
+          required: false
+          options:
+            - { label: "Earthy Green", value: "danger" }
+            - { label: "Brand Blue", value: "primary" }
+            - { label: "Teal", value: "warning" }
+            - { label: "Sky Blue", value: "info" }
+            - { label: "Dark", value: "dark" }
+          default: "danger"
 
     - label: "Location & Map"
       name: "location"
