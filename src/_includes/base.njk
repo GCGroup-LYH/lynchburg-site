@@ -97,46 +97,55 @@
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var container = document.getElementById('lottie-container');
-            var path = container.getAttribute('data-animation-path');
-            
-            if (path) {
-                var anim = lottie.loadAnimation({
-                    container: container,
-                    renderer: 'svg',
-                    loop: false,
-                    autoplay: true,
-                    path: path
-                });
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+<script>
+    function initHeroLottie() {
+        var container = document.getElementById('lottie-container');
+        if (!container) return;
+        var path = container.getAttribute('data-animation-path');
+        
+        if (path) {
+            var anim = lottie.loadAnimation({
+                container: container,
+                renderer: 'svg',
+                loop: false,
+                autoplay: true,
+                path: path
+            });
 
-                // Slow it down
-                anim.setSpeed(0.75);
-                console.log('Lottie loaded, waiting for complete...');
+            anim.setSpeed(0.75);
+            console.log('Lottie loaded, waiting for complete...');
 
-                anim.addEventListener('complete', function() {
-                    console.log('Animation complete fired!');
-                    // Step 1 — fade in headline
-                    var heroText = document.getElementById('hero-text');
-                    heroText.style.opacity = '1';
-                    heroText.style.transform = 'translateY(0)';
+            anim.addEventListener('complete', function() {
+                console.log('Animation complete fired!');
 
-                    // Step 2 — fade in buttons 400ms later
-                    setTimeout(function() {
-                        var heroButtons = document.getElementById('hero-buttons');
-                        heroButtons.style.opacity = '1';
-                        heroButtons.style.transform = 'translateY(0)';
-                    }, 400);
+                // Step 1 — fade in headline
+                var heroText = document.getElementById('hero-text');
+                heroText.style.opacity = '1';
+                heroText.style.transform = 'translateY(0)';
 
-                    // Step 3 — fade in scroll cue 800ms later
-                    setTimeout(function() {
-                        document.getElementById('scroll-cue').style.opacity = '1';
-                    }, 800);
-                });
-            }
-        });
-    </script>
+                // Step 2 — fade in buttons 400ms later
+                setTimeout(function() {
+                    var heroButtons = document.getElementById('hero-buttons');
+                    heroButtons.style.opacity = '1';
+                    heroButtons.style.transform = 'translateY(0)';
+                }, 400);
+
+                // Step 3 — fade in scroll cue 800ms later
+                setTimeout(function() {
+                    document.getElementById('scroll-cue').style.opacity = '1';
+                }, 800);
+            });
+        }
+    }
+
+    // Run after everything is loaded
+    if (document.readyState === 'complete') {
+        initHeroLottie();
+    } else {
+        window.addEventListener('load', initHeroLottie);
+    }
+</script>
 </section>
 
 <style>
