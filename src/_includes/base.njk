@@ -69,62 +69,82 @@
             {% for block in sections %}
             
                 {% if block.type == "hero_home" %}
-        {# 90vh height for the "peep" effect #}
-        <section class="hero-home d-flex flex-column justify-content-center align-items-center position-relative {{ block.section_theme | default('bg-light') }}" style="min-height: 90vh;">
+<section class="hero-home d-flex flex-column justify-content-center align-items-center position-relative {{ block.section_theme | default('bg-light') }}" style="min-height: 90vh;">
+    
+    <div class="container text-center z-2">
+
+        {# Lottie Animation #}
+        <div id="lottie-container" data-animation-path="{{ block.lottie_file }}" style="max-width: 500px; margin: 0 auto 2rem;"></div>
+
+        {# Headline — hidden until animation completes #}
+        <div id="hero-text" class="opacity-0" style="transition: opacity 0.8s ease, transform 0.8s ease; transform: translateY(12px);">
+            <h1 class="display-5 fw-bold mb-3" style="color: #2c5e3b;">{{ block.headline | default('Growth starts here.') }}</h1>
+<p class="lead text-muted mb-4" style="font-size: 1.1rem;">{{ block.subtext | default('Professional counseling for individuals, couples, and families in Lynchburg, VA.') }}</p>
+        </div>
+
+        {# Buttons — hidden until slightly after headline #}
+        <div id="hero-buttons" class="opacity-0 d-flex gap-3 justify-content-center" style="transition: opacity 0.8s ease, transform 0.8s ease; transform: translateY(12px);">
+            <a href="{{ block.btn_1_link }}" class="btn btn-danger text-white px-4 py-2">{{ block.btn_1_text }}</a>
+            <a href="{{ block.btn_2_link }}" class="btn btn-outline-danger bg-white px-4 py-2">{{ block.btn_2_text }}</a>
+        </div>
+
+    </div>
+
+    {# Scroll Cue #}
+    <div id="scroll-cue" class="position-absolute bottom-0 start-50 translate-middle-x mb-4 opacity-0 text-center" style="transition: opacity 1s ease;">
+        <span class="d-block text-success small mb-1" style="font-size: 0.75rem; letter-spacing: 1px;">SCROLL</span>
+        <div style="height: 20px; width: 1px; margin: 0 auto;" class="bg-success"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var container = document.getElementById('lottie-container');
+            var path = container.getAttribute('data-animation-path');
             
-            <div class="container text-center z-2">
-                {# Centered Lottie Animation #}
-                <div id="lottie-container" data-animation-path="{{ block.lottie_file }}" style="max-width: 600px; margin: 0 auto 2rem;"></div>
-
-                {# Two Buttons #}
-                <div class="d-flex gap-3 justify-content-center">
-                    {# Assuming btn-danger maps to your Earthy Green based on our previous setup #}
-                    <a href="{{ block.btn_1_link }}" class="btn btn-danger text-white px-4 py-2">{{ block.btn_1_text }}</a>
-                    <a href="{{ block.btn_2_link }}" class="btn btn-outline-danger bg-white px-4 py-2">{{ block.btn_2_text }}</a>
-                </div>
-            </div>
-
-            {# Custom Scroll Cue matching Figma #}
-            <div id="scroll-cue" class="position-absolute bottom-0 start-50 translate-middle-x mb-4 opacity-0 text-center" style="transition: opacity 1s ease;">
-                {# Adjust 'text-success' if your bright green maps to a different variable #}
-                <span class="d-block text-success small mb-1" style="font-size: 0.75rem; letter-spacing: 1px;">SCROLL</span>
-                <div style="height: 20px; width: 1px; margin: 0 auto;" class="bg-success"></div>
-            </div>
-
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
-            <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                    var container = document.getElementById('lottie-container');
-                    var path = container.getAttribute('data-animation-path');
-                    
-                    if (path) {
-                        var anim = lottie.loadAnimation({
-                            container: container,
-                            renderer: 'svg',
-                            loop: false, 
-                            autoplay: true,
-                            path: path 
-                        });
-
-                        // Fade in scroll cue after animation
-                        anim.addEventListener('complete', function() {
-                            setTimeout(function() {
-                                document.getElementById('scroll-cue').classList.remove('opacity-0');
-                            }, 500); 
-                        });
-                    }
+            if (path) {
+                var anim = lottie.loadAnimation({
+                    container: container,
+                    renderer: 'svg',
+                    loop: false,
+                    autoplay: true,
+                    path: path
                 });
-            </script>
-        </section>
 
-    <style>
-        .brand-hero-btn { transition: all 0.3s ease; }
-        .brand-hero-btn:hover {
-            filter: brightness(90%);
-            transform: translateY(-2px);
-            color: {{ block.btn_txt_color }};
-        }
-    </style>
+                // Slow it down
+                anim.setSpeed(0.75);
+
+                anim.addEventListener('complete', function() {
+                    // Step 1 — fade in headline
+                    var heroText = document.getElementById('hero-text');
+                    heroText.style.opacity = '1';
+                    heroText.style.transform = 'translateY(0)';
+
+                    // Step 2 — fade in buttons 400ms later
+                    setTimeout(function() {
+                        var heroButtons = document.getElementById('hero-buttons');
+                        heroButtons.style.opacity = '1';
+                        heroButtons.style.transform = 'translateY(0)';
+                    }, 400);
+
+                    // Step 3 — fade in scroll cue 800ms later
+                    setTimeout(function() {
+                        document.getElementById('scroll-cue').style.opacity = '1';
+                    }, 800);
+                });
+            }
+        });
+    </script>
+</section>
+
+<style>
+    .brand-hero-btn { transition: all 0.3s ease; }
+    .brand-hero-btn:hover {
+        filter: brightness(90%);
+        transform: translateY(-2px);
+    }
+</style>
+
     {% elif block.type == "hero_inner" %}
         {# Standard Hero for internal pages #}
         <section class="hero-inner d-flex align-items-center py-5 {{ block.section_theme | default('bg-light text-dark') }}" 

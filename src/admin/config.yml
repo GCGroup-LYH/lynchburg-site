@@ -49,6 +49,8 @@ _page_builder: &page_builder
       name: "hero_home"
       widget: "object"
       fields:
+        - { label: "Headline", name: "headline", widget: "string", default: "Growth starts here." }
+        - { label: "Subtext", name: "subtext", widget: "string", default: "Professional counseling for individuals, couples, and families in Lynchburg, VA." }
         - { label: "Lottie File", name: "lottie_file", widget: "file", hint: "Upload the .json file for your line art animation." }
         - { label: "Primary Button Text", name: "btn_1_text", widget: "string", default: "Meet Our Team" }
         - { label: "Primary Button Link", name: "btn_1_link", widget: "string", default: "/team" }
