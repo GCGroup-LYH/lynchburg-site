@@ -76,14 +76,14 @@
         {# Lottie Animation #}
         <div id="lottie-container" data-animation-path="{{ block.lottie_file }}" style="max-width: 500px; margin: 0 auto 2rem;"></div>
 
-        {# Headline — hidden until animation completes #}
-        <div id="hero-text" class="opacity-0" style="transition: opacity 0.8s ease, transform 0.8s ease; transform: translateY(12px);">
+        {# Headline — fades in after animation completes #}
+        <div id="hero-text" class="hero-fade-in" style="animation-delay: 7.1s;">
             <h1 class="display-5 fw-bold mb-3" style="color: #2c5e3b;">{{ block.headline | default('Growth starts here.') }}</h1>
-<p class="lead text-muted mb-4" style="font-size: 1.1rem;">{{ block.subtext | default('Professional counseling for individuals, couples, and families in Lynchburg, VA.') }}</p>
+            <p class="lead text-muted mb-4" style="font-size: 1.1rem;">{{ block.subtext | default('Professional counseling for individuals, couples, and families in Lynchburg, VA.') }}</p>
         </div>
 
-        {# Buttons — hidden until slightly after headline #}
-        <div id="hero-buttons" class="opacity-0 d-flex gap-3 justify-content-center" style="transition: opacity 0.8s ease, transform 0.8s ease; transform: translateY(12px);">
+        {# Buttons — fades in slightly after headline #}
+        <div id="hero-buttons" class="hero-fade-in d-flex gap-3 justify-content-center" style="animation-delay: 7.5s;">
             <a href="{{ block.btn_1_link }}" class="btn btn-danger text-white px-4 py-2">{{ block.btn_1_text }}</a>
             <a href="{{ block.btn_2_link }}" class="btn btn-outline-danger bg-white px-4 py-2">{{ block.btn_2_text }}</a>
         </div>
@@ -91,68 +91,42 @@
     </div>
 
     {# Scroll Cue #}
-    <div id="scroll-cue" class="position-absolute bottom-0 start-50 translate-middle-x mb-4 opacity-0 text-center" style="transition: opacity 1s ease;">
+    <div id="scroll-cue" class="hero-fade-in position-absolute bottom-0 start-50 translate-middle-x mb-4 text-center" style="animation-delay: 7.9s;">
         <span class="d-block text-success small mb-1" style="font-size: 0.75rem; letter-spacing: 1px;">SCROLL</span>
         <div style="height: 20px; width: 1px; margin: 0 auto;" class="bg-success"></div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
-<script>
-    function initHeroLottie() {
-        var container = document.getElementById('lottie-container');
-        if (!container) return;
-        var path = container.getAttribute('data-animation-path');
-        
-        if (path) {
-            var anim = lottie.loadAnimation({
-                container: container,
-                renderer: 'svg',
-                loop: false,
-                autoplay: true,
-                path: path
-            });
-
-            anim.setSpeed(0.75);
-            console.log('Lottie loaded, waiting for complete...');
-
-            anim.addEventListener('complete', function() {
-                console.log('Animation complete fired!');
-
-                // Step 1 — fade in headline
-                var heroText = document.getElementById('hero-text');
-                heroText.style.opacity = '1';
-                heroText.style.transform = 'translateY(0)';
-
-                // Step 2 — fade in buttons 400ms later
-                setTimeout(function() {
-                    var heroButtons = document.getElementById('hero-buttons');
-                    heroButtons.style.opacity = '1';
-                    heroButtons.style.transform = 'translateY(0)';
-                }, 400);
-
-                // Step 3 — fade in scroll cue 800ms later
-                setTimeout(function() {
-                    document.getElementById('scroll-cue').style.opacity = '1';
-                }, 800);
-            });
-        }
-    }
-
-    // Run after everything is loaded
-    if (document.readyState === 'complete') {
-        initHeroLottie();
-    } else {
-        window.addEventListener('load', initHeroLottie);
-    }
-</script>
+    <script>
+        window.addEventListener('load', function() {
+            var container = document.getElementById('lottie-container');
+            if (!container) return;
+            var path = container.getAttribute('data-animation-path');
+            if (path) {
+                var anim = lottie.loadAnimation({
+                    container: container,
+                    renderer: 'svg',
+                    loop: false,
+                    autoplay: true,
+                    path: path
+                });
+                anim.setSpeed(0.75);
+            }
+        });
+    </script>
 </section>
 
 <style>
-    .brand-hero-btn { transition: all 0.3s ease; }
-    .brand-hero-btn:hover {
-        filter: brightness(90%);
-        transform: translateY(-2px);
+    .hero-fade-in {
+        opacity: 0;
+        transform: translateY(12px);
+        animation: heroFadeUp 0.8s ease forwards;
+    }
+    @keyframes heroFadeUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 </style>
 
