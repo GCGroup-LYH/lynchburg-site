@@ -165,6 +165,7 @@ _page_builder: &page_builder
       name: "faq"
       widget: "object"
       fields:
+        - { label: "Section Anchor ID", name: "anchor_id", widget: "string", required: false, hint: "Optional. Adds a linkable anchor to this section. e.g. 'faq' — then link to it with '#faq'" }
         - { label: "Section Title", name: "title", widget: "string", default: "Frequently Asked Questions" }
         - *brand_palette
         - label: "Questions & Answers"
@@ -197,6 +198,7 @@ _page_builder: &page_builder
       name: "contact_form"
       widget: "object"
       fields:
+        - { label: "Section Anchor ID", name: "anchor_id", widget: "string", required: false, hint: "Optional. Adds a linkable anchor to this section. e.g. 'contact' — then link to it with '#contact'" }
         - *brand_palette
         - label: "Route Form To:"
           name: "route_to"
@@ -218,6 +220,7 @@ _page_builder: &page_builder
       name: "rates"
       widget: "object"
       fields:
+        - { label: "Section Anchor ID", name: "anchor_id", widget: "string", required: false, hint: "Optional. Adds a linkable anchor to this section. e.g. 'rates' — then link to it with '#rates'" }
         - { label: "Section Title", name: "title", widget: "string", default: "Rates & Insurance" }
         - *brand_palette
         - { label: "Introductory Text", name: "intro", widget: "text", required: false, hint: "A brief sentence about your sliding scale or out-of-network policies." }
@@ -251,6 +254,7 @@ _page_builder: &page_builder
       name: "location"
       widget: "object"
       fields:
+        - { label: "Section Anchor ID", name: "anchor_id", widget: "string", required: false, hint: "Optional. Adds a linkable anchor to this section. e.g. 'location' — then link to it with '#location'" }
         - { label: "Section Title", name: "title", widget: "string", default: "Our Office" }
         - *brand_palette
         - { label: "Address", name: "address", widget: "text", hint: "Press enter to create line breaks." }
