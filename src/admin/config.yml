@@ -65,13 +65,6 @@ _page_builder: &page_builder
         - { label: "Headline", name: "headline", widget: "string", required: false }
         - { label: "Subtext", name: "subtext", widget: "text", required: false }
         - { label: "Background Image", name: "bg_image", widget: "image", required: false }
-        - label: "Inner Page Hero (Standard)"
-      name: "hero_inner"
-      widget: "object"
-      fields:
-        - { label: "Headline", name: "headline", widget: "string", required: false }
-        - { label: "Subtext", name: "subtext", widget: "text", required: false }
-        - { label: "Background Image", name: "bg_image", widget: "image", required: false }
         - label: "Background Type"
           name: "bg_type"
           widget: "select"
