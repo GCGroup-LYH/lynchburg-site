@@ -975,7 +975,11 @@
                 {% endif %}
 
                 <p class="mb-1 small">&copy; 2026 {{ site.name }}</p>
-                <p class="small opacity-75">{{ site.footer_text }} | {{ site.phone }}</p>
+                <p class="small opacity-75">
+    {{ site.footer_text }}
+    {% if site.phone %} | {{ site.phone }}{% endif %}
+    {% if site.contactEmail %} | <a href="mailto:{{ site.contactEmail }}" class="text-white opacity-75">{{ site.contactEmail }}</a>{% endif %}
+</p>
             </div>
 
             {# Right — empty or future use #}

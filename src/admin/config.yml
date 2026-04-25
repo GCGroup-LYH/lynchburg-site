@@ -455,8 +455,8 @@ collections:
               - { label: "Outline Teal", value: "btn-outline-warning" }
               - { label: "Outline Brand Blue", value: "btn-outline-primary" }
             default: "btn-danger text-white"
-          - { label: "Contact Email", name: "contactEmail", widget: "string" }
-          - { label: "Phone Number", name: "phone", widget: "string" }
+          - { label: "Contact Email", name: "contactEmail", widget: "string", required: false }
+          - { label: "Phone Number", name: "phone", widget: "string", required: false }
           - label: "Navigation Menu"
             name: "nav_links"
             widget: "list"
