@@ -8,6 +8,8 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/admin");
 
   eleventyConfig.addPassthroughCopy("src/assets/uploads");
+
+  eleventyConfig.addPassthroughCopy({ "src/assets/images/favicon": "assets/images/favicon" });
   
 
   const md = new markdownIt({
