@@ -131,32 +131,34 @@
 </style>
 
     {% elif block.type == "hero_inner" %}
-        {# Standard Hero for internal pages #}
-        <section class="hero-inner d-flex align-items-center py-5 {{ block.section_theme | default('bg-light text-dark') }}" 
-            style="
-                min-height: 40vh;
-                {% if block.bg_image %}
-                background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('{{ block.bg_image }}');
-                background-size: cover;
-                background-position: center;
-                color: white !important; {# Forces text to white so it's readable over the image #}
+<section class="hero-inner d-flex align-items-center py-5 {{ block.section_theme | default('bg-light text-dark') }}" 
+    style="
+        min-height: 40vh;
+        {% if block.bg_image and block.bg_type == 'photo' %}
+        background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('{{ block.bg_image }}');
+        background-size: cover;
+        background-position: center;
+        color: white !important;
+        {% elif block.bg_image and block.bg_type == 'logo' %}
+        background-image: url('{{ block.bg_image }}');
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        {% endif %}
+    ">
+    <div class="container text-center z-2 position-relative">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 py-5">
+                {% if block.headline %}
+                <h1 class="display-4 fw-bold mb-3 {{ block.icon_color | default('') }}">{{ block.headline }}</h1>
                 {% endif %}
-            ">
-            <div class="container text-center z-2 position-relative">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8 py-5">
-                        {# The icon_color variable comes from your *text_palette anchor #}
-                        {% if block.headline %}
-<h1 class="display-4 fw-bold mb-3 {{ block.icon_color | default('') }}">{{ block.headline }}</h1>
-                        {% endif %}
-                        
-                        {% if block.subtext %}
-                            <p class="lead opacity-80 mb-0">{{ block.subtext }}</p>
-                        {% endif %}
-                    </div>
-                </div>
+                {% if block.subtext %}
+                <p class="lead opacity-80 mb-0">{{ block.subtext }}</p>
+                {% endif %}
             </div>
-        </section>
+        </div>
+    </div>
+</section>
 
                 {% elif block.type == "cta" %}
                     <section class="cta-block py-4 {{ block.section_theme }}">
