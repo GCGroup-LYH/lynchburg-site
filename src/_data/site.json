@@ -4,8 +4,8 @@
   "site_description": "A compassionate mental health practice located in Lynchburg, VA, dedicated to your personal growth and healing.",
   "practiceLink": "https://growthpointcounseling.simplepractice.com",
   "portal_btn_color": "btn-danger text-white",
-  "contactEmail": "example@emailaddress.com",
-  "phone": "(555) 123-4567",
+  "contactEmail": "",
+  "phone": "",
   "nav_links": [
     {
       "text": "Home",
@@ -32,6 +32,10 @@
     {
       "text": "Accessibility",
       "url": "/accessibility/"
+    },
+    {
+      "text": "Blog",
+      "url": "/blog/"
     }
   ],
   "footer_text": "Located in Lynchburg, VA",
