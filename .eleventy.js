@@ -11,6 +11,7 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addPassthroughCopy({ "src/assets/images/favicon": "assets/images/favicon" });
   
+  eleventyConfig.addPassthroughCopy({ "src/assets/fonts": "assets/fonts" });
 
   const md = new markdownIt({
     html: true,
