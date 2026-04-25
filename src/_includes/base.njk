@@ -879,7 +879,7 @@
                                                 {% for i in range(0, star_count) %}★{% endfor %}
                                             </div>
                                             <blockquote class="blockquote mb-3">
-                                                <p class="fs-6">"{{ review.quote }}"</p>
+                                                <p style="font-size: 0.85rem; line-height: 1.6;">"{{ review.quote }}"</p>
                                             </blockquote>
                                             <figcaption class="blockquote-footer mb-0">
                                                 {{ review.author }} <cite title="Source Title">on Google</cite>
@@ -927,38 +927,63 @@
     </main>
 
     <footer class="py-5 {{ site.footer_theme | default('bg-danger text-white') }}">
-        <div class="container text-center">
-            
-            {% if site.footer_links %}
-            <ul class="list-inline mb-4">
-                {% for link in site.footer_links %}
-                    <li class="list-inline-item mx-3">
-                        <a href="{{ link.url }}" class="text-white text-decoration-none border-bottom border-secondary pb-1">{{ link.text }}</a>
-                    </li>
-                {% endfor %}
-            </ul>
-            {% endif %}
+    <div class="container">
+        
+        <div class="row align-items-start g-4">
 
-            {# Moved the social links inside the container so they stay centered! #}
-            {% if site.social_links and site.social_links.length > 0 %}
-            <div class="social-links-wrapper mb-4">
-                {% for social in site.social_links %}
-                {# Changed text-body-secondary to text-white so it shows up on the dark background #}
-                <a href="{{ social.url }}" target="_blank" rel="noopener noreferrer" class="text-white text-decoration-none mx-2 fs-4 transition-all" aria-label="Follow us on {{ social.platform }}" title="{{ social.platform }}">
-                    <i class="bi bi-{{ social.platform | lower }} hover-primary"></i>
-                </a>
-                {% endfor %}
+            {# Left — Logo #}
+            <div class="col-md-3 text-center text-md-start">
+                {% if site.logo %}
+                <img src="{{ site.logo }}" alt="{{ site.name }} Logo" style="max-height: 60px; width: auto; opacity: 0.9;">
+                {% else %}
+                <span class="fw-bold fs-5">{{ site.name }}</span>
+                {% endif %}
             </div>
-            {% endif %}
 
-            <p class="mb-2">&copy; 2026 {{ site.name }}</p>
-            <p class="small text-white-50">
-                {{ site.footer_text }} | 
-                <a href="mailto:{{ site.contactEmail }}" class="text-white-50">{{ site.contactEmail }}</a> | 
-                {{ site.phone }}
-            </p>
+            {# Center — Links #}
+            <div class="col-md-6 text-center">
+                <ul class="list-inline mb-3">
+                    {% for link in site.footer_links %}
+                    <li class="list-inline-item mx-2">
+                        <a href="{{ link.url }}" class="text-white text-decoration-none small">{{ link.text }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+
+                {# Team Links #}
+                {% if collections.team and collections.team.length > 0 %}
+                <div class="mb-3">
+                    <span class="small opacity-75 me-2">Our Team:</span>
+                    {% for person in collections.team %}
+                    <a href="{{ person.url }}" class="text-white text-decoration-none small me-2 opacity-90">
+                        {{ person.data.title | split(" ") | first }}
+                        {% if not loop.last %}&middot;{% endif %}
+                    </a>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                {# Social Links #}
+                {% if site.social_links and site.social_links.length > 0 %}
+                <div class="mb-3">
+                    {% for social in site.social_links %}
+                    <a href="{{ social.url }}" target="_blank" rel="noopener noreferrer" class="text-white text-decoration-none mx-2 fs-4" aria-label="Follow us on {{ social.platform }}" title="{{ social.platform }}">
+                        <i class="bi bi-{{ social.platform | lower }}"></i>
+                    </a>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <p class="mb-1 small">&copy; 2026 {{ site.name }}</p>
+                <p class="small opacity-75">{{ site.footer_text }} | {{ site.phone }}</p>
+            </div>
+
+            {# Right — empty or future use #}
+            <div class="col-md-3"></div>
+
         </div>
-    </footer>
+    </div>
+</footer>
 
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
