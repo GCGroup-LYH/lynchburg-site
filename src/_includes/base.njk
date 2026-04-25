@@ -79,8 +79,7 @@
     <div class="container text-center z-2">
 
         {# Lottie Animation #}
-        <div id="lottie-container" data-animation-path="{{ block.lottie_file }}" style="max-width: 500px; margin: 0 auto 2rem;"></div>
-
+        <div id="lottie-container" data-animation-path="{{ block.lottie_file }}" style="max-width: 500px; width: 60%; margin: 0 auto 2rem;"></div>
         {# Headline — fades in after animation completes #}
         <div id="hero-text" class="hero-fade-in" style="animation-delay: 7.1s;">
             <h1 class="display-5 fw-bold mb-3" style="color: #2c5e3b;">{{ block.headline | default('Growth starts here.') }}</h1>
@@ -96,7 +95,7 @@
     </div>
 
     {# Scroll Cue #}
-    <div id="scroll-cue" class="hero-fade-in position-absolute bottom-0 start-50 translate-middle-x mb-5 text-center" style="animation-delay: 7.9s;">
+    <div id="scroll-cue" class="hero-fade-in position-absolute bottom-0 start-50 translate-middle-x mb-3 text-center" style="animation-delay: 7.9s; pointer-events: none;">
         <span class="d-block text-success small mb-1" style="font-size: 0.75rem; letter-spacing: 1px;">SCROLL</span>
         <div style="height: 20px; width: 1px; margin: 0 auto;" class="bg-success"></div>
     </div>

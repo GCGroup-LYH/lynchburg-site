@@ -299,9 +299,20 @@ section {
     color: #72963a;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
+    .hero-home {
+        min-height: 95svh;
+    }
+    #lottie-container {
+        width: 50% !important;
+    }
+}
+
+@media (max-width: 576px) {
     .hero-home {
         min-height: 100svh;
-        padding-bottom: 60px;
+    }
+    #lottie-container {
+        width: 70% !important;
     }
 }
