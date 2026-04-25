@@ -62,7 +62,7 @@ _page_builder: &page_builder
       name: "hero_inner"
       widget: "object"
       fields:
-        - { label: "Headline", name: "headline", widget: "string" }
+        - { label: "Headline", name: "headline", widget: "string", required: false }
         - { label: "Subtext", name: "subtext", widget: "text", required: false }
         - { label: "Background Image", name: "bg_image", widget: "image", required: false }
         - *brand_palette
