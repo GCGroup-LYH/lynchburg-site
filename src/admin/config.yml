@@ -120,7 +120,7 @@ _page_builder: &page_builder
       name: "features"
       widget: "object"
       fields:
-        - { label: "Section Title", name: "title", widget: "string", default: "Areas of Focus" }
+        - { label: "Section Title", name: "title", widget: "string", required: false }
         - *brand_palette
         - label: "Cards"
           name: "card_list"
