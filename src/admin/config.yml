@@ -91,6 +91,27 @@ _page_builder: &page_builder
           fields:
             - { label: "Reviewer Name", name: "author", widget: "string" }
             - { label: "Review Text", name: "quote", widget: "text" }
+            - label: "Star Rating"
+              name: "stars"
+              widget: "select"
+              options:
+                - { label: "⭐⭐⭐⭐⭐ (5 stars)", value: "5" }
+                - { label: "⭐⭐⭐⭐ (4 stars)", value: "4" }
+                - { label: "⭐⭐⭐ (3 stars)", value: "3" }
+                - { label: "⭐⭐ (2 stars)", value: "2" }
+                - { label: "⭐ (1 star)", value: "1" }
+              default: "5"
+              required: false
+            - label: "Star Color"
+              name: "star_color"
+              widget: "select"
+              required: false
+              options:
+                - { label: "Brand Teal", value: "text-warning" }
+                - { label: "Earthy Green", value: "text-danger" }
+                - { label: "Brand Blue", value: "text-primary" }
+                - { label: "Gold (Default)", value: "text-star-gold" }
+              default: "text-star-gold"
             
     - label: "Call to Action (CTA)"
       name: "cta"

@@ -868,7 +868,10 @@
                                 {% for review in block.review_list %}
                                     <div class="col-md-6 col-lg-4">
                                         <div class="card h-100 border-0 shadow-sm p-4 text-center bg-white text-dark">
-                                            <div class="text-warning mb-3 fs-5">★★★★★</div>
+                                            <div class="mb-3 fs-5 {{ review.star_color | default('text-star-gold') }}">
+                                                {% set star_count = review.stars | int if review.stars else 5 %}
+                                                {% for i in range(0, star_count) %}★{% endfor %}
+                                            </div>
                                             <blockquote class="blockquote mb-3">
                                                 <p class="fs-6">"{{ review.quote }}"</p>
                                             </blockquote>
