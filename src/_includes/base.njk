@@ -75,8 +75,7 @@
             {% for block in sections %}
             
                 {% if block.type == "hero_home" %}
-<section class="hero-home d-flex flex-column justify-content-center align-items-center position-relative {{ block.section_theme | default('bg-light') }}" style="min-height: 90vh;">
-    
+<section class="hero-home d-flex flex-column justify-content-center align-items-center position-relative {{ block.section_theme | default('bg-light') }}" style="min-height: 90vh; padding-bottom: 80px;">    
     <div class="container text-center z-2">
 
         {# Lottie Animation #}
@@ -97,7 +96,7 @@
     </div>
 
     {# Scroll Cue #}
-    <div id="scroll-cue" class="hero-fade-in position-absolute bottom-0 start-50 translate-middle-x mb-4 text-center" style="animation-delay: 7.9s;">
+    <div id="scroll-cue" class="hero-fade-in position-absolute bottom-0 start-50 translate-middle-x mb-5 text-center" style="animation-delay: 7.9s;">
         <span class="d-block text-success small mb-1" style="font-size: 0.75rem; letter-spacing: 1px;">SCROLL</span>
         <div style="height: 20px; width: 1px; margin: 0 auto;" class="bg-success"></div>
     </div>

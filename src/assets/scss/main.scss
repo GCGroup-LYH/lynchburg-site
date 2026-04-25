@@ -298,3 +298,10 @@ section {
 .info-highlight-link:hover {
     color: #72963a;
 }
+
+@media (max-width: 768px) {
+    .hero-home {
+        min-height: 100svh;
+        padding-bottom: 60px;
+    }
+}
