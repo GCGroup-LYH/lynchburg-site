@@ -5,8 +5,8 @@ title: Lindsey Perkins
 role: LPC · Licensed Professional Counselor
 image: /assets/images/Lindsey.jpg
 short_bio: Works with anxiety, depression, trauma, and life transitions. Trained in EMDR and CBT
-quote: '"It is her passion to help clients from all walks of life find clarity, healing, and a path forward."'
-email: emcitconsultants@outlook.com
+quote: ''
+email: lindsey@growthpointcounseling.us
 approaches:
   - Eye Movement Desensitization & Reprocessing Therapy (EMDR)
   - Cognitive Behavioral Therapy (CBT)
