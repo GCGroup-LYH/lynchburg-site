@@ -6,7 +6,7 @@ role: LPC · Licensed Professional Counselor
 image: /assets/images/Abby.jpg
 short_bio: LPC with 12+ years experience. Specializes in grief, trauma, mood disorders, and relational distress including pre-marital and family concerns.
 quote: ''
-email: emcitconsultants@outlook.com
+email: abby@growthpointcounseling.us
 approaches:
   - Eye Movement Desensitization and Reprocessing (EMDR)
   - Gottman Method
