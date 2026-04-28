@@ -4,7 +4,7 @@ clinician_type: Therapist
 title: Lindsey Perkins
 role: LPC · Licensed Professional Counselor
 image: /assets/images/Lindsey.jpg
-short_bio: Works with anxiety, depression, trauma, and life transitions. Trained in EMDR and CBT
+short_bio: Licensed Professional Counselor with experience across community mental health, church-based counseling, and private practice. Specializes in trauma, PTSD, EMDR, anxiety, depression, and couples counseling. Also serves as a Clinical Supervisor for graduate counseling students.
 quote: ''
 email: lindsey@growthpointcounseling.us
 approaches:
