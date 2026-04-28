@@ -3,7 +3,7 @@ layout: bio.njk
 clinician_type: Therapist
 title: Abby Barnes
 role: LPC · Licensed Professional Counselor
-image: /assets/images/alisadyson-woman-7175038.jpg
+image: /assets/images/Abby.jpg
 short_bio: LPC with 12+ years experience. Specializes in grief, trauma, mood disorders, and relational distress including pre-marital and family concerns.
 quote: '"Her goal is to help individuals, couples, and families develop healthier ways of living."'
 email: emcitconsultants@outlook.com
