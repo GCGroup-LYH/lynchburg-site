@@ -4,7 +4,7 @@ clinician_type: Therapist
 title: Jessica Burnette
 role: LPC · Licensed Professional Counselor
 image: /assets/images/Jessica.jpg
-short_bio: Over a decade of experience helping teens and adults navigate worry, low mood, and life's heaviest moments. Warm, encouraging, and client-centered
+short_bio: Licensed Professional Counselor with over a decade of experience, including 10 years on the Child and Adolescent Psychiatry Unit at Virginia Baptist Hospital. Specializes in teens navigating anxiety and depression, and women feeling stuck, anxious, or burned out. Offers a warm, encouraging, client-centered approach.
 quote: “You don’t have to go through this alone. I’d be honored to walk alongside you.”
 email: jessica@growthpointcounseling.us
 approaches:
