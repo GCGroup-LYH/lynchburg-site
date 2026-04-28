@@ -4,7 +4,7 @@ clinician_type: Therapist
 title: Abby Barnes
 role: LPC · Licensed Professional Counselor
 image: /assets/images/Abby.jpg
-short_bio: LPC with 12+ years experience. Specializes in grief, trauma, mood disorders, and relational distress including pre-marital and family concerns.
+short_bio: Licensed Professional Counselor with over 12 years of experience helping individuals, couples, and families develop healthier ways of living. Specializes in anxiety, depression, trauma, grief, and relational distress. Draws from EMDR, CBT, Solution-Focused Therapy, and the Gottman Method.
 quote: ''
 email: abby@growthpointcounseling.us
 approaches:
