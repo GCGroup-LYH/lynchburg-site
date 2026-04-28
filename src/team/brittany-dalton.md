@@ -4,7 +4,7 @@ clinician_type: Therapist
 title: Brittany Dalton
 role: LPC · Licensed Professional Counselor
 image: /assets/images/Brittany.jpg
-short_bio: 10 years working with grief, anxiety, depression, trauma, and relational concerns. Trained in EMDR, CBT, and Narrative Therapy
+short_bio: Licensed Professional Counselor with 10 years of experience in the mental health field. Works with grief, anxiety, depression, trauma, relational conflicts, and identity issues. Trained in EMDR, CBT, and Narrative Therapy with a passion for walking alongside clients as they pursue growth and healing.
 quote: ''
 email: brittany@growthpointcounseling.us
 approaches:
