@@ -582,7 +582,7 @@ collections:
       - { label: "Compact Card Photo (Optional)", name: "thumbnail", widget: "image", required: false, hint: "A square or landscape crop for the homepage card. Falls back to the main headshot if left blank." }
       - { label: "Short Bio (For the Card)", name: "short_bio", widget: "text", hint: "A 2-3 sentence teaser for the grid." }
       - { label: "Full Bio", name: "body", widget: "markdown", hint: "The complete bio for their individual page." }
-      - { label: "Card Quote", name: "quote", widget: "text", hint: "The teal quote that appears on the therapist's card." }
+      - { label: "Card Quote", name: "quote", widget: "text", required: false, hint: "The teal quote that appears on the therapist's card." }
       - { label: "Direct Email", name: "email", widget: "string", hint: "Where should the contact form on their bio page send emails?" }
       - label: "Therapeutic Approaches"
         name: "approaches"
