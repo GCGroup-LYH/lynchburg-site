@@ -6,7 +6,7 @@ role: LPC · Licensed Professional Counselor
 image: /assets/images/Jessica.jpg
 short_bio: Over a decade of experience helping teens and adults navigate worry, low mood, and life's heaviest moments. Warm, encouraging, and client-centered
 quote: “You don’t have to go through this alone. I’d be honored to walk alongside you.”
-email: emcitconsultants@outlook.com
+email: jessica@growthpointcounseling.us
 approaches:
   - Cognitive Behavioral Therapy (CBT)
   - Dialectical Behavior Therapy (DBT)
