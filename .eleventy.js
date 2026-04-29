@@ -13,6 +13,10 @@ module.exports = function(eleventyConfig) {
   
   eleventyConfig.addPassthroughCopy({ "src/assets/fonts": "assets/fonts" });
 
+  eleventyConfig.addPassthroughCopy("src/robots.txt");
+
+  eleventyConfig.addPassthroughCopy("src/sitemap.xml");
+
   const md = new markdownIt({
     html: true,
     breaks: true,
