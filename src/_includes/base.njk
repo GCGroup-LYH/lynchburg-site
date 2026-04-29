@@ -971,10 +971,7 @@
                 <div class="mb-3">
                     <span class="small opacity-75 me-2">Our Team:</span>
                     {% for person in collections.team %}
-                    <a href="{{ person.url }}" class="text-white text-decoration-none small me-2 opacity-90">
-                        {{ person.data.title | split(" ") | first }}
-                        {% if not loop.last %}&middot;{% endif %}
-                    </a>
+<a href="{{ person.url }}" class="text-white text-decoration-none small opacity-90">{{ person.data.title | split(" ") | first }}</a>{% if not loop.last %}<span class="text-white opacity-90 mx-1">&middot;</span>{% endif %}
                     {% endfor %}
                 </div>
                 {% endif %}
