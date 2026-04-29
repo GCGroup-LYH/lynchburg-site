@@ -1,6 +1,8 @@
-# Website for Growthpoint Counseling Group - Project Start: March 2026
-# A capstone project from Central Virginia Community College IST class of 2026
-# Author: Christopher L. Collier
+# Growthpoint Counseling Group Website
+
+**Capstone Project** — Central Virginia Community College, IST Class of 2026  
+**Author:** Christopher L. Collier - emcIT consultants
+**Project Start:** March 2026
 
 A JAMstack website built with Eleventy, Sveltia CMS, and Cloudflare.
 
